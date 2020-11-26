@@ -1797,324 +1797,147 @@
         }
     };
 
-    function re() {
-        this.switchHandler = this.switchHandler.bind(this), this.favContext = this.favContext.bind(this)
-    }
-    const oe = function (e) {
-            const t = e.target.getAttribute("title"),
-                n = document.querySelector("." + P.slateEditorClasses.slateTextArea.split(" ")[0]);
-            if (n) {
-                const e = P.getInternalInstance(n),
-                    r = z.getNestedProp(e, "memoizedProps.children.props.editor.insertText");
-                r && r(` ${t} `)
-            } else {
-                const e = z.getTextArea();
-                z.insertText(e, " " == e.value.slice(-1) ? e.value + t : e.value + " " + t)
-            }
-        },
-        se = function (e, t, {
-            click: n = oe,
-            contextmenu: r
-        } = {}) {
-            const o = B.createElement(`<div class="emote-container"><img class="emote-icon" alt="${e}" src="${t}" title="${e}"></div>`);
-            return n && o.addEventListener("click", n), r && o.addEventListener("contextmenu", r), o
-        };
-    re.prototype.init = function () {
-        this.initialized = !0, this.favoriteEmotes = {};
-        const e = ne.getBDData("bdfavemotes");
-        "" !== e && null !== e && (this.favoriteEmotes = JSON.parse(atob(e))), this.qmeHeader = B.createElement('<div id="bda-qem">'), this.twitchButton = B.createElement('<button class="active" id="bda-qem-twitch">Twitch</button>'), this.favoriteButton = B.createElement('<button id="bda-qem-favourite">Favorite</button>'), this.emojiButton = B.createElement('<button id="bda-qem-emojis">Emojis</buttond>'), this.twitchButton.addEventListener("click", this.switchHandler), this.favoriteButton.addEventListener("click", this.switchHandler), this.emojiButton.addEventListener("click", this.switchHandler), this.qmeHeader.append(this.twitchButton, this.favoriteButton, this.emojiButton), this.teContainer = B.createElement('<div id="bda-qem-twitch-container"><div class="scroller-wrap scrollerWrap-2lJEkd fade"><div class="scroller scroller-2FKFPG"><div class="emote-menu-inner"></div></div></div></div>'), this.teInner = this.teContainer.querySelector(".emote-menu-inner");
-        for (const e in k.TwitchGlobal) k.TwitchGlobal.hasOwnProperty(e) && this.teInner.append(se(e, k.TwitchGlobal[e]));
-        this.faContainer = B.createElement('<div id="bda-qem-favourite-container"><div class="scroller-wrap scrollerWrap-2lJEkd fade"><div class="scroller scroller-2FKFPG"><div class="emote-menu-inner"></div></div></div></div>'), this.faInner = this.faContainer.querySelector(".emote-menu-inner");
-        for (const e in this.favoriteEmotes) this.faInner.append(se(e, this.favoriteEmotes[e], {
-            contextmenu: this.favContext
-        }))
-    }, re.prototype.favContext = function (e) {
-        e.stopPropagation();
-        const t = B.query("#app-mount"),
-            n = B.createElement('<div class="layer-v9HyYc da-layer">'),
-            r = B.createElement('<div class="contextMenu-HLZMGh da-contextMenu bd-context-menu"></div>');
-        n.append(r), t.append(n), n.style.top = e.clientY + "px", n.style.left = e.clientX + "px", n.style.zIndex = "1002";
-        const o = function (e) {
-            e && e.keyCode && 27 !== e.keyCode || (n.remove(), document.removeEventListener("click", o), document.removeEventListener("contextmenu", o), document.removeEventListener("keyup", o))
-        };
-        document.addEventListener("click", o), document.addEventListener("contextmenu", o), document.addEventListener("keyup", o);
-        const s = B.createElement('<div class="itemGroup-1tL0uz da-itemGroup">'),
-            i = B.createElement('<div class="item-1Yvehc itemBase-tz5SeC da-item da-itemBase clickable-11uBi- da-clickable">');
-        i.append(B.createElement('<div class="label-JWQiNe da-label">Remove</div>')), i.addEventListener("click", () => {
-            delete this.favoriteEmotes[e.target.getAttribute("title")], e.target.parentElement.remove(), this.saveFavorites(), o()
-        }), s.append(i), r.append(s)
-    }, re.prototype.switchHandler = function (e) {
-        this.switchQem(e.target.id)
-    }, re.prototype.switchQem = function (e) {
-        this.twitchButton.classList.remove("active"), this.favoriteButton.classList.remove("active"), this.emojiButton.classList.remove("active");
-        const t = B.query(".emojiPicker-3m1S-j");
-        switch (t.style.display = "none", this.faContainer.style.display = "none", this.teContainer.style.display = "none", e) {
-            case "bda-qem-twitch":
-                this.twitchButton.classList.add("active"), this.teContainer.style.display = "";
-                break;
-            case "bda-qem-favourite":
-                this.favoriteButton.classList.add("active"), this.faContainer.style.display = "";
-                break;
-            case "bda-qem-emojis":
-                this.emojiButton.classList.add("active"), t.style.display = "", t.querySelector("input").focus()
-        }
-    }, re.prototype.obsCallback = function (e) {
-        this.initialized && (h["bda-es-9"] ? e.classList.remove("bda-qme-hidden") : e.classList.add("bda-qme-hidden"), h["bda-es-0"] && (B.prependTo(this.qmeHeader, e), e.append(this.teContainer), e.append(this.faContainer), this.switchQem("bda-qem-emojis")))
-    }, re.prototype.favorite = function (e, t) {
-        this.favoriteEmotes.hasOwnProperty(e) || (this.favoriteEmotes[e] = t), this.updateFavorites()
-    }, re.prototype.saveFavorites = function () {
-        ne.setBDData("bdfavemotes", btoa(JSON.stringify(this.favoriteEmotes)))
-    }, re.prototype.updateFavorites = function () {
-        this.faInner.innerHTML = "";
-        for (const e in this.favoriteEmotes) this.faInner.append(se(e, this.favoriteEmotes[e], {
-            contextmenu: this.favContext
-        }));
-        this.saveFavorites()
-    };
-    var ie = new re;
-    class ae extends P.reactComponent {
-        constructor(e) {
-            super(e);
-            const t = !!(ie && ie.favoriteEmotes && ie.favoriteEmotes[this.label]);
-            this.state = {
-                shouldAnimate: !this.animateOnHover,
-                isFavorite: t
-            }, this.onMouseEnter = this.onMouseEnter.bind(this), this.onMouseLeave = this.onMouseLeave.bind(this), this.onClick = this.onClick.bind(this)
-        }
-        get animateOnHover() {
-            return h["fork-es-2"]
-        }
-        get label() {
-            return this.props.modifier ? `${this.props.name}:${this.props.modifier}` : this.props.name
-        }
-        get modifierClass() {
-            return this.props.modifier ? " emote" + this.props.modifier : ""
-        }
-        onMouseEnter() {
-            !this.state.shouldAnimate && this.animateOnHover && this.setState({
-                shouldAnimate: !0
-            }), !this.state.isFavorite && ie.favoriteEmotes[this.label] ? this.setState({
-                isFavorite: !0
-            }) : this.state.isFavorite && !ie.favoriteEmotes[this.label] && this.setState({
-                isFavorite: !1
-            })
-        }
-        onMouseLeave() {
-            this.state.shouldAnimate && this.animateOnHover && this.setState({
-                shouldAnimate: !1
-            })
-        }
-        onClick(e) {
-            this.props.onClick && this.props.onClick(e)
-        }
-        render() {
-            return P.react.createElement(P.TooltipWrapper, {
-                color: "black",
-                position: "top",
-                text: this.label,
-                delay: 750
-            }, e => P.react.createElement("div", Object.assign({
-                className: "emotewrapper" + (this.props.jumboable ? " jumboable" : ""),
-                onMouseEnter: this.onMouseEnter,
-                onMouseLeave: this.onMouseLeave,
-                onClick: this.onClick
-            }, e), P.react.createElement("img", {
-                draggable: !1,
-                className: "emote" + this.modifierClass + (this.props.jumboable ? " jumboable" : "") + (this.state.shouldAnimate ? "" : " stop-animation"),
-                dataModifier: this.props.modifier,
-                alt: this.label,
-                src: this.props.url
-            }), P.react.createElement("input", {
-                className: "fav" + (this.state.isFavorite ? " active" : ""),
-                title: "Favorite!",
-                type: "button",
-                onClick: e => {
-                    e.preventDefault(), e.stopPropagation(), this.state.isFavorite ? (delete ie.favoriteEmotes[this.label], ie.updateFavorites()) : ie.favorite(this.label, this.props.url), this.setState({
-                        isFavorite: !this.state.isFavorite
-                    })
-                }
-            })))
-        }
-    }
-
-    function ce() {
-        Object.defineProperty(this, "categories", {
-            get: function () {
-                const e = [];
-                for (const t in E) h[E[t]] && e.push(t);
-                return e
-            }
-        })
-    }
-    // ce.prototype.init = async function () {
-    //     this.modifiers = ["flip", "spin", "pulse", "spin2", "spin3", "1spin", "2spin", "3spin", "tr", "bl", "br", "shake", "shake2", "shake3", "flap"], this.overrides = ["twitch", "bttv", "ffz"];
-    //     const e = {
-    //         TwitchGlobal: {
-    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_twitch_global.json",
-    //             variable: "TwitchGlobal",
-    //             oldVariable: "emotesTwitch",
-    //             getEmoteURL: e => `https://static-cdn.jtvnw.net/emoticons/v1/${e}/1.0`
-    //         },
-    //         TwitchSubscriber: {
-    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_twitch_subscriber.json",
-    //             variable: "TwitchSubscriber",
-    //             oldVariable: "subEmotesTwitch",
-    //             getEmoteURL: e => `https://static-cdn.jtvnw.net/emoticons/v1/${e}/1.0`
-    //         },
-    //         FrankerFaceZ: {
-    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_ffz.json",
-    //             variable: "FrankerFaceZ",
-    //             oldVariable: "emotesFfz",
-    //             getEmoteURL: e => `https://cdn.frankerfacez.com/emoticon/${e}/1`
-    //         },
-    //         BTTV: {
-    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_bttv.json",
-    //             variable: "BTTV",
-    //             oldVariable: "emotesBTTV",
-    //             getEmoteURL: e => `https://cdn.betterttv.net/emote/${e}/1x`
-    //         },
-    //         BTTV2: {
-    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_bttv2.json",
-    //             variable: "BTTV2",
-    //             oldVariable: "emotesBTTV2",
-    //             getEmoteURL: e => `https://cdn.betterttv.net/emote/${e}/1x`
-    //         }
-    //     };
-    //     if (!g.local) {
-    //         for (await this.getBlockedEmotes(), await this.loadEmoteData(e); !P.MessageComponent;) await new Promise(e => setTimeout(e, 100));
-    //         this.cancelEmoteRender || (this.cancelEmoteRender = z.monkeyPatch(P.MessageComponent, "default", {
-    //             before: ({
-    //                 methodArguments: e
-    //             }) => {
-    //                 const t = e[0].childrenMessageContent.props.content;
-    //                 if (!t || !t.length) return;
-    //                 for (let e = 0; e < t.length; e++) {
-    //                     const n = t[e];
-    //                     if ("string" != typeof n) continue;
-    //                     const r = n.split(/([^\s]+)([\s]|$)/g);
-    //                     for (let n = 0, o = this.categories.length; n < o; n++)
-    //                         for (let o = 0, s = r.length; o < s; o++) {
-    //                             const s = r[o].split(":"),
-    //                                 i = s[0];
-    //                             let a = s[1] ? s[1] : "",
-    //                                 c = a.slice(0);
-    //                             if (i.length < 4 || b.includes(i)) continue;
-    //                             this.modifiers.includes(a) && h["bda-es-8"] || (a = ""), this.overrides.includes(c) ? a = c : c = "";
-    //                             let l = this.categories[n];
-    //                             if ("twitch" === c ? k.TwitchGlobal[i] ? l = "TwitchGlobal" : k.TwitchSubscriber[i] && (l = "TwitchSubscriber") : "bttv" === c ? k.BTTV[i] ? l = "BTTV" : k.BTTV2[i] && (l = "BTTV2") : "ffz" === c && k.FrankerFaceZ[i] && (l = "FrankerFaceZ"), !k[l][i] || !h[E[l]]) continue;
-    //                             const d = t[e].match(new RegExp(`([\\s]|^)${z.escape(a?i+":"+a:i)}([\\s]|$)`));
-    //                             if (!d) continue;
-    //                             const p = t[e].substring(0, d.index + d[1].length),
-    //                                 u = t[e].substring(d.index + d[0].length - d[2].length);
-    //                             t[e] = p;
-    //                             const m = P.react.createElement(ae, {
-    //                                 name: i,
-    //                                 url: k[l][i],
-    //                                 modifier: a
-    //                             });
-    //                             t.splice(e + 1, 0, u), t.splice(e + 1, 0, m)
-    //                         }
-    //                 }
-    //                 if (t.every(e => "string" == typeof e && "" == e.replace(/\s*/, "") || (!(!e.type || "BDEmote" != e.type.name) || !!(e.props && e.props.children && e.props.children.props && e.props.children.props.emojiName))))
-    //                     for (const e of t) "object" == typeof e && ("BDEmote" == e.type.name ? e.props.jumboable = !0 : e.props && e.props.children && e.props.children.props && e.props.children.props.emojiName && (e.props.children.props.jumboable = !0))
-    //             }
-    //         }))
-    //     }
+    // function re() {
+    //     this.switchHandler = this.switchHandler.bind(this), this.favContext = this.favContext.bind(this)
     // }
-    // ce.prototype.disable = function () {
-    //     this.cancelEmoteRender || (this.cancelEmoteRender(), this.cancelEmoteRender = null)
-    // }, ce.prototype.clearEmoteData = async function () {
-    //     const e = n(2),
-    //         t = g.dataPath + "emote_data.json";
-    //     e.existsSync(t) && e.unlinkSync(t), ne.setBDData("emoteCacheDate", (new Date).toJSON()), Object.assign(k, {
-    //         TwitchGlobal: {},
-    //         TwitchSubscriber: {},
-    //         BTTV: {},
-    //         FrankerFaceZ: {},
-    //         BTTV2: {}
-    //     })
-    // }, ce.prototype.isCacheValid = function () {
-    //     const e = ne.getBDData("emoteCacheDays") || ne.setBDData("emoteCacheDays", 7) || 7,
-    //         t = new Date(ne.getBDData("emoteCacheDate") || null),
-    //         n = new Date;
-    //     return !(Math.round(Math.abs((n.getTime() - t.getTime()) / 864e5)) > e) || (ne.setBDData("emoteCacheDate", n.toJSON()), !1)
-    // }, 
-    // ce.prototype.loadEmoteData = async function (e) {
-    //     const t = n(2),
-    //         r = g.dataPath + "emote_data.json";
-    //     if (await new Promise(e => t.exists(r, e)) && this.isCacheValid()) {
-    //         h["fork-ps-2"] && z.showToast("Loading emotes from cache.", {
-    //             type: "info"
-    //         }), z.log("Emotes", "Loading emotes from local cache.");
-    //         const n = await new Promise(e => {
-    //                 t.readFile(r, "utf8", (t, n) => {
-    //                     z.log("Emotes", "Emote file read."), t && (n = {}), e(n)
-    //                 })
-    //             }),
-    //             o = z.testJSON(n);
-    //         let s = !!o;
-    //         s && Object.assign(k, o);
-    //         for (const t in e) s = Object.keys(k[e[t].variable]).length > 0;
-    //         if (s) return void(h["fork-ps-2"] && z.showToast("Emotes successfully loaded.", {
-    //             type: "success"
-    //         }));
-    //         z.log("Emotes", "Cache was corrupt, downloading..."), await new Promise(e => t.unlink(r, e))
-    //     }
-    //     if (h["fork-es-3"]) {
-    //         h["fork-ps-2"] && z.showToast("Downloading emotes in the background do not reload.", {
-    //             type: "info"
-    //         });
-    //         for (const t in e) {
-    //             await new Promise(e => setTimeout(e, 1e3));
-    //             try {
-    //                 const n = await this.downloadEmotes(e[t]);
-    //                 k[e[t].variable] = n
-    //             } catch (n) {
-    //                 k[e[t].variable] = {}
-    //             }
+    // const oe = function (e) {
+    //         const t = e.target.getAttribute("title"),
+    //             n = document.querySelector("." + P.slateEditorClasses.slateTextArea.split(" ")[0]);
+    //         if (n) {
+    //             const e = P.getInternalInstance(n),
+    //                 r = z.getNestedProp(e, "memoizedProps.children.props.editor.insertText");
+    //             r && r(` ${t} `)
+    //         } else {
+    //             const e = z.getTextArea();
+    //             z.insertText(e, " " == e.value.slice(-1) ? e.value + t : e.value + " " + t)
     //         }
-    //         h["fork-ps-2"] && z.showToast("All emotes successfully downloaded.", {
-    //             type: "success"
-    //         });
-    //         try {
-    //             await new Promise(e => t.writeFile(r, JSON.stringify(k), "utf8", e))
-    //         } catch (e) {
-    //             z.err("Emotes", "Could not save emote data.", e)
-    //         }
+    //     },
+    //     se = function (e, t, {
+    //         click: n = oe,
+    //         contextmenu: r
+    //     } = {}) {
+    //         const o = B.createElement(`<div class="emote-container"><img class="emote-icon" alt="${e}" src="${t}" title="${e}"></div>`);
+    //         return n && o.addEventListener("click", n), r && o.addEventListener("contextmenu", r), o
+    //     };
+    // re.prototype.init = function () {
+    //     this.initialized = !0, this.favoriteEmotes = {};
+    //     const e = ne.getBDData("bdfavemotes");
+    //     "" !== e && null !== e && (this.favoriteEmotes = JSON.parse(atob(e))), this.qmeHeader = B.createElement('<div id="bda-qem">'), this.twitchButton = B.createElement('<button class="active" id="bda-qem-twitch">Twitch</button>'), this.favoriteButton = B.createElement('<button id="bda-qem-favourite">Favorite</button>'), this.emojiButton = B.createElement('<button id="bda-qem-emojis">Emojis</buttond>'), this.twitchButton.addEventListener("click", this.switchHandler), this.favoriteButton.addEventListener("click", this.switchHandler), this.emojiButton.addEventListener("click", this.switchHandler), this.qmeHeader.append(this.twitchButton, this.favoriteButton, this.emojiButton), this.teContainer = B.createElement('<div id="bda-qem-twitch-container"><div class="scroller-wrap scrollerWrap-2lJEkd fade"><div class="scroller scroller-2FKFPG"><div class="emote-menu-inner"></div></div></div></div>'), this.teInner = this.teContainer.querySelector(".emote-menu-inner");
+    //     for (const e in k.TwitchGlobal) k.TwitchGlobal.hasOwnProperty(e) && this.teInner.append(se(e, k.TwitchGlobal[e]));
+    //     this.faContainer = B.createElement('<div id="bda-qem-favourite-container"><div class="scroller-wrap scrollerWrap-2lJEkd fade"><div class="scroller scroller-2FKFPG"><div class="emote-menu-inner"></div></div></div></div>'), this.faInner = this.faContainer.querySelector(".emote-menu-inner");
+    //     for (const e in this.favoriteEmotes) this.faInner.append(se(e, this.favoriteEmotes[e], {
+    //         contextmenu: this.favContext
+    //     }))
+    // }, re.prototype.favContext = function (e) {
+    //     e.stopPropagation();
+    //     const t = B.query("#app-mount"),
+    //         n = B.createElement('<div class="layer-v9HyYc da-layer">'),
+    //         r = B.createElement('<div class="contextMenu-HLZMGh da-contextMenu bd-context-menu"></div>');
+    //     n.append(r), t.append(n), n.style.top = e.clientY + "px", n.style.left = e.clientX + "px", n.style.zIndex = "1002";
+    //     const o = function (e) {
+    //         e && e.keyCode && 27 !== e.keyCode || (n.remove(), document.removeEventListener("click", o), document.removeEventListener("contextmenu", o), document.removeEventListener("keyup", o))
+    //     };
+    //     document.addEventListener("click", o), document.addEventListener("contextmenu", o), document.addEventListener("keyup", o);
+    //     const s = B.createElement('<div class="itemGroup-1tL0uz da-itemGroup">'),
+    //         i = B.createElement('<div class="item-1Yvehc itemBase-tz5SeC da-item da-itemBase clickable-11uBi- da-clickable">');
+    //     i.append(B.createElement('<div class="label-JWQiNe da-label">Remove</div>')), i.addEventListener("click", () => {
+    //         delete this.favoriteEmotes[e.target.getAttribute("title")], e.target.parentElement.remove(), this.saveFavorites(), o()
+    //     }), s.append(i), r.append(s)
+    // }, re.prototype.switchHandler = function (e) {
+    //     this.switchQem(e.target.id)
+    // }, re.prototype.switchQem = function (e) {
+    //     this.twitchButton.classList.remove("active"), this.favoriteButton.classList.remove("active"), this.emojiButton.classList.remove("active");
+    //     const t = B.query(".emojiPicker-3m1S-j");
+    //     switch (t.style.display = "none", this.faContainer.style.display = "none", this.teContainer.style.display = "none", e) {
+    //         case "bda-qem-twitch":
+    //             this.twitchButton.classList.add("active"), this.teContainer.style.display = "";
+    //             break;
+    //         case "bda-qem-favourite":
+    //             this.favoriteButton.classList.add("active"), this.faContainer.style.display = "";
+    //             break;
+    //         case "bda-qem-emojis":
+    //             this.emojiButton.classList.add("active"), t.style.display = "", t.querySelector("input").focus()
     //     }
-    // }, 
-    // ce.prototype.downloadEmotes = function (e) {
-    //     e.url = z.formatString(e.url, {
-    //         hash: g.hash
-    //     });
-    //     const t = n(3),
-    //         r = {
-    //             url: e.url,
-    //             timeout: e.timeout ? e.timeout : 12e3,
-    //             json: !0
-    //         };
-    //     return z.log("Emotes", `Downloading: ${e.variable} (${e.url})`), new Promise((n, o) => {
-    //         t(r, (t, r, s) => {
-    //             if (t) return z.err("Emotes", "Could not download " + e.variable, t), o({});
-    //             "function" == typeof e.parser && (s = e.parser(s));
-    //             for (const t in s) t.length < 4 || b.includes(t) ? delete s[t] : s[t] = e.getEmoteURL(s[t]);
-    //             n(s), z.log("Emotes", "Downloaded: " + e.variable)
-    //         })
-    //     })
-    // }, ce.prototype.getBlockedEmotes = function () {
-    //     return new Promise(e => {
-    //         n(3).get({
-    //             url: z.formatString("https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotefilter.json", {
-    //                 hash: g.hash
-    //             }),
-    //             json: !0
-    //         }, (function (t, n, r) {
-    //             if (t) return e(b);
-    //             e(b.splice(0, 0, ...r))
-    //         }))
-    //     })
+    // }, re.prototype.obsCallback = function (e) {
+    //     this.initialized && (h["bda-es-9"] ? e.classList.remove("bda-qme-hidden") : e.classList.add("bda-qme-hidden"), h["bda-es-0"] && (B.prependTo(this.qmeHeader, e), e.append(this.teContainer), e.append(this.faContainer), this.switchQem("bda-qem-emojis")))
+    // }, re.prototype.favorite = function (e, t) {
+    //     this.favoriteEmotes.hasOwnProperty(e) || (this.favoriteEmotes[e] = t), this.updateFavorites()
+    // }, re.prototype.saveFavorites = function () {
+    //     ne.setBDData("bdfavemotes", btoa(JSON.stringify(this.favoriteEmotes)))
+    // }, re.prototype.updateFavorites = function () {
+    //     this.faInner.innerHTML = "";
+    //     for (const e in this.favoriteEmotes) this.faInner.append(se(e, this.favoriteEmotes[e], {
+    //         contextmenu: this.favContext
+    //     }));
+    //     this.saveFavorites()
     // };
-    // var le = new ce;
+    // var ie = new re;
+    // class ae extends P.reactComponent {
+    //     constructor(e) {
+    //         super(e);
+    //         // const t = !!(ie && ie.favoriteEmotes && ie.favoriteEmotes[this.label]);
+    //         this.state = {
+    //             shouldAnimate: !this.animateOnHover,
+    //             isFavorite: t
+    //         }, this.onMouseEnter = this.onMouseEnter.bind(this), this.onMouseLeave = this.onMouseLeave.bind(this), this.onClick = this.onClick.bind(this)
+    //     }
+    //     get animateOnHover() {
+    //         return h["fork-es-2"]
+    //     }
+    //     get label() {
+    //         return this.props.modifier ? `${this.props.name}:${this.props.modifier}` : this.props.name
+    //     }
+    //     get modifierClass() {
+    //         return this.props.modifier ? " emote" + this.props.modifier : ""
+    //     }
+    //     onMouseEnter() {
+    //         !this.state.shouldAnimate && this.animateOnHover && this.setState({
+    //             shouldAnimate: !0
+    //         })
+    //         // , !this.state.isFavorite && ie.favoriteEmotes[this.label] ? this.setState({
+    //         //     isFavorite: !0
+    //         // }) : this.state.isFavorite && !ie.favoriteEmotes[this.label] && this.setState({
+    //         //     isFavorite: !1
+    //         // })
+    //     }
+    //     onMouseLeave() {
+    //         this.state.shouldAnimate && this.animateOnHover && this.setState({
+    //             shouldAnimate: !1
+    //         })
+    //     }
+    //     onClick(e) {
+    //         this.props.onClick && this.props.onClick(e)
+    //     }
+    //     // render() {
+    //     //     return P.react.createElement(P.TooltipWrapper, {
+    //     //         color: "black",
+    //     //         position: "top",
+    //     //         text: this.label,
+    //     //         delay: 750
+    //     //     }, e => P.react.createElement("div", Object.assign({
+    //     //         className: "emotewrapper" + (this.props.jumboable ? " jumboable" : ""),
+    //     //         onMouseEnter: this.onMouseEnter,
+    //     //         onMouseLeave: this.onMouseLeave,
+    //     //         onClick: this.onClick
+    //     //     }, e), P.react.createElement("img", {
+    //     //         draggable: !1,
+    //     //         className: "emote" + this.modifierClass + (this.props.jumboable ? " jumboable" : "") + (this.state.shouldAnimate ? "" : " stop-animation"),
+    //     //         dataModifier: this.props.modifier,
+    //     //         alt: this.label,
+    //     //         src: this.props.url
+    //     //     }), P.react.createElement("input", {
+    //     //         className: "fav" + (this.state.isFavorite ? " active" : ""),
+    //     //         title: "Favorite!",
+    //     //         type: "button",
+    //     //         onClick: e => {
+    //     //             e.preventDefault(), e.stopPropagation(), this.state.isFavorite ? (delete ie.favoriteEmotes[this.label], ie.updateFavorites()) : ie.favorite(this.label, this.props.url), this.setState({
+    //     //                 isFavorite: !this.state.isFavorite
+    //     //             })
+    //     //         }
+    //     //     })))
+    //     // }
+    // }
+   
     class de extends P.reactComponent {
         constructor(e) {
             super(e)
@@ -2353,9 +2176,6 @@
             return [{
                 text: "Settings",
                 id: "core"
-            }, {
-                text: "Emotes",
-                id: "emotes"
             }, {
                 text: "Plugins",
                 id: "plugins"
@@ -4677,7 +4497,7 @@
                 const n = e[t];
                 if (void 0 !== U && U.rawObserver(n), !(n.addedNodes.length && n.addedNodes[0] instanceof Element)) continue;
                 const r = n.addedNodes[0];
-                r.classList.contains("layer-3QrUeG") && (r.getElementsByClassName("guild-settings-base-section").length && r.setAttribute("layer-id", "server-settings"), r.getElementsByClassName("socialLinks-3jqNFy").length && (r.setAttribute("layer-id", "user-settings"), r.setAttribute("id", "user-settings"), document.getElementById("bd-settings-sidebar") || St.renderSidebar())), r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container"), r.classList.contains("layer-v9HyYc") && r.getElementsByClassName("emojiPicker-3m1S-j").length && !r.querySelector(".emojiPicker-3m1S-j").parentElement.classList.contains("animatorLeft-1EQxU0") && ie.obsCallback(r)
+                r.classList.contains("layer-3QrUeG") && (r.getElementsByClassName("guild-settings-base-section").length && r.setAttribute("layer-id", "server-settings"), r.getElementsByClassName("socialLinks-3jqNFy").length && (r.setAttribute("layer-id", "user-settings"), r.setAttribute("id", "user-settings"), document.getElementById("bd-settings-sidebar") || St.renderSidebar())), r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container"), r.classList.contains("layer-v9HyYc") && r.getElementsByClassName("emojiPicker-3m1S-j").length && !r.querySelector(".emojiPicker-3m1S-j").parentElement.classList.contains("animatorLeft-1EQxU0")
             }
         }).observe(document, {
             childList: !0,
