@@ -3079,7 +3079,7 @@
         B.removeStyle("customcss"), B.addStyle("customcss", this.editor.session.getValue())
     }
     saveCss() {
-        ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
+        ne.setBDData("customemojilist", btoa(this.editor.session.getValue()))
     }
     detach() {
         this.setState({
