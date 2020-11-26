@@ -2327,7 +2327,11 @@
         get button() {
             const e = B.createElement(`<div id="bd-pub-li" class="${P.guildClasses.listItem}">`);
             h["bda-gs-1"] || (e.style.display = "none");
-            const t = B.createElement(`<div id="bd-pub-button" class="${"wrapper-25eVIn "+P.guildClasses.circleButtonMask}">public</div>`);
+            const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container">E 
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" viewBox="0 0 24 24" aria-hidden="false" fill="currentColor" width="24px" height="24px">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg></div>`);
             return t.addEventListener("click", () => {
                 this.render()
             }), e.append(t), e
@@ -2336,10 +2340,9 @@
             console.log('IN APPEND BEFORE')
             if (B.query("#bd-pub-li")) return;
             console.log('IN APPEND AFTER')
-            const e = P.guildClasses.wrapper.split(" ")[0],
-                t = B.query(`.buttons-3JBrkn >:first-child`);
+            const t = B.query(`.buttons-3JBrkn >:first-child`);
             t && B.after(t, this.button)
-            console.log('THIS IS E', e);
+            // yay left off at successfully appending button 
             console.log('THIS IS T', t)
         }
         addButton() {
@@ -3937,7 +3940,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginswqeqsd"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
