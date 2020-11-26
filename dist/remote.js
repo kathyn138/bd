@@ -4459,26 +4459,26 @@
                 key: "tools"
             }))
         }
-        // get emoteComponent() {
-        //     return P.react.createElement(ze, {
-        //         contentColumn: !0,
-        //         fade: !0,
-        //         dark: !0
-        //     }, P.react.createElement(Ye, {
-        //         key: "espanel",
-        //         title: "Emote Settings",
-        //         onChange: this.onChange,
-        //         settings: this.emoteSettings,
-        //         button: {
-        //             title: "Clear Emote Cache",
-        //             onClick: () => {
-        //                 le.clearEmoteData(), le.init(), ie.init()
-        //             }
-        //         }
-        //     }), P.react.createElement(Ae, {
-        //         key: "tools"
-        //     }))
-        // }
+        get emoteComponent() {
+            return P.react.createElement(ze, {
+                contentColumn: !0,
+                fade: !0,
+                dark: !0
+            }, P.react.createElement(Ye, {
+                key: "espanel",
+                title: "Emote Settings",
+                onChange: this.onChange,
+                settings: this.emoteSettings,
+                button: {
+                    title: "Clear Emote Cache",
+                    onClick: () => {
+                        le.clearEmoteData(), le.init(), ie.init()
+                    }
+                }
+            }), P.react.createElement(Ae, {
+                key: "tools"
+            }))
+        }
         get customCssComponent() {
             return P.react.createElement(ze, {
                 contentColumn: !0,
@@ -4728,28 +4728,27 @@
             }
         }))
     };
-    // Dt.prototype.patchGuildListItems = function () {
-    //     if (this.guildListItemsPatch) return;
-    //     const e = function () {
-    //             const e = j("wrapper", "unreadMentionsBar"),
-    //                 t = j("guildsError", "selected"),
-    //                 n = j("blobContainer");
-    //             return Object.assign({}, e, t, n)
-    //         }(),
-    //         t = e.listItem.split(" ")[0],
-    //         n = e.blobContainer.split(" ")[0],
-    //         r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
-    //     r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
-    //         after: e => {
-    //             if (e.returnValue && e.thisObject) {
-    //                 const t = e.returnValue,
-    //                     n = e.thisObject.props;
-    //                 return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
-    //             }
-    //         }
-    //     }))
-    // }, 
-    Dt.prototype.patchGuildPills = function () {
+    Dt.prototype.patchGuildListItems = function () {
+        if (this.guildListItemsPatch) return;
+        const e = function () {
+                const e = j("wrapper", "unreadMentionsBar"),
+                    t = j("guildsError", "selected"),
+                    n = j("blobContainer");
+                return Object.assign({}, e, t, n)
+            }(),
+            t = e.listItem.split(" ")[0],
+            n = e.blobContainer.split(" ")[0],
+            r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
+        r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
+            after: e => {
+                if (e.returnValue && e.thisObject) {
+                    const t = e.returnValue,
+                        n = e.thisObject.props;
+                    return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
+                }
+            }
+        }))
+    }, Dt.prototype.patchGuildPills = function () {
         if (this.guildPillPatch) return;
         const e = I(e => e.default && !e.default.displayName && e.default.toString && e.default.toString().includes("translate3d"));
         e && (this.guildPillPatch = z.monkeyPatch(e, "default", {
