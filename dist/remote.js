@@ -2789,13 +2789,18 @@
           ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
       }
   }
-  // NOTE: this appears to be the custom css editor 
+  // NOTE: this appears to be the attached custom css editor 
   class et extends P.reactComponent {
       constructor(e) {
           super(e);
-          this.props.lines = 0, this.setInitialState(), this.attach = this.attach.bind(this), this.detachedEditor = P.react.createElement(Xe, {
+          this.props.lines = 0, this.setInitialState(), 
+          this.attach = this.attach.bind(this), 
+          this.detachedEditor = P.react.createElement(Xe, {
               attach: this.attach
-          }), this.onClick = this.onClick.bind(this), this.updateCss = this.updateCss.bind(this), this.saveCss = this.saveCss.bind(this), this.detach = this.detach.bind(this)
+          }), this.onClick = this.onClick.bind(this), 
+          this.updateCss = this.updateCss.bind(this), 
+          this.saveCss = this.saveCss.bind(this), 
+          this.detach = this.detach.bind(this)
       }
       setInitialState() {
           this.state = {
@@ -2803,7 +2808,12 @@
           }
       }
       componentDidMount() {
-          this.editor = ace.edit("bd-customcss-editor"), this.editor.setTheme("ace/theme/monokai"), this.editor.session.setMode("ace/mode/css"), this.editor.setShowPrintMargin(!1), this.editor.setFontSize(14), this.editor.on("change", () => {
+          this.editor = ace.edit("bd-customcss-editor"), 
+          this.editor.setTheme("ace/theme/monokai"), 
+          this.editor.session.setMode("ace/mode/css"), 
+          this.editor.setShowPrintMargin(!1), 
+          this.editor.setFontSize(14), 
+          this.editor.on("change", () => {
               h["bda-css-0"] && (this.saveCss(), this.updateCss())
           })
       }
@@ -2966,9 +2976,11 @@
         super(e);
         this.props.lines = 0, this.setInitialState(), 
         this.attach = this.attach.bind(this), 
-        this.onClick = this.onClick.bind(this), 
+        this.detachedEditor = P.react.createElement(Xe, {
+            attach: this.attach
+        }), this.onClick = this.onClick.bind(this), 
         this.updateCss = this.updateCss.bind(this), 
-        this.saveEmojiList = this.saveEmojiList.bind(this), 
+        this.saveCss = this.saveCss.bind(this), 
         this.detach = this.detach.bind(this)
     }
     setInitialState() {
@@ -2983,7 +2995,7 @@
         this.editor.setShowPrintMargin(!1), 
         this.editor.setFontSize(14), 
         this.editor.on("change", () => {
-            h["bda-css-0"] && (this.saveEmojiList(), this.updateCss())
+            h["bda-css-0"] && (this.saveCss(), this.updateCss())
         })
     }
     componentWillUnmount() {
@@ -2997,15 +3009,15 @@
     get options() {
         return {
             lineNumbers: !0,
-            mode: "text",
+            mode: "css",
             indentUnit: 4,
             theme: "material",
             scrollbarStyle: "simple"
         }
     }
-    get list() {
-        console.log('RUNNING GET LIST')
-        const e = ne.getBDData("customemojilist");
+    get css() {
+        console.log('FETCHING THE CSS')
+        const e = ne.getBDData("bdcustomcss");
         let t = "";
         return e && "" !== e && (t = atob(e)), t
     }
@@ -3026,14 +3038,14 @@
         }, t && P.react.createElement("div", {
             id: "editor-detached"
         }, P.react.createElement(Pe, {
-            text: "Custom Emoji List"
+            text: "Custom CSS Editor"
         }), P.react.createElement("h3", null, "Editor Detached"), P.react.createElement("button", {
             className: "btn btn-primary",
             onClick: () => {
                 e.attach()
             }
         }, "Attach")), !t && P.react.createElement("div", null, P.react.createElement(Pe, {
-            text: "Custom Emoji List"
+            text: "Custom CSS Editor"
         }), P.react.createElement("div", {
             className: "editor-wrapper"
         }, P.react.createElement("div", {
@@ -3044,9 +3056,23 @@
             id: "bd-customcss-attach-controls"
         }, P.react.createElement("ul", {
             className: "checkbox-group"
-        }), P.react.createElement("div", {
+        }, P.react.createElement(Je, {
+            id: "live-update",
+            text: "Live Update",
+            onChange: this.onChange,
+            checked: h["bda-css-0"]
+        })), P.react.createElement("div", {
             id: "bd-customcss-detach-controls-button"
         }, P.react.createElement("button", {
+            style: {
+                borderRadius: "3px 0 0 3px",
+                borderRight: "1px solid #3f4146"
+            },
+            className: "btn btn-primary",
+            onClick: () => {
+                e.onClick("update")
+            }
+        }, "Update"), P.react.createElement("button", {
             style: {
                 borderRadius: "0",
                 borderLeft: "1px solid #2d2d2d",
@@ -3056,7 +3082,27 @@
             onClick: () => {
                 e.onClick("save")
             }
-        }, "Save")))))
+        }, "Save"), P.react.createElement("button", {
+            style: {
+                borderRadius: "0 3px 3px 0",
+                borderLeft: "1px solid #3f4146"
+            },
+            className: "btn btn-primary",
+            onClick: () => {
+                e.onClick("detach")
+            }
+        }, "Detach"), P.react.createElement("span", {
+            style: {
+                fontSize: "10px",
+                marginLeft: "5px"
+            }
+        }, "Unsaved changes are lost on detach"), P.react.createElement("div", {
+            className: "help-text"
+        }, "Press ", P.react.createElement("code", {
+            className: "inline"
+        }, "ctrl"), "+", P.react.createElement("span", {
+            className: "inline"
+        }, ","), " with the editor focused to access the editor's settings.")))))
     }
     onClick(e) {
         const t = this;
@@ -3065,8 +3111,10 @@
                 t.updateCss();
                 break;
             case "save":
-                t.saveEmojiList();
+                t.saveCss();
                 break;
+            case "detach":
+                t.detach()
         }
     }
     onChange(e, t) {
@@ -3078,9 +3126,8 @@
     updateCss() {
         B.removeStyle("customcss"), B.addStyle("customcss", this.editor.session.getValue())
     }
-    saveEmojiList() {
-        console.log('SAVING THE EMOJI LIST')
-        ne.setBDData("customemojilist", btoa(this.editor.session.getValue()))
+    saveCss() {
+        ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
     }
     detach() {
         this.setState({
