@@ -3021,7 +3021,16 @@
             style: {
                 padding: "60px 40px 0px"
             }
-        }, t && !t && P.react.createElement("div", null, P.react.createElement(Pe, {
+        }, t && P.react.createElement("div", {
+            id: "editor-detached"
+        }, P.react.createElement(Pe, {
+            text: "Custom Emoji List"
+        }), P.react.createElement("h3", null, "Editor Detached"), P.react.createElement("button", {
+            className: "btn btn-primary",
+            onClick: () => {
+                e.attach()
+            }
+        }, "Attach")), !t && P.react.createElement("div", null, P.react.createElement(Pe, {
             text: "Custom Emoji List"
         }), P.react.createElement("div", {
             className: "editor-wrapper"
