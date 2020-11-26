@@ -2975,7 +2975,7 @@
         }
     }
     componentDidMount() {
-        this.editor = ace.edit("emoji-editor"), 
+        this.editor = ace.edit("bd-customcss-editor"), 
         this.editor.setTheme("ace/theme/monokai"), 
         this.editor.session.setMode("ace/mode/text"), 
         this.editor.setShowPrintMargin(!1), 
@@ -3041,23 +3041,9 @@
             id: "bd-customcss-attach-controls"
         }, P.react.createElement("ul", {
             className: "checkbox-group"
-        }, P.react.createElement(Je, {
-            id: "live-update",
-            text: "Live Update",
-            onChange: this.onChange,
-            checked: h["bda-css-0"]
-        })), P.react.createElement("div", {
+        }), P.react.createElement("div", {
             id: "bd-customcss-detach-controls-button"
         }, P.react.createElement("button", {
-            style: {
-                borderRadius: "3px 0 0 3px",
-                borderRight: "1px solid #3f4146"
-            },
-            className: "btn btn-primary",
-            onClick: () => {
-                e.onClick("update")
-            }
-        }, "Update"), P.react.createElement("button", {
             style: {
                 borderRadius: "0",
                 borderLeft: "1px solid #2d2d2d",
