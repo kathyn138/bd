@@ -129,8 +129,6 @@
         return v
     })), n.d(r, "emotesTwitch", (function () {
         return x
-    })), n.d(r, "subEmotesTwitch", (function () {
-        return w
     })), 
     // n.d(r, "bdEmotes", (function () {
     //     return k
@@ -440,7 +438,6 @@
         y = {},
         v = {},
         x = {},
-        w = {},
         // k = {
         //     TwitchGlobal: {},
         //     TwitchSubscriber: {},
@@ -2460,28 +2457,7 @@
                 }), t && (r.refs.sbv.refs.contentScroller.scrollTop = 0)
             }))
         }
-        async join(e) {
-            if (e.props.pinned) return this.InviteActions.acceptInvite(e.props.invite_code);
-            await fetch(`${this.joinEndPoint}/${e.props.server.identifier}`, {
-                method: "GET",
-                credentials: "include",
-                mode: "cors",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                }
-            }), e.setState({
-                joined: !0
-            })
-        }
-        connect() {
-            const e = this,
-                t = e.windowOptions;
-            t.x = Math.round(window.screenX + window.innerWidth / 2 - t.width / 2), t.y = Math.round(window.screenY + window.innerHeight / 2 - t.height / 2), e.joinWindow = new(window.require("electron").remote.BrowserWindow)(t);
-            e.joinWindow.webContents.on("did-navigate", (t, n) => {
-                "https://auth.discordservers.com/info" == n && (e.joinWindow.close(), e.checkConnection())
-            }), e.joinWindow.loadURL("https://auth.discordservers.com/connect?scopes=guilds.join&previousUrl=https://auth.discordservers.com/info")
-        }
+        
         get windowOptions() {
             return {
                 width: 500,
@@ -2499,243 +2475,11 @@
                 }
             }
         }
-        get bdServer() {
-            const e = this.SortedGuildStore.getFlattenedGuildIds(),
-                t = this.AvatarDefaults.DEFAULT_AVATARS;
-            return P.react.createElement(Be, {
-                server: {
-                    name: "BetterDiscord",
-                    online: "7500+",
-                    members: "20000+",
-                    categories: ["community", "programming", "support"],
-                    description: "Official BetterDiscord server for support etc",
-                    identifier: "86004744966914048",
-                    iconUrl: "https://cdn.discordapp.com/icons/86004744966914048/292e7f6bfff2b71dfd13e508a859aedd.webp",
-                    nativejoin: !0,
-                    invite_code: "0Tmfo5ZbORCRqbAd",
-                    pinned: !0
-                },
-                pinned: !0,
-                join: this.join,
-                guildList: e,
-                fallback: t[Math.floor(5 * Math.random())]
-            })
-        }
-        get endPoint() {
-            return "https://search.discordservers.com"
-        }
-        get joinEndPoint() {
-            return "https://j.discordservers.com"
-        }
-        get connectEndPoint() {
-            return "https://join.discordservers.com/connect"
-        }
-        async checkConnection() {
-            const e = this;
-            try {
-                const t = await fetch("https://auth.discordservers.com/info", {
-                        method: "GET",
-                        credentials: "include",
-                        mode: "cors",
-                        headers: {
-                            Accept: "application/json",
-                            "Content-Type": "application/json"
-                        }
-                    }),
-                    n = await t.json();
-                e.setState({
-                    selectedCategory: 0,
-                    connection: {
-                        state: 2,
-                        user: n
-                    }
-                }), e.search("", !0)
-            } catch (t) {
-                e.setState({
-                    title: "Not connected to discordservers.com!",
-                    loading: !0,
-                    selectedCategory: -1,
-                    connection: {
-                        state: 1,
-                        user: null
-                    }
-                })
-            }
-        }
+        
         render() {
             return P.react.createElement(Fe, {
                 ref: "sbv"
             }, this.component)
-        }
-        get component() {
-            return {
-                sidebar: {
-                    component: this.sidebar
-                },
-                content: {
-                    component: this.content
-                },
-                tools: {
-                    component: P.react.createElement(Ae, {
-                        key: "pt",
-                        ref: "tools",
-                        onClick: this.close
-                    })
-                }
-            }
-        }
-        get sidebar() {
-            return P.react.createElement("nav", {
-                className: "sidebar-CFHs9e",
-                key: "ps"
-            }, P.react.createElement("div", {
-                className: "ui-tab-bar side side-8zPYf6"
-            }, P.react.createElement("div", {
-                className: "ui-tab-bar-header",
-                style: {
-                    fontSize: "16px"
-                }
-            }, "Public Servers"), P.react.createElement(de, null), this.searchInput, P.react.createElement(de, null), P.react.createElement(pe, {
-                text: "Categories"
-            }), this.categoryButtons.map((e, t) => P.react.createElement(he, {
-                id: t,
-                onClick: this.changeCategory,
-                key: t,
-                text: e,
-                selected: this.state.selectedCategory === t
-            })), P.react.createElement(de, null), this.footer, this.connection))
-        }
-        get searchInput() {
-            return P.react.createElement("div", {
-                className: "ui-form-item"
-            }, P.react.createElement("div", {
-                className: "ui-text-input flex-vertical",
-                style: {
-                    width: "172px",
-                    marginLeft: "10px"
-                }
-            }, P.react.createElement("input", {
-                ref: "searchinput",
-                onKeyDown: this.searchKeyDown,
-                onChange: () => {},
-                type: "text",
-                className: "input default",
-                placeholder: "Search...",
-                maxLength: "50"
-            })))
-        }
-        searchKeyDown(e) {
-            const t = this;
-            if (t.state.loading || 13 !== e.which) return;
-            t.setState({
-                loading: !0,
-                title: "Loading...",
-                term: e.target.value
-            });
-            let n = "?term=" + e.target.value;
-            0 !== t.state.selectedCategory && (n += "&category=" + t.categoryButtons[t.state.selectedCategory]), t.search(n, !0)
-        }
-        get categoryButtons() {
-            return ["All", "FPS Games", "MMO Games", "Strategy Games", "MOBA Games", "RPG Games", "Tabletop Games", "Sandbox Games", "Simulation Games", "Music", "Community", "Language", "Programming", "Other"]
-        }
-        changeCategory(e) {
-            const t = this;
-            t.state.loading || (t.refs.searchinput.value = "", t.setState({
-                loading: !0,
-                selectedCategory: e,
-                title: "Loading...",
-                term: null
-            }), 0 !== e ? t.search("?category=" + t.categoryButtons[e], !0) : t.search("", !0))
-        }
-        get content() {
-            const e = this,
-                t = this.SortedGuildStore.getFlattenedGuildIds(),
-                n = this.AvatarDefaults.DEFAULT_AVATARS;
-            return 1 === e.state.connection.state ? e.notConnected : [P.react.createElement("div", {
-                ref: "content",
-                key: "pc",
-                className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default"
-            }, P.react.createElement(Pe, {
-                text: e.state.title
-            }), e.state.servers.map(r => P.react.createElement(Be, {
-                key: r.identifier,
-                server: r,
-                join: e.join,
-                guildList: t,
-                fallback: n[Math.floor(5 * Math.random())]
-            })), e.state.next && P.react.createElement("button", {
-                type: "button",
-                onClick: () => {
-                    e.state.loading || (e.setState({
-                        loading: !0
-                    }), e.search(e.state.next, !1))
-                },
-                className: "ui-button filled brand small grow",
-                style: {
-                    width: "100%",
-                    marginTop: "10px",
-                    marginBottom: "10px"
-                }
-            }, P.react.createElement("div", {
-                className: "ui-button-contents"
-            }, e.state.loading ? "Loading" : "Load More")), e.state.servers.length > 0 && P.react.createElement(Pe, {
-                text: e.state.title
-            }))]
-        }
-        get notConnected() {
-            return [P.react.createElement("div", {
-                key: "ncc",
-                ref: "content",
-                className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default"
-            }, P.react.createElement("h2", {
-                className: "ui-form-title h2 margin-reset margin-bottom-20"
-            }, "Not connected to discordservers.com!", P.react.createElement("button", {
-                onClick: this.connect,
-                type: "button",
-                className: "ui-button filled brand small grow",
-                style: {
-                    display: "inline-block",
-                    minHeight: "18px",
-                    marginLeft: "10px",
-                    lineHeight: "14px"
-                }
-            }, P.react.createElement("div", {
-                className: "ui-button-contents"
-            }, "Connect"))))]
-        }
-        get footer() {
-            return P.react.createElement("div", {
-                className: "ui-tab-bar-header"
-            }, P.react.createElement("a", {
-                href: "https://discordservers.com",
-                target: "_blank"
-            }, "Discordservers.com"))
-        }
-        get connection() {
-            const {
-                connection: e
-            } = this.state;
-            return 2 !== e.state ? P.react.createElement("span", null) : P.react.createElement("span", null, P.react.createElement(de, null), P.react.createElement("span", {
-                style: {
-                    color: "#b9bbbe",
-                    fontSize: "10px",
-                    marginLeft: "10px"
-                }
-            }, "Connected as: ", `${e.user.username}#${e.user.discriminator}`), P.react.createElement("div", {
-                style: {
-                    padding: "5px 10px 0 10px"
-                }
-            }, P.react.createElement("button", {
-                style: {
-                    width: "100%",
-                    minHeight: "20px"
-                },
-                type: "button",
-                className: "ui-button filled brand small grow"
-            }, P.react.createElement("div", {
-                className: "ui-button-contents",
-                onClick: this.connect
-            }, "Reconnect"))))
         }
     }
     class Ue extends P.reactComponent {
