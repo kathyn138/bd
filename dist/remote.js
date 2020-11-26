@@ -3003,6 +3003,7 @@
         }
     }
     get list() {
+        console.log('RUNNING LIST')
         const e = ne.getBDData("customemojilist");
         let t = "";
         return e && "" !== e && (t = atob(e)), t
