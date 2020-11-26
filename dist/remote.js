@@ -2114,7 +2114,7 @@
     //         }))
     //     })
     // };
-    var le = new ce;
+    // var le = new ce;
     class de extends P.reactComponent {
         constructor(e) {
             super(e)
@@ -4378,9 +4378,9 @@
                 settings: e.filter(e => e.category == t)
             }))
         }
-        get emoteSettings() {
-            return this.getSettings("emote")
-        }
+        // get emoteSettings() {
+        //     return this.getSettings("emote")
+        // }
         getSettings(e) {
             return Object.keys(d).reduce((t, n) => {
                 const r = d[n];
@@ -4392,9 +4392,9 @@
                 case "core":
                     this.renderCoreSettings();
                     break;
-                case "emotes":
-                    this.renderEmoteSettings();
-                    break;
+                // case "emotes":
+                //     this.renderEmoteSettings();
+                //     break;
                 case "customcss":
                     this.renderCustomCssEditor();
                     break;
@@ -4462,26 +4462,26 @@
                 key: "tools"
             }))
         }
-        get emoteComponent() {
-            return P.react.createElement(ze, {
-                contentColumn: !0,
-                fade: !0,
-                dark: !0
-            }, P.react.createElement(Ye, {
-                key: "espanel",
-                title: "Emote Settings",
-                onChange: this.onChange,
-                settings: this.emoteSettings,
-                button: {
-                    title: "Clear Emote Cache",
-                    onClick: () => {
-                        le.clearEmoteData(), le.init(), ie.init()
-                    }
-                }
-            }), P.react.createElement(Ae, {
-                key: "tools"
-            }))
-        }
+        // get emoteComponent() {
+        //     return P.react.createElement(ze, {
+        //         contentColumn: !0,
+        //         fade: !0,
+        //         dark: !0
+        //     }, P.react.createElement(Ye, {
+        //         key: "espanel",
+        //         title: "Emote Settings",
+        //         onChange: this.onChange,
+        //         settings: this.emoteSettings,
+        //         button: {
+        //             title: "Clear Emote Cache",
+        //             onClick: () => {
+        //                 le.clearEmoteData(), le.init(), ie.init()
+        //             }
+        //         }
+        //     }), P.react.createElement(Ae, {
+        //         key: "tools"
+        //     }))
+        // }
         get customCssComponent() {
             return P.react.createElement(ze, {
                 contentColumn: !0,
@@ -4498,11 +4498,11 @@
             if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
             P.reactDom.render(this.coreComponent, e)
         }
-        renderEmoteSettings() {
-            const e = this.root;
-            if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
-            P.reactDom.render(this.emoteComponent, e)
-        }
+        // renderEmoteSettings() {
+        //     const e = this.root;
+        //     if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
+        //     P.reactDom.render(this.emoteComponent, e)
+        // }
         renderCustomCssEditor() {
             const e = this.root;
             if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
