@@ -172,227 +172,227 @@
                 hidden: !0,
                 cat: "core"
             },
-            "BetterDiscord Blue": {
-                id: "bda-gs-b",
-                info: "Replace Discord blue with BD Blue",
-                implemented: !1,
-                hidden: !1,
-                cat: "core"
-            },
-            "Public Servers": {
-                id: "bda-gs-1",
-                info: "Display public servers button",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Minimal Mode": {
-                id: "bda-gs-2",
-                info: "Hide elements and reduce the size of elements.",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Voice Mode": {
-                id: "bda-gs-4",
-                info: "Only show voice chat",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Hide Channels": {
-                id: "bda-gs-3",
-                info: "Hide channels in minimal mode",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Dark Mode": {
-                id: "bda-gs-5",
-                info: "Make certain elements dark by default(wip)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Voice Disconnect": {
-                id: "bda-dc-0",
-                info: "Disconnect from voice server when closing Discord",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "24 Hour Timestamps": {
-                id: "bda-gs-6",
-                info: "Replace 12hr timestamps with proper ones",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Colored Text": {
-                id: "bda-gs-7",
-                info: "Make text color the same as role color",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Normalize Classes": {
-                id: "fork-ps-4",
-                info: "Adds stable classes to elements to help themes. (e.g. adds .da-channels to .channels-Ie2l6A)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Content Error Modal": {
-                id: "fork-ps-1",
-                info: "Shows a modal with plugin/theme errors",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Show Toasts": {
-                id: "fork-ps-2",
-                info: "Shows a small notification for important information",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Scroll To Settings": {
-                id: "fork-ps-3",
-                info: "Auto-scrolls to a plugin's settings when the button is clicked (only if out of view)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Automatic Loading": {
-                id: "fork-ps-5",
-                info: "Automatically loads, reloads, and unloads plugins and themes",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Developer Mode": {
-                id: "bda-gs-8",
-                info: "Developer Mode",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "developer settings"
-            },
-            "Copy Selector": {
-                id: "fork-dm-1",
-                info: 'Adds a "Copy Selector" option to context menus when developer mode is active',
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "developer settings"
-            },
-            "React DevTools": {
-                id: "reactDevTools",
-                info: "Adds react developer tools to the devtools. Must be installed in Google Chrome on your pc.",
-                implemented: !0,
-                hidden: !0,
-                cat: "core",
-                category: "developer settings"
-            },
-            "Enable Transparency": {
-                id: "fork-wp-1",
-                info: "Enables the main window to be see-through (requires restart)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "window preferences"
-            },
-            "Window Frame": {
-                id: "fork-wp-2",
-                info: "Adds the native os window frame to the main window",
-                implemented: !1,
-                hidden: !0,
-                cat: "core",
-                category: "window preferences"
-            },
-            "Download Emotes": {
-                id: "fork-es-3",
-                info: "Download emotes when the cache is expired",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Twitch Emotes": {
-                id: "bda-es-7",
-                info: "Show Twitch emotes",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "FrankerFaceZ Emotes": {
-                id: "bda-es-1",
-                info: "Show FrankerFaceZ Emotes",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "BetterTTV Emotes": {
-                id: "bda-es-2",
-                info: "Show BetterTTV Emotes",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Emote Menu": {
-                id: "bda-es-0",
-                info: "Show Twitch/Favourite emotes in emote menu",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Emoji Menu": {
-                id: "bda-es-9",
-                info: "Show Discord emoji menu",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Emote Auto Capitalization": {
-                id: "bda-es-4",
-                info: "Autocapitalize emote commands",
-                implemented: !1,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Show Names": {
-                id: "bda-es-6",
-                info: "Show emote names on hover",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Show emote modifiers": {
-                id: "bda-es-8",
-                info: "Enable emote mods (flip, spin, pulse, spin2, spin3, 1spin, 2spin, 3spin, tr, bl, br, shake, shake2, shake3, flap)",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Animate On Hover": {
-                id: "fork-es-2",
-                info: "Only animate the emote modifiers on hover",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            }
+            // "BetterDiscord Blue": {
+            //     id: "bda-gs-b",
+            //     info: "Replace Discord blue with BD Blue",
+            //     implemented: !1,
+            //     hidden: !1,
+            //     cat: "core"
+            // },
+            // "Public Servers": {
+            //     id: "bda-gs-1",
+            //     info: "Display public servers button",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Minimal Mode": {
+            //     id: "bda-gs-2",
+            //     info: "Hide elements and reduce the size of elements.",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Voice Mode": {
+            //     id: "bda-gs-4",
+            //     info: "Only show voice chat",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Hide Channels": {
+            //     id: "bda-gs-3",
+            //     info: "Hide channels in minimal mode",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Dark Mode": {
+            //     id: "bda-gs-5",
+            //     info: "Make certain elements dark by default(wip)",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Voice Disconnect": {
+            //     id: "bda-dc-0",
+            //     info: "Disconnect from voice server when closing Discord",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "24 Hour Timestamps": {
+            //     id: "bda-gs-6",
+            //     info: "Replace 12hr timestamps with proper ones",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Colored Text": {
+            //     id: "bda-gs-7",
+            //     info: "Make text color the same as role color",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Normalize Classes": {
+            //     id: "fork-ps-4",
+            //     info: "Adds stable classes to elements to help themes. (e.g. adds .da-channels to .channels-Ie2l6A)",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "modules"
+            // },
+            // "Content Error Modal": {
+            //     id: "fork-ps-1",
+            //     info: "Shows a modal with plugin/theme errors",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "content manager"
+            // },
+            // "Show Toasts": {
+            //     id: "fork-ps-2",
+            //     info: "Shows a small notification for important information",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "content manager"
+            // },
+            // "Scroll To Settings": {
+            //     id: "fork-ps-3",
+            //     info: "Auto-scrolls to a plugin's settings when the button is clicked (only if out of view)",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "content manager"
+            // },
+            // "Automatic Loading": {
+            //     id: "fork-ps-5",
+            //     info: "Automatically loads, reloads, and unloads plugins and themes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "content manager"
+            // },
+            // "Developer Mode": {
+            //     id: "bda-gs-8",
+            //     info: "Developer Mode",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "developer settings"
+            // },
+            // "Copy Selector": {
+            //     id: "fork-dm-1",
+            //     info: 'Adds a "Copy Selector" option to context menus when developer mode is active',
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "developer settings"
+            // },
+            // "React DevTools": {
+            //     id: "reactDevTools",
+            //     info: "Adds react developer tools to the devtools. Must be installed in Google Chrome on your pc.",
+            //     implemented: !0,
+            //     hidden: !0,
+            //     cat: "core",
+            //     category: "developer settings"
+            // },
+            // "Enable Transparency": {
+            //     id: "fork-wp-1",
+            //     info: "Enables the main window to be see-through (requires restart)",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "core",
+            //     category: "window preferences"
+            // },
+            // "Window Frame": {
+            //     id: "fork-wp-2",
+            //     info: "Adds the native os window frame to the main window",
+            //     implemented: !1,
+            //     hidden: !0,
+            //     cat: "core",
+            //     category: "window preferences"
+            // },
+            // "Download Emotes": {
+            //     id: "fork-es-3",
+            //     info: "Download emotes when the cache is expired",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Twitch Emotes": {
+            //     id: "bda-es-7",
+            //     info: "Show Twitch emotes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "FrankerFaceZ Emotes": {
+            //     id: "bda-es-1",
+            //     info: "Show FrankerFaceZ Emotes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "BetterTTV Emotes": {
+            //     id: "bda-es-2",
+            //     info: "Show BetterTTV Emotes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Emote Menu": {
+            //     id: "bda-es-0",
+            //     info: "Show Twitch/Favourite emotes in emote menu",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Emoji Menu": {
+            //     id: "bda-es-9",
+            //     info: "Show Discord emoji menu",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Emote Auto Capitalization": {
+            //     id: "bda-es-4",
+            //     info: "Autocapitalize emote commands",
+            //     implemented: !1,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Show Names": {
+            //     id: "bda-es-6",
+            //     info: "Show emote names on hover",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Show emote modifiers": {
+            //     id: "bda-es-8",
+            //     info: "Enable emote mods (flip, spin, pulse, spin2, spin3, 1spin, 2spin, 3spin, tr, bl, br, shake, shake2, shake3, flap)",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Animate On Hover": {
+            //     id: "fork-es-2",
+            //     info: "Only animate the emote modifiers on hover",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // }
         },
         p = {
             "bda-gs-1": !0,
@@ -438,20 +438,20 @@
         v = {},
         x = {},
         w = {},
-        k = {
-            TwitchGlobal: {},
-            TwitchSubscriber: {},
-            BTTV: {},
-            FrankerFaceZ: {},
-            BTTV2: {}
-        },
-        E = {
-            TwitchGlobal: "bda-es-7",
-            TwitchSubscriber: "bda-es-7",
-            BTTV: "bda-es-2",
-            FrankerFaceZ: "bda-es-1",
-            BTTV2: "bda-es-2"
-        },
+        // k = {
+        //     TwitchGlobal: {},
+        //     TwitchSubscriber: {},
+        //     BTTV: {},
+        //     FrankerFaceZ: {},
+        //     BTTV2: {}
+        // },
+        // E = {
+        //     TwitchGlobal: "bda-es-7",
+        //     TwitchSubscriber: "bda-es-7",
+        //     BTTV: "bda-es-2",
+        //     FrankerFaceZ: "bda-es-1",
+        //     BTTV2: "bda-es-2"
+        // },
         C = {},
         M = {},
         S = {},
@@ -1946,171 +1946,171 @@
             }
         })
     }
-    ce.prototype.init = async function () {
-        this.modifiers = ["flip", "spin", "pulse", "spin2", "spin3", "1spin", "2spin", "3spin", "tr", "bl", "br", "shake", "shake2", "shake3", "flap"], this.overrides = ["twitch", "bttv", "ffz"];
-        const e = {
-            TwitchGlobal: {
-                url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_twitch_global.json",
-                variable: "TwitchGlobal",
-                oldVariable: "emotesTwitch",
-                getEmoteURL: e => `https://static-cdn.jtvnw.net/emoticons/v1/${e}/1.0`
-            },
-            TwitchSubscriber: {
-                url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_twitch_subscriber.json",
-                variable: "TwitchSubscriber",
-                oldVariable: "subEmotesTwitch",
-                getEmoteURL: e => `https://static-cdn.jtvnw.net/emoticons/v1/${e}/1.0`
-            },
-            FrankerFaceZ: {
-                url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_ffz.json",
-                variable: "FrankerFaceZ",
-                oldVariable: "emotesFfz",
-                getEmoteURL: e => `https://cdn.frankerfacez.com/emoticon/${e}/1`
-            },
-            BTTV: {
-                url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_bttv.json",
-                variable: "BTTV",
-                oldVariable: "emotesBTTV",
-                getEmoteURL: e => `https://cdn.betterttv.net/emote/${e}/1x`
-            },
-            BTTV2: {
-                url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_bttv2.json",
-                variable: "BTTV2",
-                oldVariable: "emotesBTTV2",
-                getEmoteURL: e => `https://cdn.betterttv.net/emote/${e}/1x`
-            }
-        };
-        if (!g.local) {
-            for (await this.getBlockedEmotes(), await this.loadEmoteData(e); !P.MessageComponent;) await new Promise(e => setTimeout(e, 100));
-            this.cancelEmoteRender || (this.cancelEmoteRender = z.monkeyPatch(P.MessageComponent, "default", {
-                before: ({
-                    methodArguments: e
-                }) => {
-                    const t = e[0].childrenMessageContent.props.content;
-                    if (!t || !t.length) return;
-                    for (let e = 0; e < t.length; e++) {
-                        const n = t[e];
-                        if ("string" != typeof n) continue;
-                        const r = n.split(/([^\s]+)([\s]|$)/g);
-                        for (let n = 0, o = this.categories.length; n < o; n++)
-                            for (let o = 0, s = r.length; o < s; o++) {
-                                const s = r[o].split(":"),
-                                    i = s[0];
-                                let a = s[1] ? s[1] : "",
-                                    c = a.slice(0);
-                                if (i.length < 4 || b.includes(i)) continue;
-                                this.modifiers.includes(a) && h["bda-es-8"] || (a = ""), this.overrides.includes(c) ? a = c : c = "";
-                                let l = this.categories[n];
-                                if ("twitch" === c ? k.TwitchGlobal[i] ? l = "TwitchGlobal" : k.TwitchSubscriber[i] && (l = "TwitchSubscriber") : "bttv" === c ? k.BTTV[i] ? l = "BTTV" : k.BTTV2[i] && (l = "BTTV2") : "ffz" === c && k.FrankerFaceZ[i] && (l = "FrankerFaceZ"), !k[l][i] || !h[E[l]]) continue;
-                                const d = t[e].match(new RegExp(`([\\s]|^)${z.escape(a?i+":"+a:i)}([\\s]|$)`));
-                                if (!d) continue;
-                                const p = t[e].substring(0, d.index + d[1].length),
-                                    u = t[e].substring(d.index + d[0].length - d[2].length);
-                                t[e] = p;
-                                const m = P.react.createElement(ae, {
-                                    name: i,
-                                    url: k[l][i],
-                                    modifier: a
-                                });
-                                t.splice(e + 1, 0, u), t.splice(e + 1, 0, m)
-                            }
-                    }
-                    if (t.every(e => "string" == typeof e && "" == e.replace(/\s*/, "") || (!(!e.type || "BDEmote" != e.type.name) || !!(e.props && e.props.children && e.props.children.props && e.props.children.props.emojiName))))
-                        for (const e of t) "object" == typeof e && ("BDEmote" == e.type.name ? e.props.jumboable = !0 : e.props && e.props.children && e.props.children.props && e.props.children.props.emojiName && (e.props.children.props.jumboable = !0))
-                }
-            }))
-        }
-    }, ce.prototype.disable = function () {
-        this.cancelEmoteRender || (this.cancelEmoteRender(), this.cancelEmoteRender = null)
-    }, ce.prototype.clearEmoteData = async function () {
-        const e = n(2),
-            t = g.dataPath + "emote_data.json";
-        e.existsSync(t) && e.unlinkSync(t), ne.setBDData("emoteCacheDate", (new Date).toJSON()), Object.assign(k, {
-            TwitchGlobal: {},
-            TwitchSubscriber: {},
-            BTTV: {},
-            FrankerFaceZ: {},
-            BTTV2: {}
-        })
-    }, ce.prototype.isCacheValid = function () {
-        const e = ne.getBDData("emoteCacheDays") || ne.setBDData("emoteCacheDays", 7) || 7,
-            t = new Date(ne.getBDData("emoteCacheDate") || null),
-            n = new Date;
-        return !(Math.round(Math.abs((n.getTime() - t.getTime()) / 864e5)) > e) || (ne.setBDData("emoteCacheDate", n.toJSON()), !1)
-    }, ce.prototype.loadEmoteData = async function (e) {
-        const t = n(2),
-            r = g.dataPath + "emote_data.json";
-        if (await new Promise(e => t.exists(r, e)) && this.isCacheValid()) {
-            h["fork-ps-2"] && z.showToast("Loading emotes from cache.", {
-                type: "info"
-            }), z.log("Emotes", "Loading emotes from local cache.");
-            const n = await new Promise(e => {
-                    t.readFile(r, "utf8", (t, n) => {
-                        z.log("Emotes", "Emote file read."), t && (n = {}), e(n)
-                    })
-                }),
-                o = z.testJSON(n);
-            let s = !!o;
-            s && Object.assign(k, o);
-            for (const t in e) s = Object.keys(k[e[t].variable]).length > 0;
-            if (s) return void(h["fork-ps-2"] && z.showToast("Emotes successfully loaded.", {
-                type: "success"
-            }));
-            z.log("Emotes", "Cache was corrupt, downloading..."), await new Promise(e => t.unlink(r, e))
-        }
-        if (h["fork-es-3"]) {
-            h["fork-ps-2"] && z.showToast("Downloading emotes in the background do not reload.", {
-                type: "info"
-            });
-            for (const t in e) {
-                await new Promise(e => setTimeout(e, 1e3));
-                try {
-                    const n = await this.downloadEmotes(e[t]);
-                    k[e[t].variable] = n
-                } catch (n) {
-                    k[e[t].variable] = {}
-                }
-            }
-            h["fork-ps-2"] && z.showToast("All emotes successfully downloaded.", {
-                type: "success"
-            });
-            try {
-                await new Promise(e => t.writeFile(r, JSON.stringify(k), "utf8", e))
-            } catch (e) {
-                z.err("Emotes", "Could not save emote data.", e)
-            }
-        }
-    }, ce.prototype.downloadEmotes = function (e) {
-        e.url = z.formatString(e.url, {
-            hash: g.hash
-        });
-        const t = n(3),
-            r = {
-                url: e.url,
-                timeout: e.timeout ? e.timeout : 12e3,
-                json: !0
-            };
-        return z.log("Emotes", `Downloading: ${e.variable} (${e.url})`), new Promise((n, o) => {
-            t(r, (t, r, s) => {
-                if (t) return z.err("Emotes", "Could not download " + e.variable, t), o({});
-                "function" == typeof e.parser && (s = e.parser(s));
-                for (const t in s) t.length < 4 || b.includes(t) ? delete s[t] : s[t] = e.getEmoteURL(s[t]);
-                n(s), z.log("Emotes", "Downloaded: " + e.variable)
-            })
-        })
-    }, ce.prototype.getBlockedEmotes = function () {
-        return new Promise(e => {
-            n(3).get({
-                url: z.formatString("https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotefilter.json", {
-                    hash: g.hash
-                }),
-                json: !0
-            }, (function (t, n, r) {
-                if (t) return e(b);
-                e(b.splice(0, 0, ...r))
-            }))
-        })
-    };
+    // ce.prototype.init = async function () {
+    //     this.modifiers = ["flip", "spin", "pulse", "spin2", "spin3", "1spin", "2spin", "3spin", "tr", "bl", "br", "shake", "shake2", "shake3", "flap"], this.overrides = ["twitch", "bttv", "ffz"];
+    //     const e = {
+    //         TwitchGlobal: {
+    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_twitch_global.json",
+    //             variable: "TwitchGlobal",
+    //             oldVariable: "emotesTwitch",
+    //             getEmoteURL: e => `https://static-cdn.jtvnw.net/emoticons/v1/${e}/1.0`
+    //         },
+    //         TwitchSubscriber: {
+    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_twitch_subscriber.json",
+    //             variable: "TwitchSubscriber",
+    //             oldVariable: "subEmotesTwitch",
+    //             getEmoteURL: e => `https://static-cdn.jtvnw.net/emoticons/v1/${e}/1.0`
+    //         },
+    //         FrankerFaceZ: {
+    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_ffz.json",
+    //             variable: "FrankerFaceZ",
+    //             oldVariable: "emotesFfz",
+    //             getEmoteURL: e => `https://cdn.frankerfacez.com/emoticon/${e}/1`
+    //         },
+    //         BTTV: {
+    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_bttv.json",
+    //             variable: "BTTV",
+    //             oldVariable: "emotesBTTV",
+    //             getEmoteURL: e => `https://cdn.betterttv.net/emote/${e}/1x`
+    //         },
+    //         BTTV2: {
+    //             url: "https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotedata_bttv2.json",
+    //             variable: "BTTV2",
+    //             oldVariable: "emotesBTTV2",
+    //             getEmoteURL: e => `https://cdn.betterttv.net/emote/${e}/1x`
+    //         }
+    //     };
+    //     if (!g.local) {
+    //         for (await this.getBlockedEmotes(), await this.loadEmoteData(e); !P.MessageComponent;) await new Promise(e => setTimeout(e, 100));
+    //         this.cancelEmoteRender || (this.cancelEmoteRender = z.monkeyPatch(P.MessageComponent, "default", {
+    //             before: ({
+    //                 methodArguments: e
+    //             }) => {
+    //                 const t = e[0].childrenMessageContent.props.content;
+    //                 if (!t || !t.length) return;
+    //                 for (let e = 0; e < t.length; e++) {
+    //                     const n = t[e];
+    //                     if ("string" != typeof n) continue;
+    //                     const r = n.split(/([^\s]+)([\s]|$)/g);
+    //                     for (let n = 0, o = this.categories.length; n < o; n++)
+    //                         for (let o = 0, s = r.length; o < s; o++) {
+    //                             const s = r[o].split(":"),
+    //                                 i = s[0];
+    //                             let a = s[1] ? s[1] : "",
+    //                                 c = a.slice(0);
+    //                             if (i.length < 4 || b.includes(i)) continue;
+    //                             this.modifiers.includes(a) && h["bda-es-8"] || (a = ""), this.overrides.includes(c) ? a = c : c = "";
+    //                             let l = this.categories[n];
+    //                             if ("twitch" === c ? k.TwitchGlobal[i] ? l = "TwitchGlobal" : k.TwitchSubscriber[i] && (l = "TwitchSubscriber") : "bttv" === c ? k.BTTV[i] ? l = "BTTV" : k.BTTV2[i] && (l = "BTTV2") : "ffz" === c && k.FrankerFaceZ[i] && (l = "FrankerFaceZ"), !k[l][i] || !h[E[l]]) continue;
+    //                             const d = t[e].match(new RegExp(`([\\s]|^)${z.escape(a?i+":"+a:i)}([\\s]|$)`));
+    //                             if (!d) continue;
+    //                             const p = t[e].substring(0, d.index + d[1].length),
+    //                                 u = t[e].substring(d.index + d[0].length - d[2].length);
+    //                             t[e] = p;
+    //                             const m = P.react.createElement(ae, {
+    //                                 name: i,
+    //                                 url: k[l][i],
+    //                                 modifier: a
+    //                             });
+    //                             t.splice(e + 1, 0, u), t.splice(e + 1, 0, m)
+    //                         }
+    //                 }
+    //                 if (t.every(e => "string" == typeof e && "" == e.replace(/\s*/, "") || (!(!e.type || "BDEmote" != e.type.name) || !!(e.props && e.props.children && e.props.children.props && e.props.children.props.emojiName))))
+    //                     for (const e of t) "object" == typeof e && ("BDEmote" == e.type.name ? e.props.jumboable = !0 : e.props && e.props.children && e.props.children.props && e.props.children.props.emojiName && (e.props.children.props.jumboable = !0))
+    //             }
+    //         }))
+    //     }
+    // }, ce.prototype.disable = function () {
+    //     this.cancelEmoteRender || (this.cancelEmoteRender(), this.cancelEmoteRender = null)
+    // }, ce.prototype.clearEmoteData = async function () {
+    //     const e = n(2),
+    //         t = g.dataPath + "emote_data.json";
+    //     e.existsSync(t) && e.unlinkSync(t), ne.setBDData("emoteCacheDate", (new Date).toJSON()), Object.assign(k, {
+    //         TwitchGlobal: {},
+    //         TwitchSubscriber: {},
+    //         BTTV: {},
+    //         FrankerFaceZ: {},
+    //         BTTV2: {}
+    //     })}
+    // }, ce.prototype.isCacheValid = function () {
+    //     const e = ne.getBDData("emoteCacheDays") || ne.setBDData("emoteCacheDays", 7) || 7,
+    //         t = new Date(ne.getBDData("emoteCacheDate") || null),
+    //         n = new Date;
+    //     return !(Math.round(Math.abs((n.getTime() - t.getTime()) / 864e5)) > e) || (ne.setBDData("emoteCacheDate", n.toJSON()), !1)
+    // }, ce.prototype.loadEmoteData = async function (e) {
+    //     const t = n(2),
+    //         r = g.dataPath + "emote_data.json";
+    //     if (await new Promise(e => t.exists(r, e)) && this.isCacheValid()) {
+    //         h["fork-ps-2"] && z.showToast("Loading emotes from cache.", {
+    //             type: "info"
+    //         }), z.log("Emotes", "Loading emotes from local cache.");
+    //         const n = await new Promise(e => {
+    //                 t.readFile(r, "utf8", (t, n) => {
+    //                     z.log("Emotes", "Emote file read."), t && (n = {}), e(n)
+    //                 })
+    //             }),
+    //             o = z.testJSON(n);
+    //         let s = !!o;
+    //         s && Object.assign(k, o);
+    //         for (const t in e) s = Object.keys(k[e[t].variable]).length > 0;
+    //         if (s) return void(h["fork-ps-2"] && z.showToast("Emotes successfully loaded.", {
+    //             type: "success"
+    //         }));
+    //         z.log("Emotes", "Cache was corrupt, downloading..."), await new Promise(e => t.unlink(r, e))
+    //     }
+    //     if (h["fork-es-3"]) {
+    //         h["fork-ps-2"] && z.showToast("Downloading emotes in the background do not reload.", {
+    //             type: "info"
+    //         });
+    //         for (const t in e) {
+    //             await new Promise(e => setTimeout(e, 1e3));
+    //             try {
+    //                 const n = await this.downloadEmotes(e[t]);
+    //                 k[e[t].variable] = n
+    //             } catch (n) {
+    //                 k[e[t].variable] = {}
+    //             }
+    //         }
+    //         h["fork-ps-2"] && z.showToast("All emotes successfully downloaded.", {
+    //             type: "success"
+    //         });
+    //         try {
+    //             await new Promise(e => t.writeFile(r, JSON.stringify(k), "utf8", e))
+    //         } catch (e) {
+    //             z.err("Emotes", "Could not save emote data.", e)
+    //         }
+    //     }
+    // }, ce.prototype.downloadEmotes = function (e) {
+    //     e.url = z.formatString(e.url, {
+    //         hash: g.hash
+    //     });
+    //     const t = n(3),
+    //         r = {
+    //             url: e.url,
+    //             timeout: e.timeout ? e.timeout : 12e3,
+    //             json: !0
+    //         };
+    //     return z.log("Emotes", `Downloading: ${e.variable} (${e.url})`), new Promise((n, o) => {
+    //         t(r, (t, r, s) => {
+    //             if (t) return z.err("Emotes", "Could not download " + e.variable, t), o({});
+    //             "function" == typeof e.parser && (s = e.parser(s));
+    //             for (const t in s) t.length < 4 || b.includes(t) ? delete s[t] : s[t] = e.getEmoteURL(s[t]);
+    //             n(s), z.log("Emotes", "Downloaded: " + e.variable)
+    //         })
+    //     })
+    // }, ce.prototype.getBlockedEmotes = function () {
+    //     return new Promise(e => {
+    //         n(3).get({
+    //             url: z.formatString("https://cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/{{hash}}/assets/emotefilter.json", {
+    //                 hash: g.hash
+    //             }),
+    //             json: !0
+    //         }, (function (t, n, r) {
+    //             if (t) return e(b);
+    //             e(b.splice(0, 0, ...r))
+    //         }))
+    //     })
+    // };
     var le = new ce;
     class de extends P.reactComponent {
         constructor(e) {
@@ -4815,53 +4815,53 @@
                 }))))
             }
         }))
-    }, Dt.prototype.checkInjectorUpdate = function () {
-        const e = g.updater ? g.updater.LatestVersion : g.latestVersion;
-        e > g.version && z.showConfirmationModal("Update Available", [`There is an update available for BandagedBD's Injector (${e}).`, "You can either update and restart now, or later."], {
-            confirmText: "Update Now",
-            cancelText: "Maybe Later",
-            onConfirm: async () => {
-                const e = () => {
-                    z.alert("Could Not Update", "Unable to update automatically, please download the installer and reinstall normally.<br /><br /><a href='https://github.com/rauenzi/BetterDiscordApp/releases/latest' target='_blank'>Download Installer</a>")
-                };
-                try {
-                    if (!await this.updateInjector()) return e();
-                    const t = n(0).remote.app;
-                    t.relaunch(), t.exit()
-                } catch (t) {
-                    e()
-                }
-            }
-        })
-    }, Dt.prototype.updateInjector = async function () {
-        const e = ne.injectionPath;
-        if (!e) return !1;
-        const t = n(2),
-            r = n(1),
-            o = n(8),
-            s = n(9),
-            i = n(10),
-            a = n(3),
-            c = r.resolve(e, ".."),
-            l = r.basename(e),
-            d = "https://github.com/rauenzi/BetterDiscordApp/archive/injector.zip",
-            p = r.resolve(c, "injector.zip"),
-            h = r.resolve(c, "BetterDiscordApp-injector");
-        z.log("InjectorUpdate", "Downloading " + d);
-        let u = await new Promise(e => {
-            a.get({
-                url: d,
-                encoding: null
-            }, async (n, r, o) => {
-                if (n || 200 !== r.statusCode) return e(!1);
-                await new Promise(e => t.exists(p, e)) && await new Promise(e => t.rename(p, `${p}.bak${Math.round(performance.now())}`, e)), z.log("InjectorUpdate", "Writing " + p), t.writeFile(p, o, t => e(!t))
-            })
-        });
-        if (!u) return u;
-        await new Promise(e => t.exists(h, e)) && await new Promise(e => t.rename(h, `${h}.bak${Math.round(performance.now())}`, e));
-        const m = await new Promise(e => s.open(p, {
-            lazyEntries: !0
-        }, (t, n) => e(n)));
+    // }, Dt.prototype.checkInjectorUpdate = function () {
+    //     const e = g.updater ? g.updater.LatestVersion : g.latestVersion;
+    //     e > g.version && z.showConfirmationModal("Update Available", [`There is an update available for BandagedBD's Injector (${e}).`, "You can either update and restart now, or later."], {
+    //         confirmText: "Update Now",
+    //         cancelText: "Maybe Later",
+    //         onConfirm: async () => {
+    //             const e = () => {
+    //                 z.alert("Could Not Update", "Unable to update automatically, please download the installer and reinstall normally.<br /><br /><a href='https://github.com/rauenzi/BetterDiscordApp/releases/latest' target='_blank'>Download Installer</a>")
+    //             };
+    //             try {
+    //                 if (!await this.updateInjector()) return e();
+    //                 const t = n(0).remote.app;
+    //                 t.relaunch(), t.exit()
+    //             } catch (t) {
+    //                 e()
+    //             }
+    //         }
+    //     })
+    // }, Dt.prototype.updateInjector = async function () {
+    //     const e = ne.injectionPath;
+    //     if (!e) return !1;
+    //     const t = n(2),
+    //         r = n(1),
+    //         o = n(8),
+    //         s = n(9),
+    //         i = n(10),
+    //         a = n(3),
+    //         c = r.resolve(e, ".."),
+    //         l = r.basename(e),
+    //         d = "https://github.com/rauenzi/BetterDiscordApp/archive/injector.zip",
+    //         p = r.resolve(c, "injector.zip"),
+    //         h = r.resolve(c, "BetterDiscordApp-injector");
+    //     z.log("InjectorUpdate", "Downloading " + d);
+    //     let u = await new Promise(e => {
+    //         a.get({
+    //             url: d,
+    //             encoding: null
+    //         }, async (n, r, o) => {
+    //             if (n || 200 !== r.statusCode) return e(!1);
+    //             await new Promise(e => t.exists(p, e)) && await new Promise(e => t.rename(p, `${p}.bak${Math.round(performance.now())}`, e)), z.log("InjectorUpdate", "Writing " + p), t.writeFile(p, o, t => e(!t))
+    //         })
+    //     });
+    //     if (!u) return u;
+    //     await new Promise(e => t.exists(h, e)) && await new Promise(e => t.rename(h, `${h}.bak${Math.round(performance.now())}`, e));
+    //     const m = await new Promise(e => s.open(p, {
+    //         lazyEntries: !0
+    //     }, (t, n) => e(n)));
         m.on("entry", (function (e) {
             if (e.fileName.endsWith("/")) return m.readEntry();
             z.log("InjectorUpdate", "Extracting " + e.fileName);
