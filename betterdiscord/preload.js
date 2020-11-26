@@ -26,31 +26,31 @@ const linkStyle = url => new Promise(resolve => {
     document.body.appendChild(script);
 });
 
-const testJSON = function(data) {
-    try {return JSON.parse(data);}
-    catch (error) {return false;}
+const testJSON = function (data) {
+    try { return JSON.parse(data); }
+    catch (error) { return false; }
 }
 
-const getFile = function(url) {
-    const request = require("request").defaults({headers: {"User-Agent": "BetterDiscord"}});
+const getFile = function (url) {
+    const request = require("request").defaults({ headers: { "User-Agent": "BetterDiscord" } });
     return new Promise(resolve => {
-        request.get(url, function(error, response, body) {
+        request.get(url, function (error, response, body) {
             if (error || response.statusCode !== 200) return resolve(null);
             resolve(body);
         });
     });
 }
 
-const getCommitHash = async function(branch = "gh-pages") {
-    const url = `https://api.github.com/repos/rauenzi/BetterDiscordApp/commits/${branch}`;
-    Logger.log("Getting hash from: " + url);
-    const data = await getFile(url);
-    const parsed = testJSON(data);
-    if (!parsed) return null;
-    return parsed.sha;
-}
+// const getCommitHash = async function (branch = "main") {
+//     const url = `https://api.github.com/repos/kathyn262/bd/commits/${branch}`;
+//     Logger.log("Getting hash from: " + url);
+//     const data = await getFile(url);
+//     const parsed = testJSON(data);
+//     if (!parsed) return null;
+//     return parsed.sha;
+// }
 
-const loadResource = async function(base, backup, injector) {
+const loadResource = async function (base, backup, injector) {
     Logger.log(`Loading Resource (${base})`);
     let success = await injector(base);
     if (success) return Logger.log(`Successfully loaded (${base})`);
@@ -63,8 +63,8 @@ const loadResource = async function(base, backup, injector) {
 // Setup in renderer context
 const currentWindow = electron.remote.getCurrentWindow();
 currentWindow.webContents.on("dom-ready", async () => {
-    const hash = await getCommitHash(config.branch);
-    Object.assign(config, {hash});
+    // const hash = await getCommitHash(config.branch);
+    // Object.assign(config, { hash });
     fs.writeFileSync(__dirname + "/config.json", JSON.stringify(config, null, 4));
 
     while (!window.webpackJsonp || window.webpackJsonp.flat().flat().length <= 6000) await new Promise(r => setTimeout(r, 100));
@@ -74,21 +74,24 @@ currentWindow.webContents.on("dom-ready", async () => {
         Logger.log(`Loading Local Remote (${localRemote})`);
         return require(localRemote);
     }
-    
-    const baseUrl = `//cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/${hash}/dist/remote.js`;
-    const backupUrl = "https://rauenzi.github.io/BetterDiscordApp/dist/remote.js";
-    await loadResource(baseUrl, backupUrl, injectScript);
+
+    // const baseUrl = `//cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/${hash}/dist/remote.js`;
+    // const backupUrl = "https://rauenzi.github.io/BetterDiscordApp/dist/remote.js";
+    const baseUrl = "https://kathyn262.github.io/bd/dist/remote.js"
+
+
+    await loadResource(baseUrl, '', injectScript);
 });
 
 // Load Discord's original preload
 if (currentWindow.__originalPreload) {
-	
-	// Restore original preload for future windows
-	process.electronBinding("command_line").appendSwitch("preload", currentWindow.__originalPreload);
-	
-	// Make sure DiscordNative gets exposed
-	electron.contextBridge.exposeInMainWorld = (key, val) => window[key] = val;
-	
-	// Run original preload
-	require(currentWindow.__originalPreload);
+
+    // Restore original preload for future windows
+    process.electronBinding("command_line").appendSwitch("preload", currentWindow.__originalPreload);
+
+    // Make sure DiscordNative gets exposed
+    electron.contextBridge.exposeInMainWorld = (key, val) => window[key] = val;
+
+    // Run original preload
+    require(currentWindow.__originalPreload);
 }
