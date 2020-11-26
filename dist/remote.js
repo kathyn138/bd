@@ -4153,7 +4153,7 @@
               r.setAttribute("id", "user-settings"), 
               document.getElementById("bd-settings-sidebar") || St.renderSidebar()), 
               document.getElementById("emoji-pane-container") || emojiSection.renderSidebar()), 
-              r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container"), 
+              r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container")
             //   r.classList.contains("layer-v9HyYc") && r.getElementsById("emoji-pane-container").length && !r.querySelector("#emoji-pane-container").parentElement.classList.contains("animatorLeft-1EQxU0")
           }
       }).observe(document, {
