@@ -1910,7 +1910,7 @@
       }
   };
 
-  //Ee seems to be the side menu
+  //NOTE: Ee seems to be the side menu
   class Ee {
       constructor(e) {
           this.onClick = e
@@ -2787,6 +2787,7 @@
           ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
       }
   }
+  // NOTE: this appears to be the custom css editor 
   class et extends P.reactComponent {
       constructor(e) {
           super(e);
@@ -2955,6 +2956,175 @@
           })
       }
   }
+
+  class emojiEditor extends P.reactComponent {
+    constructor(e) {
+        super(e);
+        this.props.lines = 0, this.setInitialState(), this.attach = this.attach.bind(this), this.detachedEditor = P.react.createElement(Xe, {
+            attach: this.attach
+        }), this.onClick = this.onClick.bind(this), this.updateCss = this.updateCss.bind(this), this.saveCss = this.saveCss.bind(this), this.detach = this.detach.bind(this)
+    }
+    setInitialState() {
+        this.state = {
+            detached: this.props.detached || P.editorDetached
+        }
+    }
+    componentDidMount() {
+        this.editor = ace.edit("bd-customcss-editor"), this.editor.setTheme("ace/theme/monokai"), this.editor.session.setMode("ace/mode/css"), this.editor.setShowPrintMargin(!1), this.editor.setFontSize(14), this.editor.on("change", () => {
+            h["bda-css-0"] && (this.saveCss(), this.updateCss())
+        })
+    }
+    componentWillUnmount() {
+        this.editor.destroy()
+    }
+    componentDidUpdate(e, t) {
+        const n = this;
+        t.detached && !n.state.detached && P.reactDom.unmountComponentAtNode(n.detachedRoot)
+    }
+    codeMirror() {}
+    get options() {
+        return {
+            lineNumbers: !0,
+            mode: "css",
+            indentUnit: 4,
+            theme: "material",
+            scrollbarStyle: "simple"
+        }
+    }
+    get css() {
+        const e = ne.getBDData("bdcustomcss");
+        let t = "";
+        return e && "" !== e && (t = atob(e)), t
+    }
+    updateLineCount() {
+        const e = this.refs.editor.value.split("\n").length;
+        e != this.props.lines && (this.refs.lines.textContent = Array.from(new Array(e), (e, t) => t + 1).join(".\n") + ".", this.props.lines = e)
+    }
+    render() {
+        const e = this,
+            {
+                detached: t
+            } = e.state;
+        return P.react.createElement("div", {
+            className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default",
+            style: {
+                padding: "60px 40px 0px"
+            }
+        }, t && P.react.createElement("div", {
+            id: "editor-detached"
+        }, P.react.createElement(Pe, {
+            text: "Custom CSS Editor"
+        }), P.react.createElement("h3", null, "Editor Detached"), P.react.createElement("button", {
+            className: "btn btn-primary",
+            onClick: () => {
+                e.attach()
+            }
+        }, "Attach")), !t && P.react.createElement("div", null, P.react.createElement(Pe, {
+            text: "Custom CSS Editor"
+        }), P.react.createElement("div", {
+            className: "editor-wrapper"
+        }, P.react.createElement("div", {
+            id: "bd-customcss-editor",
+            className: "editor",
+            ref: "editor"
+        }, e.css)), P.react.createElement("div", {
+            id: "bd-customcss-attach-controls"
+        }, P.react.createElement("ul", {
+            className: "checkbox-group"
+        }, P.react.createElement(Je, {
+            id: "live-update",
+            text: "Live Update",
+            onChange: this.onChange,
+            checked: h["bda-css-0"]
+        })), P.react.createElement("div", {
+            id: "bd-customcss-detach-controls-button"
+        }, P.react.createElement("button", {
+            style: {
+                borderRadius: "3px 0 0 3px",
+                borderRight: "1px solid #3f4146"
+            },
+            className: "btn btn-primary",
+            onClick: () => {
+                e.onClick("update")
+            }
+        }, "Update"), P.react.createElement("button", {
+            style: {
+                borderRadius: "0",
+                borderLeft: "1px solid #2d2d2d",
+                borderRight: "1px solid #2d2d2d"
+            },
+            className: "btn btn-primary",
+            onClick: () => {
+                e.onClick("save")
+            }
+        }, "Save"), P.react.createElement("button", {
+            style: {
+                borderRadius: "0 3px 3px 0",
+                borderLeft: "1px solid #3f4146"
+            },
+            className: "btn btn-primary",
+            onClick: () => {
+                e.onClick("detach")
+            }
+        }, "Detach"), P.react.createElement("span", {
+            style: {
+                fontSize: "10px",
+                marginLeft: "5px"
+            }
+        }, "Unsaved changes are lost on detach"), P.react.createElement("div", {
+            className: "help-text"
+        }, "Press ", P.react.createElement("code", {
+            className: "inline"
+        }, "ctrl"), "+", P.react.createElement("span", {
+            className: "inline"
+        }, ","), " with the editor focused to access the editor's settings.")))))
+    }
+    onClick(e) {
+        const t = this;
+        switch (e) {
+            case "update":
+                t.updateCss();
+                break;
+            case "save":
+                t.saveCss();
+                break;
+            case "detach":
+                t.detach()
+        }
+    }
+    onChange(e, t) {
+        switch (e) {
+            case "live-update":
+                h["bda-css-0"] = t, St.saveSettings()
+        }
+    }
+    updateCss() {
+        B.removeStyle("customcss"), B.addStyle("customcss", this.editor.session.getValue())
+    }
+    saveCss() {
+        ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
+    }
+    detach() {
+        this.setState({
+            detached: !0
+        });
+        const e = this.detachedRoot;
+        e ? P.reactDom.render(this.detachedEditor, e) : console.log("FAILED TO INJECT ROOT: .app")
+    }
+    get detachedRoot() {
+        const e = B.query("#bd-customcss-detach-container");
+        return e || (this.injectDetachedRoot() ? this.detachedRoot : null)
+    }
+    injectDetachedRoot() {
+        const e = B.query(".app, .app-2rEoOp");
+        return !!e && (B.insertAfter(B.createElement('<div id="bd-customcss-detach-container">'), e), !0)
+    }
+    attach() {
+        this.setState({
+            detached: !1
+        })
+    }
+}
   class tt extends P.reactComponent {
       constructor(e) {
           super(e), this.state = {
@@ -3691,8 +3861,8 @@
             contentColumn: !0,
             fade: !0,
             dark: !0
-        }, P.react.createElement(et, {
-            key: "csseditor"
+        }, P.react.createElement(emojiEditor, {
+            key: "emojieditor"
         }), P.react.createElement(Ae, {
             key: "tools"
         }))
