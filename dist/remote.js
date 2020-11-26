@@ -4100,7 +4100,10 @@
       // z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
       //     le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
       // }), 
-      await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
+      await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
+      z.log("Startup", "Updating Settings"), St.initializeSettings(), 
+      z.log("Startup", "Loading Emojis"), emojiSection.initializeSettings(),
+      z.log("Startup", "Loading Pluginss"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
           h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
       })),  
       z.log("Startup", "Initializing Main Observer"), this.initObserver(), h["fork-ps-1"] && (z.log("Startup", "Collecting Startup Errors"), z.showContentErrors({
