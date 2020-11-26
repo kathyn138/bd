@@ -173,157 +173,6 @@
                 hidden: !0,
                 cat: "core"
             },
-            "BetterDiscord Blue": {
-                id: "bda-gs-b",
-                info: "Replace Discord blue with BD Blue",
-                implemented: !1,
-                hidden: !1,
-                cat: "core"
-            },
-            "Public Servers": {
-                id: "bda-gs-1",
-                info: "Display public servers button",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Minimal Mode": {
-                id: "bda-gs-2",
-                info: "Hide elements and reduce the size of elements.",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Voice Mode": {
-                id: "bda-gs-4",
-                info: "Only show voice chat",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Hide Channels": {
-                id: "bda-gs-3",
-                info: "Hide channels in minimal mode",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Dark Mode": {
-                id: "bda-gs-5",
-                info: "Make certain elements dark by default(wip)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Voice Disconnect": {
-                id: "bda-dc-0",
-                info: "Disconnect from voice server when closing Discord",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "24 Hour Timestamps": {
-                id: "bda-gs-6",
-                info: "Replace 12hr timestamps with proper ones",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Colored Text": {
-                id: "bda-gs-7",
-                info: "Make text color the same as role color",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Normalize Classes": {
-                id: "fork-ps-4",
-                info: "Adds stable classes to elements to help themes. (e.g. adds .da-channels to .channels-Ie2l6A)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "modules"
-            },
-            "Content Error Modal": {
-                id: "fork-ps-1",
-                info: "Shows a modal with plugin/theme errors",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Show Toasts": {
-                id: "fork-ps-2",
-                info: "Shows a small notification for important information",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Scroll To Settings": {
-                id: "fork-ps-3",
-                info: "Auto-scrolls to a plugin's settings when the button is clicked (only if out of view)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Automatic Loading": {
-                id: "fork-ps-5",
-                info: "Automatically loads, reloads, and unloads plugins and themes",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "content manager"
-            },
-            "Developer Mode": {
-                id: "bda-gs-8",
-                info: "Developer Mode",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "developer settings"
-            },
-            "Copy Selector": {
-                id: "fork-dm-1",
-                info: 'Adds a "Copy Selector" option to context menus when developer mode is active',
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "developer settings"
-            },
-            "React DevTools": {
-                id: "reactDevTools",
-                info: "Adds react developer tools to the devtools. Must be installed in Google Chrome on your pc.",
-                implemented: !0,
-                hidden: !0,
-                cat: "core",
-                category: "developer settings"
-            },
-            "Enable Transparency": {
-                id: "fork-wp-1",
-                info: "Enables the main window to be see-through (requires restart)",
-                implemented: !0,
-                hidden: !1,
-                cat: "core",
-                category: "window preferences"
-            },
-            "Window Frame": {
-                id: "fork-wp-2",
-                info: "Adds the native os window frame to the main window",
-                implemented: !1,
-                hidden: !0,
-                cat: "core",
-                category: "window preferences"
-            },
             // "Download Emotes": {
             //     id: "fork-es-3",
             //     info: "Download emotes when the cache is expired",
@@ -3862,9 +3711,9 @@
         }
         sideBarOnClick(e) {
             switch (B.query(".contentRegion-3nDuYy, .content-region").style.display = "none", this.root.style.display = "", e) {
-                case "core":
-                    this.renderCoreSettings();
-                    break;
+                // case "core":
+                //     this.renderCoreSettings();
+                //     break;
                 // case "emotes":
                 //     this.renderEmoteSettings();
                 //     break;
@@ -3900,41 +3749,7 @@
             for (const t of e) t.removeEventListener("click", this.showOriginal), t.addEventListener("click", this.showOriginal);
             this.sidebar.render()
         }
-        get coreComponent() {
-            return P.react.createElement(ze, {
-                contentColumn: !0,
-                fade: !0,
-                dark: !0
-            }, P.react.createElement(Ke, {
-                key: "cspanel",
-                title: "BetterDiscord Settings",
-                onChange: this.onChange,
-                sections: this.coreSettings,
-                button: {
-                    title: "Try BD Beta",
-                    onClick: () => {
-                        const e = n(2),
-                            t = n(1).join(ne.injectionPath, "betterdiscord", "config.json");
-                        if (!e.existsSync(t)) return z.showConfirmationModal("File Not Found", "Could not find the config file. Please **do not ask for support** for this.", {
-                            cancelText: null,
-                            confirmText: "Okay"
-                        });
-                        const r = JSON.parse(e.readFileSync(t).toString());
-                        r.branch = "gh-pages-development", r.local = !1, e.writeFileSync(t, JSON.stringify(r, null, 4)), z.showConfirmationModal("Success!", "Sucessfully switched to BD Beta. A restart of Discord is required for this to take effect. Would you like to restart now?", {
-                            danger: !0,
-                            confirmText: "Restart Now",
-                            cancelText: "Restart Later",
-                            onConfirm: () => {
-                                const e = n(0).remote.app;
-                                e.relaunch(), e.exit()
-                            }
-                        })
-                    }
-                }
-            }), P.react.createElement(Ae, {
-                key: "tools"
-            }))
-        }
+        
         // get emoteComponent() {
         //     return P.react.createElement(ze, {
         //         contentColumn: !0,
@@ -3965,11 +3780,6 @@
             }), P.react.createElement(Ae, {
                 key: "tools"
             }))
-        }
-        renderCoreSettings() {
-            const e = this.root;
-            if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
-            P.reactDom.render(this.coreComponent, e)
         }
         // renderEmoteSettings() {
         //     const e = this.root;
@@ -4404,9 +4214,9 @@
         getPlugin: function (e) {
             return M.hasOwnProperty(e) ? M[e].plugin : null
         },
-        getCore: function () {
-            return z.warn("Deprecation Notice", "BdApi.getCore() will be removed in future versions."), It
-        },
+        // getCore: function () {
+        //     return z.warn("Deprecation Notice", "BdApi.getCore() will be removed in future versions."), It
+        // },
         alert: function (e, t) {
             return z.showConfirmationModal(e, t, {
                 cancelText: null
@@ -4541,5 +4351,5 @@
         },
         Bt = Object.keys(r);
     for (const e of Bt) Pt(e, r[e]);
-    Pt("BDV2", P), Pt("pluginModule", U), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At, Pt("mainCore", It)
+    Pt("BDV2", P), Pt("pluginModule", U), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At
 }]);
