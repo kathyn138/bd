@@ -5068,5 +5068,5 @@
         },
         Bt = Object.keys(r);
     for (const e of Bt) Pt(e, r[e]);
-    Pt("BDV2", P), Pt("pluginModule", U), Pt("themeModule", q), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("emoteModule", le), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At, Pt("mainCore", It)
+    Pt("BDV2", P), Pt("pluginModule", U), Pt("themeModule", q), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At, Pt("mainCore", It)
 }]);
