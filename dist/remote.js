@@ -3900,12 +3900,68 @@ const { Console } = require("console");
       }
   };
 
+  class EmojiE {
+    constructor(e) {
+        this.onClick = e
+    }
+    get items() {
+        return [{
+            text: "Emojis",
+            id: "emojis"
+        }, {
+            text: "Plugins",
+            id: "plugins"
+        }, {
+            text: "Custom CSS",
+            id: "customcss"
+        }]
+    }
+    get component() {
+        const e = P.react.createElement(ke, {
+            color: "black",
+            side: "top",
+            text: "Hi :D"
+        }, P.react.createElement("div", {
+            className: "bd-changelog-button",
+            onClick: () => {
+                z.showChangelogModal(l)
+            }
+        }, P.react.createElement(ge, {
+            className: "bd-icon",
+            size: "16px"
+        })));
+        return P.react.createElement("span", null, P.react.createElement(ue, {
+            onClick: this.onClick,
+            headerText: "hmmm",
+            headerButton: e,
+            items: this.items
+        }))
+    }
+    get root() {
+        console.log('ROOT AT EMOJIE')
+        const e = B.query("#bd-settings-sidebar");
+        return e || (this.injectRoot() ? this.root : null)
+    }
+    injectRoot() {
+        console.log('INJECTING SIDE MENU IN EMOJIE')
+        const e = B.queryAll("[class*='side-'] > [class*='item-']:not([class*=Danger])"),
+            t = e[e.length - 1];
+        return !!t && (t.parentElement.insertBefore(B.createElement('<div id="bd-settings-sidebar">'), t.previousElementSibling), !0)
+    }
+    render() {
+        const e = this.root;
+        e ? (P.reactDom.render(this.component, e), z.onRemoved(e, () => {
+            P.reactDom.unmountComponentAtNode(e)
+        })) : console.log("FAILED TO LOCATE ROOT: [class*='side-'] > [class*='item-']:not([class*=Danger])")
+    }
+}
+
   var emojiSection = new class {
     constructor() {
         this.sideBarOnClick = this.sideBarOnClick.bind(this), 
         this.onChange = this.onChange.bind(this), 
         this.updateSettings = this.updateSettings.bind(this), 
-        this.sidebar = new Ee(this.sideBarOnClick), 
+        this.sidebar = new EmojiE(this.sideBarOnClick), 
         this.showOriginal = this.showOriginal.bind(this)
     }
     get root() {
@@ -4109,7 +4165,7 @@ const { Console } = require("console");
       // }), 
       await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
       z.log("Startup", "Updating Settings"), St.initializeSettings(), 
-      z.log("Startup", "Loading Emojisz"), emojiSection.initializeSettings(),
+      z.log("Startup", "Loading Emojisa"), emojiSection.initializeSettings(),
       z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
           h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
       })),  
@@ -4421,5 +4477,5 @@ const { Console } = require("console");
       },
       Bt = Object.keys(r);
   for (const e of Bt) Pt(e, r[e]);
-  Pt("BDV2", P), Pt("pluginModule", U), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At
+  Pt("BDV2", P), Pt("pluginModule", U), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("emojisPanel", emojiSection), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At
 }]);
