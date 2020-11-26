@@ -2313,7 +2313,7 @@
             return e || (this.injectRoot() ? this.root : null)
         }
         injectRoot() {
-            const e = B.query(".layers, .layers-3iHuyZ");
+            const e = B.query(".buttons-3JBrkn");
             return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
         }
         render() {
@@ -3926,7 +3926,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Pluginszzzz"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
