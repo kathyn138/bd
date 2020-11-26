@@ -3729,176 +3729,176 @@ const { Console } = require("console");
   });
 
   // NOTE: it seems that St is responsible for putting things into the settings menu
-//   var St = new class {
-//       constructor() {
-//           this.sideBarOnClick = this.sideBarOnClick.bind(this), this.onChange = this.onChange.bind(this), this.updateSettings = this.updateSettings.bind(this), this.sidebar = new Ee(this.sideBarOnClick), this.showOriginal = this.showOriginal.bind(this)
-//       }
-//       get root() {
-//           console.log('IN ROOT OF ST')
-//           const e = B.query("#bd-settingspane-container");
-//           return e || (this.injectRoot() ? this.root : null)
-//       }
-//       injectRoot() {
-//           const e = B.query(".layer-3QrUeG .standardSidebarView-3F1I7i, .layer-3QrUeG .ui-standard-sidebar-view");
-//           if (!e) return !1;
-//           const t = B.createElement('<div id="bd-settingspane-container" class="contentRegion-3nDuYy content-region">');
-//           return e.append(t), z.onRemoved(t, () => {
-//               P.reactDom.unmountComponentAtNode(t)
-//           }), !0
-//       }
-//       get coreSettings() {
-//           const e = this.getSettings("core");
-//           return [...new Set(e.map(e => e.category))].map(t => ({
-//               title: t,
-//               settings: e.filter(e => e.category == t)
-//           }))
-//       }
-//       // get emoteSettings() {
-//       //     return this.getSettings("emote")
-//       // }
-//       getSettings(e) {
-//           return Object.keys(d).reduce((t, n) => {
-//               const r = d[n];
-//               return r.cat === e && r.implemented && !r.hidden && (r.text = n, t.push(r)), t
-//           }, [])
-//       }
-//       sideBarOnClick(e) {
-//           switch (B.query(".contentRegion-3nDuYy, .content-region").style.display = "none", this.root.style.display = "", e) {
-//               // case "core":
-//               //     this.renderCoreSettings();
-//               //     break;
-//               case "emojis":
-//                   this.renderEmojisPane();
-//                   break;
-//               case "customcss":
-//                   this.renderCustomCssEditor();
-//                   break;
-//               case "plugins":
-//               case "themes":
-//                   this.renderAddonPane(e)
-//           }
-//       }
-//       onClick() {}
-//       onChange(e, t) {
-//           this.updateSettings(e, t)
-//       }
-//       updateSettings(e, t) {
-//           h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
-//       }
-//       async initializeSettings() {
-//           h.reactDevTools && Le.start(), h["bda-gs-2"] && B.addClass(document.body, "bd-minimal"), h["bda-gs-3"] && B.addClass(document.body, "bd-minimal-chan"), h["bda-gs-4"] && qe.start(), h["bda-gs-5"] && B.addClass(B.query("#app-mount"), "bda-dark"), h["bda-gs-6"] && Me.inject24Hour(), h["bda-gs-7"] && Ce.injectColoredText(), h["fork-ps-4"] && We.start(), h["fork-ps-5"] && (Y.watchContent("plugin")), h["bda-gs-8"] && _e.startDebugListener(), h["fork-dm-1"] && _e.startCopySelector(), this.saveSettings()
-//       }
-//       saveSettings() {
-//           ne.setSettingGroup("settings", h)
-//       }
-//       loadSettings() {
-//           Object.assign(h, ne.getSettingGroup("settings"))
-//       }
-//       showOriginal() {
-//           P.reactDom.unmountComponentAtNode(this.root), this.root.style.display = "none", B.query(".contentRegion-3nDuYy, .content-region").style.display = ""
-//       }
-//       renderSidebar() {
-//           const e = document.querySelectorAll("[class*='side-'] > [class*='item-']");
-//           for (const t of e) t.removeEventListener("click", this.showOriginal), t.addEventListener("click", this.showOriginal);
-//           this.sidebar.render()
-//       }
+  var St = new class {
+      constructor() {
+          this.sideBarOnClick = this.sideBarOnClick.bind(this), this.onChange = this.onChange.bind(this), this.updateSettings = this.updateSettings.bind(this), this.sidebar = new Ee(this.sideBarOnClick), this.showOriginal = this.showOriginal.bind(this)
+      }
+      get root() {
+          console.log('IN ROOT OF ST')
+          const e = B.query("#bd-settingspane-container");
+          return e || (this.injectRoot() ? this.root : null)
+      }
+      injectRoot() {
+          const e = B.query(".layer-3QrUeG .standardSidebarView-3F1I7i, .layer-3QrUeG .ui-standard-sidebar-view");
+          if (!e) return !1;
+          const t = B.createElement('<div id="bd-settingspane-container" class="contentRegion-3nDuYy content-region">');
+          return e.append(t), z.onRemoved(t, () => {
+              P.reactDom.unmountComponentAtNode(t)
+          }), !0
+      }
+      get coreSettings() {
+          const e = this.getSettings("core");
+          return [...new Set(e.map(e => e.category))].map(t => ({
+              title: t,
+              settings: e.filter(e => e.category == t)
+          }))
+      }
+      // get emoteSettings() {
+      //     return this.getSettings("emote")
+      // }
+      getSettings(e) {
+          return Object.keys(d).reduce((t, n) => {
+              const r = d[n];
+              return r.cat === e && r.implemented && !r.hidden && (r.text = n, t.push(r)), t
+          }, [])
+      }
+      sideBarOnClick(e) {
+          switch (B.query(".contentRegion-3nDuYy, .content-region").style.display = "none", this.root.style.display = "", e) {
+              // case "core":
+              //     this.renderCoreSettings();
+              //     break;
+              case "emojis":
+                  this.renderEmojisPane();
+                  break;
+              case "customcss":
+                  this.renderCustomCssEditor();
+                  break;
+              case "plugins":
+              case "themes":
+                  this.renderAddonPane(e)
+          }
+      }
+      onClick() {}
+      onChange(e, t) {
+          this.updateSettings(e, t)
+      }
+      updateSettings(e, t) {
+          h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
+      }
+      async initializeSettings() {
+          h.reactDevTools && Le.start(), h["bda-gs-2"] && B.addClass(document.body, "bd-minimal"), h["bda-gs-3"] && B.addClass(document.body, "bd-minimal-chan"), h["bda-gs-4"] && qe.start(), h["bda-gs-5"] && B.addClass(B.query("#app-mount"), "bda-dark"), h["bda-gs-6"] && Me.inject24Hour(), h["bda-gs-7"] && Ce.injectColoredText(), h["fork-ps-4"] && We.start(), h["fork-ps-5"] && (Y.watchContent("plugin")), h["bda-gs-8"] && _e.startDebugListener(), h["fork-dm-1"] && _e.startCopySelector(), this.saveSettings()
+      }
+      saveSettings() {
+          ne.setSettingGroup("settings", h)
+      }
+      loadSettings() {
+          Object.assign(h, ne.getSettingGroup("settings"))
+      }
+      showOriginal() {
+          P.reactDom.unmountComponentAtNode(this.root), this.root.style.display = "none", B.query(".contentRegion-3nDuYy, .content-region").style.display = ""
+      }
+      renderSidebar() {
+          const e = document.querySelectorAll("[class*='side-'] > [class*='item-']");
+          for (const t of e) t.removeEventListener("click", this.showOriginal), t.addEventListener("click", this.showOriginal);
+          this.sidebar.render()
+      }
       
-//       // get emoteComponent() {
-//       //     return P.react.createElement(ze, {
-//       //         contentColumn: !0,
-//       //         fade: !0,
-//       //         dark: !0
-//       //     }, P.react.createElement(Ye, {
-//       //         key: "espanel",
-//       //         title: "Emote Settings",
-//       //         onChange: this.onChange,
-//       //         settings: this.emoteSettings,
-//       //         button: {
-//       //             title: "Clear Emote Cache",
-//       //             onClick: () => {
-//       //                 le.clearEmoteData(), le.init(), ie.init()
-//       //             }
-//       //         }
-//       //     }), P.react.createElement(Ae, {
-//       //         key: "tools"
-//       //     }))
-//       // }
-//       get customCssComponent() {
-//           return P.react.createElement(ze, {
-//               contentColumn: !0,
-//               fade: !0,
-//               dark: !0
-//           }, P.react.createElement(et, {
-//               key: "csseditor"
-//           }), P.react.createElement(Ae, {
-//               key: "tools"
-//           }))
-//       }
+      // get emoteComponent() {
+      //     return P.react.createElement(ze, {
+      //         contentColumn: !0,
+      //         fade: !0,
+      //         dark: !0
+      //     }, P.react.createElement(Ye, {
+      //         key: "espanel",
+      //         title: "Emote Settings",
+      //         onChange: this.onChange,
+      //         settings: this.emoteSettings,
+      //         button: {
+      //             title: "Clear Emote Cache",
+      //             onClick: () => {
+      //                 le.clearEmoteData(), le.init(), ie.init()
+      //             }
+      //         }
+      //     }), P.react.createElement(Ae, {
+      //         key: "tools"
+      //     }))
+      // }
+      get customCssComponent() {
+          return P.react.createElement(ze, {
+              contentColumn: !0,
+              fade: !0,
+              dark: !0
+          }, P.react.createElement(et, {
+              key: "csseditor"
+          }), P.react.createElement(Ae, {
+              key: "tools"
+          }))
+      }
 
-//       get customEmojiComponent() {
-//         return P.react.createElement(ze, {
-//             contentColumn: !0,
-//             fade: !0,
-//             dark: !0
-//         }, P.react.createElement(EmojiEditor, {
-//             key: "emojieditor"
-//         }), P.react.createElement(Ae, {
-//             key: "tools"
-//         }))
-//     }
-//       // renderEmoteSettings() {
-//       //     const e = this.root;
-//       //     if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
-//       //     P.reactDom.render(this.emoteComponent, e)
-//       // }
-//       renderEmojisPane() {
-//         const e = this.root;
-//         if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
-//         P.reactDom.render(this.customEmojiComponent, e)
-//       }
-//       renderCustomCssEditor() {
-//           const e = this.root;
-//           if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
-//           P.reactDom.render(this.customCssComponent, e)
-//       }
-//       renderAddonPane(e) {
-//           if (!this.root) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
-//           class t extends P.react.Component {
-//               constructor(e) {
-//                   super(e), this.prefix = this.props.type.replace("s", ""), this.onChange = this.onChange.bind(this)
-//               }
-//               componentDidMount() {
-//                   F.on(this.prefix + "-reloaded", this.onChange), F.on(this.prefix + "-loaded", this.onChange), F.on(this.prefix + "-unloaded", this.onChange)
-//               }
-//               componentWillUnmount() {
-//                   F.off(this.prefix + "-reloaded", this.onChange), F.off(this.prefix + "-loaded", this.onChange), F.off(this.prefix + "-unloaded", this.onChange)
-//               }
-//               onChange() {
-//                   this.props.onChange(this.props.type)
-//               }
-//               render() {
-//                   return this.props.children
-//               }
-//           }
-//           const n = t.prototype.render;
-//           Object.defineProperty(t.prototype, "render", {
-//               enumerable: !1,
-//               configurable: !1,
-//               set: function () {
-//                   console.warn("Addon policy for plugins #5 https://github.com/rauenzi/BetterDiscordApp/wiki/Addon-Policies#plugins")
-//               },
-//               get: () => n
-//           });
-//           const r = "plugins" === e ? Object.values(M) : Object.values(C);
-//           return P.reactDom.render(P.react.createElement(t, {
-//               type: e,
-//               onChange: this.sideBarOnClick
-//           }, P.react.createElement(Ct, {
-//               type: e,
-//               list: r
-//           })), this.root)
-//       }
-//   };
+      get customEmojiComponent() {
+        return P.react.createElement(ze, {
+            contentColumn: !0,
+            fade: !0,
+            dark: !0
+        }, P.react.createElement(EmojiEditor, {
+            key: "emojieditor"
+        }), P.react.createElement(Ae, {
+            key: "tools"
+        }))
+    }
+      // renderEmoteSettings() {
+      //     const e = this.root;
+      //     if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
+      //     P.reactDom.render(this.emoteComponent, e)
+      // }
+      renderEmojisPane() {
+        const e = this.root;
+        if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
+        P.reactDom.render(this.customEmojiComponent, e)
+      }
+      renderCustomCssEditor() {
+          const e = this.root;
+          if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
+          P.reactDom.render(this.customCssComponent, e)
+      }
+      renderAddonPane(e) {
+          if (!this.root) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
+          class t extends P.react.Component {
+              constructor(e) {
+                  super(e), this.prefix = this.props.type.replace("s", ""), this.onChange = this.onChange.bind(this)
+              }
+              componentDidMount() {
+                  F.on(this.prefix + "-reloaded", this.onChange), F.on(this.prefix + "-loaded", this.onChange), F.on(this.prefix + "-unloaded", this.onChange)
+              }
+              componentWillUnmount() {
+                  F.off(this.prefix + "-reloaded", this.onChange), F.off(this.prefix + "-loaded", this.onChange), F.off(this.prefix + "-unloaded", this.onChange)
+              }
+              onChange() {
+                  this.props.onChange(this.props.type)
+              }
+              render() {
+                  return this.props.children
+              }
+          }
+          const n = t.prototype.render;
+          Object.defineProperty(t.prototype, "render", {
+              enumerable: !1,
+              configurable: !1,
+              set: function () {
+                  console.warn("Addon policy for plugins #5 https://github.com/rauenzi/BetterDiscordApp/wiki/Addon-Policies#plugins")
+              },
+              get: () => n
+          });
+          const r = "plugins" === e ? Object.values(M) : Object.values(C);
+          return P.reactDom.render(P.react.createElement(t, {
+              type: e,
+              onChange: this.sideBarOnClick
+          }, P.react.createElement(Ct, {
+              type: e,
+              list: r
+          })), this.root)
+      }
+  };
 
   var emojiSection = new class {
     constructor() {
@@ -4148,7 +4148,7 @@ const { Console } = require("console");
           St.loadSettings();
           emojiSection.loadSettings();
           for (const e in p) null == h[e] && (h[e] = p[e], St.saveSettings(), emojiSection.saveSettings())
-      } else Object.assign(h, p), St.saveSettings()
+      } else Object.assign(h, p), St.saveSettings(), emojiSection.saveSettings()
   }, Dt.prototype.initObserver = function () {
       new MutationObserver(e => {
           for (let t = 0, n = e.length; t < n; t++) {
@@ -4159,6 +4159,7 @@ const { Console } = require("console");
               r.getElementsByClassName("socialLinks-3jqNFy").length && (r.setAttribute("layer-id", "user-settings"), 
               r.setAttribute("id", "user-settings"), 
               document.getElementById("bd-settings-sidebar") || St.renderSidebar()), 
+              console.log('IN THIS WEIRD RENDERING'),
               document.getElementById("emoji-pane-container") || emojiSection.renderSidebar()), 
               r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container")
             //   r.classList.contains("layer-v9HyYc") && r.getElementsById("emoji-pane-container").length && !r.querySelector("#emoji-pane-container").parentElement.classList.contains("animatorLeft-1EQxU0")
