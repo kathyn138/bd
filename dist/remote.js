@@ -2325,16 +2325,14 @@
             e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
         }
         get button() {
-            const e = B.createElement(`<div id="bd-pub-li" class="${P.guildClasses.listItem}">`);
-            h["bda-gs-1"] || (e.style.display = "none");
-            const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container">E 
+            const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" viewBox="0 0 24 24" aria-hidden="false" fill="currentColor" width="24px" height="24px">
             <path d="M0 0h24v24H0z" fill="none"/>
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
         </svg></div>`);
             return t.addEventListener("click", () => {
                 this.render()
-            }), e.append(t), e
+            }), t
         }
         _appendButton() {
             console.log('IN APPEND BEFORE')
@@ -3940,7 +3938,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Pluginswqeqsd"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
