@@ -2966,7 +2966,7 @@
             attach: this.attach
         }), this.onClick = this.onClick.bind(this), 
         this.updateCss = this.updateCss.bind(this), 
-        this.saveCss = this.saveCss.bind(this), 
+        this.saveList = this.saveList.bind(this), 
         this.detach = this.detach.bind(this)
     }
     setInitialState() {
@@ -2981,7 +2981,7 @@
         this.editor.setShowPrintMargin(!1), 
         this.editor.setFontSize(14), 
         this.editor.on("change", () => {
-            h["bda-css-0"] && (this.saveCss(), this.updateCss())
+            h["bda-css-0"] && (this.saveList(), this.updateCss())
         })
     }
     componentWillUnmount() {
@@ -3001,8 +3001,8 @@
             scrollbarStyle: "simple"
         }
     }
-    get css() {
-        console.log('FETCHING IN EMOJI LIST')
+    get list() {
+        console.log('FETCHING IN EMOJI LIST!')
         const e = ne.getBDData("customemojilist");
         let t = "";
         return e && "" !== e && (t = atob(e)), t
@@ -3097,7 +3097,7 @@
                 t.updateCss();
                 break;
             case "save":
-                t.saveCss();
+                t.saveList();
                 break;
             case "detach":
                 t.detach()
@@ -3112,7 +3112,7 @@
     updateCss() {
         B.removeStyle("customcss"), B.addStyle("customcss", this.editor.session.getValue())
     }
-    saveCss() {
+    saveList() {
         console.log('SAVING IN EMOJI EDITOR')
         ne.setBDData("customemojilist", btoa(this.editor.session.getValue()))
     }
