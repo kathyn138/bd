@@ -4459,26 +4459,26 @@
                 key: "tools"
             }))
         }
-        get emoteComponent() {
-            return P.react.createElement(ze, {
-                contentColumn: !0,
-                fade: !0,
-                dark: !0
-            }, P.react.createElement(Ye, {
-                key: "espanel",
-                title: "Emote Settings",
-                onChange: this.onChange,
-                settings: this.emoteSettings,
-                button: {
-                    title: "Clear Emote Cache",
-                    onClick: () => {
-                        le.clearEmoteData(), le.init(), ie.init()
-                    }
-                }
-            }), P.react.createElement(Ae, {
-                key: "tools"
-            }))
-        }
+        // get emoteComponent() {
+        //     return P.react.createElement(ze, {
+        //         contentColumn: !0,
+        //         fade: !0,
+        //         dark: !0
+        //     }, P.react.createElement(Ye, {
+        //         key: "espanel",
+        //         title: "Emote Settings",
+        //         onChange: this.onChange,
+        //         settings: this.emoteSettings,
+        //         button: {
+        //             title: "Clear Emote Cache",
+        //             onClick: () => {
+        //                 le.clearEmoteData(), le.init(), ie.init()
+        //             }
+        //         }
+        //     }), P.react.createElement(Ae, {
+        //         key: "tools"
+        //     }))
+        // }
         get customCssComponent() {
             return P.react.createElement(ze, {
                 contentColumn: !0,
@@ -4627,9 +4627,11 @@
         if (g.version < a) return void z.alert("Not Supported", "BetterDiscord v" + g.version + " (your version) is not supported by the latest js (" + c + ").<br><br> Please download the latest version from <a href='https://github.com/rauenzi/BetterDiscordApp/releases/latest' target='_blank'>GitHub</a>");
         if (window.ED) return void z.alert("Not Supported", "BandagedBD does not work with EnhancedDiscord. Please uninstall one of them.");
         if (window.WebSocket && window.WebSocket.name && window.WebSocket.name.includes("Patched")) return void z.alert("Not Supported", "BandagedBD does not work with Powercord. Please uninstall one of them.");
-        z.log("Startup", "Initializing Settings"), this.initSettings(), z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
-            le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
-        }), await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), z.log("Startup", "Loading Themes"), q.loadThemes(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
+        z.log("Startup", "Initializing Settings"), this.initSettings(), 
+        // z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
+        //     le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
+        // }), 
+        await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), z.log("Startup", "Loading Themes"), q.loadThemes(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })), z.log("Startup", "Removing Loading Icon"), document.getElementsByClassName("bd-loaderv2").length && document.getElementsByClassName("bd-loaderv2")[0].remove(), z.log("Startup", "Initializing Main Observer"), this.initObserver(), h["fork-ps-1"] && (z.log("Startup", "Collecting Startup Errors"), z.showContentErrors({
             plugins: u,
@@ -4726,27 +4728,28 @@
             }
         }))
     };
-    Dt.prototype.patchGuildListItems = function () {
-        if (this.guildListItemsPatch) return;
-        const e = function () {
-                const e = j("wrapper", "unreadMentionsBar"),
-                    t = j("guildsError", "selected"),
-                    n = j("blobContainer");
-                return Object.assign({}, e, t, n)
-            }(),
-            t = e.listItem.split(" ")[0],
-            n = e.blobContainer.split(" ")[0],
-            r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
-        r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
-            after: e => {
-                if (e.returnValue && e.thisObject) {
-                    const t = e.returnValue,
-                        n = e.thisObject.props;
-                    return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
-                }
-            }
-        }))
-    }, Dt.prototype.patchGuildPills = function () {
+    // Dt.prototype.patchGuildListItems = function () {
+    //     if (this.guildListItemsPatch) return;
+    //     const e = function () {
+    //             const e = j("wrapper", "unreadMentionsBar"),
+    //                 t = j("guildsError", "selected"),
+    //                 n = j("blobContainer");
+    //             return Object.assign({}, e, t, n)
+    //         }(),
+    //         t = e.listItem.split(" ")[0],
+    //         n = e.blobContainer.split(" ")[0],
+    //         r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
+    //     r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
+    //         after: e => {
+    //             if (e.returnValue && e.thisObject) {
+    //                 const t = e.returnValue,
+    //                     n = e.thisObject.props;
+    //                 return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
+    //             }
+    //         }
+    //     }))
+    // }, 
+    Dt.prototype.patchGuildPills = function () {
         if (this.guildPillPatch) return;
         const e = I(e => e.default && !e.default.displayName && e.default.toString && e.default.toString().includes("translate3d"));
         e && (this.guildPillPatch = z.monkeyPatch(e, "default", {
