@@ -1943,7 +1943,7 @@
           })));
           return P.react.createElement("span", null, P.react.createElement(ue, {
               onClick: this.onClick,
-              headerText: "Bandaged BD",
+              headerText: "hmmm",
               headerButton: e,
               items: this.items
           }))
@@ -2957,7 +2957,7 @@
       }
   }
 
-  class emojiEditor extends P.reactComponent {
+  class EmojiEditor extends P.reactComponent {
     constructor(e) {
         super(e);
         this.props.lines = 0, this.setInitialState(), 
@@ -2975,7 +2975,7 @@
         }
     }
     componentDidMount() {
-        this.editor = ace.edit("emoji-editor"), 
+        this.editor = ace.edit("bd-customcss-editor"), 
         this.editor.setTheme("ace/theme/monokai"), 
         this.editor.session.setMode("ace/mode/text"), 
         this.editor.setShowPrintMargin(!1), 
@@ -3001,11 +3001,12 @@
             scrollbarStyle: "simple"
         }
     }
-    // get css() {
-    //     const e = ne.getBDData("bdcustomcss");
-    //     let t = "";
-    //     return e && "" !== e && (t = atob(e)), t
-    // }
+    get css() {
+        console.log('FETCHING IN EMOJI LIST')
+        const e = ne.getBDData("bdcustomcss");
+        let t = "";
+        return e && "" !== e && (t = atob(e)), t
+    }
     updateLineCount() {
         const e = this.refs.editor.value.split("\n").length;
         e != this.props.lines && (this.refs.lines.textContent = Array.from(new Array(e), (e, t) => t + 1).join(".\n") + ".", this.props.lines = e)
@@ -3871,7 +3872,7 @@
             contentColumn: !0,
             fade: !0,
             dark: !0
-        }, P.react.createElement(emojiEditor, {
+        }, P.react.createElement(EmojiEditor, {
             key: "emojieditor"
         }), P.react.createElement(Ae, {
             key: "tools"
