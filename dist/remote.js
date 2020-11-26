@@ -1918,7 +1918,7 @@
       get items() {
           return [{
               text: "Emojis",
-              id: "core"
+              id: "emojis"
           }, {
               text: "Plugins",
               id: "plugins"
@@ -3618,9 +3618,9 @@
               // case "core":
               //     this.renderCoreSettings();
               //     break;
-              // case "emotes":
-              //     this.renderEmoteSettings();
-              //     break;
+              case "emojis":
+                  this.renderEmojisPane();
+                  break;
               case "customcss":
                   this.renderCustomCssEditor();
                   break;
@@ -3685,11 +3685,28 @@
               key: "tools"
           }))
       }
+
+      get customEmojiComponent() {
+        return P.react.createElement(ze, {
+            contentColumn: !0,
+            fade: !0,
+            dark: !0
+        }, P.react.createElement(et, {
+            key: "csseditor"
+        }), P.react.createElement(Ae, {
+            key: "tools"
+        }))
+    }
       // renderEmoteSettings() {
       //     const e = this.root;
       //     if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
       //     P.reactDom.render(this.emoteComponent, e)
       // }
+      renderEmojisPane() {
+        const e = this.root;
+        if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
+        P.reactDom.render(this.customEmojiComponent, e)
+      }
       renderCustomCssEditor() {
           const e = this.root;
           if (!e) return z.err("SettingsPanel", "FAILED TO LOCATE ROOT: .layer-3QrUeG .standardSidebarView-3F1I7i");
