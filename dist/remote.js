@@ -2340,7 +2340,6 @@
             console.log('IN APPEND AFTER')
             const t = B.query(`.buttons-3JBrkn >:first-child`);
             t && B.after(t, this.button)
-            // yay left off at successfully appending button 
             console.log('THIS IS T', t)
         }
         addButton() {
@@ -2355,6 +2354,7 @@
             console.log('IN ADD AT VERY END')
         }
         removeButton() {
+            console.log('BUTTON IS GETTING REMOVED')
             this.guildPatch(), delete this.guildPatch;
             const e = B.query("#bd-pub-li");
             e && e.remove()
@@ -3784,9 +3784,12 @@
                     this.renderAddonPane(e)
             }
         }
-        onClick() {}
+        onClick() {
+            Ge.addButton()
+        }
         onChange(e, t) {
             this.updateSettings(e, t)
+            Ge.addButton()
         }
         updateSettings(e, t) {
             h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-1" == e && (t ? Ge.addButton() : Ge.removeButton()), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
@@ -3938,7 +3941,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginslk"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
