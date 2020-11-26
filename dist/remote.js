@@ -3002,11 +3002,11 @@
             scrollbarStyle: "simple"
         }
     }
-    // get css() {
-    //     const e = ne.getBDData("bdcustomcss");
-    //     let t = "";
-    //     return e && "" !== e && (t = atob(e)), t
-    // }
+    get list() {
+        const e = ne.getBDData("customemojilist");
+        let t = "";
+        return e && "" !== e && (t = atob(e)), t
+    }
     updateLineCount() {
         const e = this.refs.editor.value.split("\n").length;
         e != this.props.lines && (this.refs.lines.textContent = Array.from(new Array(e), (e, t) => t + 1).join(".\n") + ".", this.props.lines = e)
