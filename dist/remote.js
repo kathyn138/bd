@@ -1909,13 +1909,15 @@
           return this.props.children
       }
   };
+
+  //Ee seems to be the side menu
   class Ee {
       constructor(e) {
           this.onClick = e
       }
       get items() {
           return [{
-              text: "Settings",
+              text: "Emojis",
               id: "core"
           }, {
               text: "Plugins",
