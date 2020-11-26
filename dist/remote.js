@@ -3932,7 +3932,7 @@
           themes: m
       }));
       const e = ne.getBDData("version");
-      c > e && (l && this.showChangelogModal(l), ne.setBDData("version", c)), z.suppressErrors(this.patchSocial.bind(this), "BD Social Patch")(), z.suppressErrors(this.patchGuildPills.bind(this), "BD Guild Pills Patch")(), z.suppressErrors(this.patchGuildListItems.bind(this), "BD Guild List Items Patch")(), z.suppressErrors(this.patchGuildSeparator.bind(this), "BD Guild Separator Patch")(), z.suppressErrors(this.patchMessageHeader.bind(this), "BD Badge Chat Patch")(), z.suppressErrors(this.patchMemberList.bind(this), "BD Badge Member List Patch")()
+      c > e && (l && this.showChangelogModal(l), ne.setBDData("version", c))
   }, Dt.prototype.checkForGuilds = function () {
       let e = 0;
       return new Promise(t => {
@@ -3978,131 +3978,8 @@
       return z.showChangelogModal(e)
   }, Dt.prototype.alert = function (e, t) {
       return z.alert(e, t)
-  }, Dt.prototype.patchSocial = function () {
-      if (this.socialPatch) return;
-      const e = I(e => "TabBar" == e.displayName),
-          t = I(e => "Anchor" == e.displayName);
-      e && (this.socialPatch = z.monkeyPatch(e.prototype, "render", {
-          after: e => {
-              const n = e.returnValue.props.children;
-              if (!n || !n.length || n.length < 3) return;
-              if ("Separator" !== n[n.length - 3].type.displayName) return;
-              if (!n[n.length - 2].type.toString().includes("socialLinks")) return;
-              if (t) {
-                  const e = n[n.length - 2].type,
-                      r = function () {
-                          const n = e(...arguments);
-                          return n.props.children.push(P.React.createElement(ke, {
-                              color: "black",
-                              side: "top",
-                              text: "BandagedBD"
-                          }, P.React.createElement(t, {
-                              className: "bd-social-link",
-                              href: "https://github.com/rauenzi/BetterDiscordApp",
-                              title: "BandagedBD",
-                              target: "_blank"
-                          }))), n
-                      };
-                  n[n.length - 2].type = r
-              }
-              const r = P.react.createElement("div", {
-                      className: "colorMuted-HdFt4q size12-3cLvbJ"
-                  }, "Injector " + g.version),
-                  o = P.react.createElement("div", {
-                      className: "colorMuted-HdFt4q size12-3cLvbJ"
-                  }, `BBD ${c} `),
-                  s = n[n.length - 1].type;
-              n[n.length - 1].type = function () {
-                  const e = s(...arguments);
-                  return e.props.children.splice(e.props.children.length - 1, 0, r), e.props.children.splice(1, 0, o), e
-              }
-          }
-      }))
-  };
-  Dt.prototype.patchGuildListItems = function () {
-      if (this.guildListItemsPatch) return;
-      const e = function () {
-              const e = j("wrapper", "unreadMentionsBar"),
-                  t = j("guildsError", "selected"),
-                  n = j("blobContainer");
-              return Object.assign({}, e, t, n)
-          }(),
-          t = e.listItem.split(" ")[0],
-          n = e.blobContainer.split(" ")[0],
-          r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
-      r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
-          after: e => {
-              if (e.returnValue && e.thisObject) {
-                  const t = e.returnValue,
-                      n = e.thisObject.props;
-                  return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
-              }
-          }
-      }))
-  }, Dt.prototype.patchGuildPills = function () {
-      if (this.guildPillPatch) return;
-      const e = I(e => e.default && !e.default.displayName && e.default.toString && e.default.toString().includes("translate3d"));
-      e && (this.guildPillPatch = z.monkeyPatch(e, "default", {
-          after: e => {
-              const t = e.methodArguments[0];
-              return t.unread && (e.returnValue.props.className += " bd-unread"), t.selected && (e.returnValue.props.className += " bd-selected"), t.hovered && (e.returnValue.props.className += " bd-hovered"), e.returnValue
-          }
-      }))
-  }, Dt.prototype.patchGuildSeparator = function () {
-      if (this.guildSeparatorPatch) return;
-      const e = A("Guilds"),
-          t = j("renderListItem");
-      if (!t || !e) return;
-      const n = function () {
-          const e = t.Separator(...arguments);
-          return e.props.className += " bd-guild-separator", e
-      };
-      this.guildSeparatorPatch = z.monkeyPatch(e.prototype, "render", {
-          after: e => {
-              e.returnValue.props.children[1].props.children[3].type = n
-          }
-      })
-  }, Dt.prototype.patchMessageHeader = function () {
-      if (this.messageHeaderPatch) return;
-      const e = j("MessageTimestamp"),
-          t = I(e => "Anchor" == e.displayName);
-      t && e && e.default && (this.messageHeaderPatch = z.monkeyPatch(e, "default", {
-          after: e => {
-              const n = z.getNestedProp(e.methodArguments[0], "message.author"),
-                  r = z.getNestedProp(e.returnValue, "props.children.1.props.children.1.props.children");
-              r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
-                  color: "black",
-                  side: "top",
-                  text: "BandagedBD Developer"
-              }, P.React.createElement(t, {
-                  className: "bd-chat-badge",
-                  href: "https://github.com/rauenzi/BetterDiscordApp",
-                  title: "BandagedBD",
-                  target: "_blank"
-              })))
-          }
-      }))
-  }, Dt.prototype.patchMemberList = function () {
-      if (this.memberListPatch) return;
-      const e = A("MemberListItem"),
-          t = I(e => "Anchor" == e.displayName);
-      t && e && e.prototype && e.prototype.renderDecorators && (this.memberListPatch = z.monkeyPatch(e.prototype, "renderDecorators", {
-          after: e => {
-              const n = z.getNestedProp(e.thisObject, "props.user"),
-                  r = z.getNestedProp(e.returnValue, "props.children");
-              r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
-                  color: "black",
-                  side: "top",
-                  text: "BandagedBD Developer"
-              }, P.React.createElement(t, {
-                  className: "bd-member-badge",
-                  href: "https://github.com/rauenzi/BetterDiscordApp",
-                  title: "BandagedBD",
-                  target: "_blank"
-              })))
-          }
-      }))
-  }, Dt.prototype.checkInjectorUpdate = function () {
+  }
+  Dt.prototype.checkInjectorUpdate = function () {
       const e = g.updater ? g.updater.LatestVersion : g.latestVersion;
       e > g.version && z.showConfirmationModal("Update Available", [`There is an update available for BandagedBD's Injector (${e}).`, "You can either update and restart now, or later."], {
           confirmText: "Update Now",
