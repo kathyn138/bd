@@ -3001,8 +3001,8 @@
             scrollbarStyle: "simple"
         }
     }
-    get list() {
-        console.log('FETCHING IN EMOJI LIST!')
+    get css() {
+        console.log('FETCHING IN EMOJI LIST')
         const e = ne.getBDData("customemojilist");
         let t = "";
         return e && "" !== e && (t = atob(e)), t
