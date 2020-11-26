@@ -3003,7 +3003,7 @@
     }
     get css() {
         console.log('FETCHING IN EMOJI LIST')
-        const e = ne.getBDData("bdcustomcss");
+        const e = ne.getBDData("customemojilist");
         let t = "";
         return e && "" !== e && (t = atob(e)), t
     }
@@ -3113,7 +3113,8 @@
         B.removeStyle("customcss"), B.addStyle("customcss", this.editor.session.getValue())
     }
     saveCss() {
-        ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
+        console.log('SAVING IN EMOJI EDITOR')
+        ne.setBDData("customemojilist", btoa(this.editor.session.getValue()))
     }
     detach() {
         this.setState({
