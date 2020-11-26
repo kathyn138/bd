@@ -1953,6 +1953,7 @@
           return e || (this.injectRoot() ? this.root : null)
       }
       injectRoot() {
+          console.log('INJECTING SIDE MENU')
           const e = B.queryAll("[class*='side-'] > [class*='item-']:not([class*=Danger])"),
               t = e[e.length - 1];
           return !!t && (t.parentElement.insertBefore(B.createElement('<div id="bd-settings-sidebar">'), t.previousElementSibling), !0)
@@ -3735,7 +3736,6 @@
           return e || (this.injectRoot() ? this.root : null)
       }
       injectRoot() {
-          console.log('WE R INJECT BD SETTINGS')
           const e = B.query(".layer-3QrUeG .standardSidebarView-3F1I7i, .layer-3QrUeG .ui-standard-sidebar-view");
           if (!e) return !1;
           const t = B.createElement('<div id="bd-settingspane-container" class="contentRegion-3nDuYy content-region">');
