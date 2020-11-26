@@ -1455,7 +1455,7 @@
                 }
                 if (!W.statSync(H.resolve(n, o)).isFile()) return;
                 const s = W.statSync(H.resolve(n, o));
-                s && s.mtime && s.mtime.getTime() && "number" == typeof s.mtime.getTime() && this.timeCache[o] != s.mtime.getTime() && (this.timeCache[o] = s.mtime.getTime(), "rename" == e && (t ? U.loadPlugin(o) : '', "change" == e && (t ? U.reloadPlugin(o) : ''))
+                s && s.mtime && s.mtime.getTime() && "number" == typeof s.mtime.getTime() && this.timeCache[o] != s.mtime.getTime() && (this.timeCache[o] = s.mtime.getTime(), "rename" == e && (t ? U.loadPlugin(o) : ''), "change" == e && (t ? U.reloadPlugin(o) : ''))
             })
         }
         _updateTimeCache(e, t) {
@@ -4140,7 +4140,7 @@
             h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-1" == e && (t ? Ge.addButton() : Ge.removeButton()), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
         }
         async initializeSettings() {
-            h.reactDevTools && Le.start(), h["bda-gs-2"] && B.addClass(document.body, "bd-minimal"), h["bda-gs-3"] && B.addClass(document.body, "bd-minimal-chan"), h["bda-gs-1"] && Ge.addButton(), h["bda-gs-4"] && qe.start(), h["bda-gs-5"] && B.addClass(B.query("#app-mount"), "bda-dark"), h["bda-gs-6"] && Me.inject24Hour(), h["bda-gs-7"] && Ce.injectColoredText(), h["fork-ps-4"] && We.start(), h["fork-ps-5"] && (Y.watchContent("plugin"), Y.watchContent("theme")), h["bda-gs-8"] && _e.startDebugListener(), h["fork-dm-1"] && _e.startCopySelector(), this.saveSettings()
+            h.reactDevTools && Le.start(), h["bda-gs-2"] && B.addClass(document.body, "bd-minimal"), h["bda-gs-3"] && B.addClass(document.body, "bd-minimal-chan"), h["bda-gs-1"] && Ge.addButton(), h["bda-gs-4"] && qe.start(), h["bda-gs-5"] && B.addClass(B.query("#app-mount"), "bda-dark"), h["bda-gs-6"] && Me.inject24Hour(), h["bda-gs-7"] && Ce.injectColoredText(), h["fork-ps-4"] && We.start(), h["fork-ps-5"] && (Y.watchContent("plugin")), h["bda-gs-8"] && _e.startDebugListener(), h["fork-dm-1"] && _e.startCopySelector(), this.saveSettings()
         }
         saveSettings() {
             ne.setSettingGroup("settings", h)
