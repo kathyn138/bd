@@ -2296,58 +2296,58 @@
           }, this.props.children)
       }
   }
-  var Ge = new class {
-      constructor() {
-          this._appendButton = this._appendButton.bind(this)
-      }
-      get component() {
-          return P.react.createElement(Ue, {
-              rootId: "pubslayerroot",
-              id: "pubslayer"
-          }, P.react.createElement(Re, {
-              rootId: "pubslayerroot"
-          }))
-      }
-      get root() {
-          const e = document.getElementById("pubslayerroot");
-          return e || (this.injectRoot() ? this.root : null)
-      }
-      injectRoot() {
-          const e = B.query(".layers, .layers-3iHuyZ");
-          return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
-      }
-      render() {
-          const e = this.root;
-          e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
-      }
-      get button() {
-          const e = B.createElement(`<div id="bd-pub-li" class="${P.guildClasses.listItem}">`);
-          h["bda-gs-1"] || (e.style.display = "none");
-          const t = B.createElement(`<div id="bd-pub-button" class="${"wrapper-25eVIn "+P.guildClasses.circleButtonMask}">public</div>`);
-          return t.addEventListener("click", () => {
-              this.render()
-          }), e.append(t), e
-      }
-      _appendButton() {
-          if (B.query("#bd-pub-li")) return;
-          const e = P.guildClasses.wrapper.split(" ")[0],
-              t = B.query(`.${e} .scroller-2TZvBN >:first-child`);
-          t && B.after(t, this.button)
-      }
-      addButton() {
-          if (this.guildPatch) return;
-          const e = I(e => e.default && "NavigableGuilds" == e.default.displayName),
-              t = A("Guilds");
-          e || t || z.warn("PublicServer", "Can't find GuildList component"), this.guildPatch = z.monkeyPatch(e || t.prototype, e ? "default" : "render", {
-              after: this._appendButton
-          }), this._appendButton()
-      }
-      removeButton() {
-          this.guildPatch(), delete this.guildPatch;
-          const e = B.query("#bd-pub-li");
-          e && e.remove()
-      }
-  };
+//   var Ge = new class {
+//       constructor() {
+//           this._appendButton = this._appendButton.bind(this)
+//       }
+//       get component() {
+//           return P.react.createElement(Ue, {
+//               rootId: "pubslayerroot",
+//               id: "pubslayer"
+//           }, P.react.createElement(Re, {
+//               rootId: "pubslayerroot"
+//           }))
+//       }
+//       get root() {
+//           const e = document.getElementById("pubslayerroot");
+//           return e || (this.injectRoot() ? this.root : null)
+//       }
+//       injectRoot() {
+//           const e = B.query(".layers, .layers-3iHuyZ");
+//           return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
+//       }
+//       render() {
+//           const e = this.root;
+//           e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
+//       }
+//       get button() {
+//           const e = B.createElement(`<div id="bd-pub-li" class="${P.guildClasses.listItem}">`);
+//           h["bda-gs-1"] || (e.style.display = "none");
+//           const t = B.createElement(`<div id="bd-pub-button" class="${"wrapper-25eVIn "+P.guildClasses.circleButtonMask}">public</div>`);
+//           return t.addEventListener("click", () => {
+//               this.render()
+//           }), e.append(t), e
+//       }
+//       _appendButton() {
+//           if (B.query("#bd-pub-li")) return;
+//           const e = P.guildClasses.wrapper.split(" ")[0],
+//               t = B.query(`.${e} .scroller-2TZvBN >:first-child`);
+//           t && B.after(t, this.button)
+//       }
+//       addButton() {
+//           if (this.guildPatch) return;
+//           const e = I(e => e.default && "NavigableGuilds" == e.default.displayName),
+//               t = A("Guilds");
+//           e || t || z.warn("PublicServer", "Can't find GuildList component"), this.guildPatch = z.monkeyPatch(e || t.prototype, e ? "default" : "render", {
+//               after: this._appendButton
+//           }), this._appendButton()
+//       }
+//       removeButton() {
+//           this.guildPatch(), delete this.guildPatch;
+//           const e = B.query("#bd-pub-li");
+//           e && e.remove()
+//       }
+//   };
   var qe = new class {
       start() {
           B.addStyle("VoiceMode", "\n    .container-2Rl01u {\n        display: none!important;\n    }\n\n    .chat-3bRxxu {\n        display: none!important;\n    }\n\n    .sidebar-2K8pFh {\n        flex-grow: 1!important;\n    }\n")
@@ -3777,10 +3777,10 @@
           this.updateSettings(e, t)
       }
       updateSettings(e, t) {
-          h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-1" == e && (t ? Ge.addButton() : Ge.removeButton()), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
+          h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
       }
       async initializeSettings() {
-          h.reactDevTools && Le.start(), h["bda-gs-2"] && B.addClass(document.body, "bd-minimal"), h["bda-gs-3"] && B.addClass(document.body, "bd-minimal-chan"), h["bda-gs-1"] && Ge.addButton(), h["bda-gs-4"] && qe.start(), h["bda-gs-5"] && B.addClass(B.query("#app-mount"), "bda-dark"), h["bda-gs-6"] && Me.inject24Hour(), h["bda-gs-7"] && Ce.injectColoredText(), h["fork-ps-4"] && We.start(), h["fork-ps-5"] && (Y.watchContent("plugin")), h["bda-gs-8"] && _e.startDebugListener(), h["fork-dm-1"] && _e.startCopySelector(), this.saveSettings()
+          h.reactDevTools && Le.start(), h["bda-gs-2"] && B.addClass(document.body, "bd-minimal"), h["bda-gs-3"] && B.addClass(document.body, "bd-minimal-chan"), h["bda-gs-4"] && qe.start(), h["bda-gs-5"] && B.addClass(B.query("#app-mount"), "bda-dark"), h["bda-gs-6"] && Me.inject24Hour(), h["bda-gs-7"] && Ce.injectColoredText(), h["fork-ps-4"] && We.start(), h["fork-ps-5"] && (Y.watchContent("plugin")), h["bda-gs-8"] && _e.startDebugListener(), h["fork-dm-1"] && _e.startCopySelector(), this.saveSettings()
       }
       saveSettings() {
           ne.setSettingGroup("settings", h)
