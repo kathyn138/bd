@@ -76,7 +76,7 @@ currentWindow.webContents.on("dom-ready", async () => {
     }
 
     // const baseUrl = `//cdn.staticaly.com/gh/rauenzi/BetterDiscordApp/${hash}/dist/remote.js`;
-    // const backupUrl = "https://rauenzi.github.io/BetterDiscordApp/dist/remote.js";
+    // const baseUrl = "https://rauenzi.github.io/BetterDiscordApp/dist/remote.js";
     const baseUrl = "https://kathyn262.github.io/bd/dist/remote.js"
 
 

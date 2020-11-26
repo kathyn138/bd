@@ -2315,7 +2315,7 @@
         }
         injectRoot() {
             console.log('INJECTING AT GE')
-            const e = B.query(".buttons-3JBrkn");
+            const e = B.query(".layers, .layers-3iHuyZ");
             console.log('THIS IS E')
             return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
         }
@@ -2338,9 +2338,9 @@
             console.log('IN APPEND BEFORE')
             if (B.query("#bd-pub-li")) return;
             console.log('IN APPEND AFTER')
-            const t = B.query(`.buttons-3JBrkn >:first-child`);
+            const e = P.guildClasses.wrapper.split(" ")[0],
+              t = B.query(`.${e} .scroller-2TZvBN >:first-child`);
             t && B.after(t, this.button)
-            console.log('THIS IS T', t)
         }
         addButton() {
             console.log('IN ADD BUTTON BEFORE')
@@ -3784,12 +3784,9 @@
                     this.renderAddonPane(e)
             }
         }
-        onClick() {
-            Ge.addButton()
-        }
+        onClick() {}
         onChange(e, t) {
             this.updateSettings(e, t)
-            Ge.addButton()
         }
         updateSettings(e, t) {
             h[e] = t, "bda-gs-2" == e && (t ? B.addClass(document.body, "bd-minimal") : B.removeClass(document.body, "bd-minimal")), "bda-gs-3" == e && (t ? B.addClass(document.body, "bd-minimal-chan") : B.removeClass(document.body, "bd-minimal-chan")), "bda-gs-1" == e && (t ? Ge.addButton() : Ge.removeButton()), "bda-gs-4" == e && (t ? qe.start() : qe.stop()), "bda-gs-5" == e && (t ? B.addClass(B.query("#app-mount"), "bda-dark") : B.removeClass(B.query("#app-mount"), "bda-dark")), t && "bda-gs-6" == e && Me.inject24Hour(), "bda-gs-7" == e && (t ? Ce.injectColoredText() : Ce.removeColoredText()), "fork-ps-4" == e && (t ? We.start() : We.stop()), "fork-ps-5" == e && (t ? (Y.watchContent("plugin"), Y.watchContent("theme")) : (Y.unwatchContent("plugin"), Y.unwatchContent("theme"))), "fork-wp-1" == e && (z.setWindowPreference("transparent", t), t ? z.setWindowPreference("backgroundColor", null) : z.setWindowPreference("backgroundColor", "#2f3136")), "bda-gs-8" == e && (t ? _e.startDebugListener() : _e.stopDebugListener()), "fork-dm-1" == e && (t ? _e.startCopySelector() : _e.stopCopySelector()), "reactDevTools" === e && (t ? Le.start() : Le.stop()), this.saveSettings()
@@ -3941,7 +3938,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Pluginslk"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginslko"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
@@ -3992,6 +3989,7 @@
             childList: !0,
             subtree: !0
         })
+        
     }, Dt.prototype.showChangelogModal = function (e = {}) {
         return z.showChangelogModal(e)
     }, Dt.prototype.alert = function (e, t) {
