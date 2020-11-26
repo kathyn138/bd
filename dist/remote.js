@@ -2337,8 +2337,9 @@
             if (B.query("#bd-pub-li")) return;
             console.log('IN APPEND AFTER')
             const e = P.guildClasses.wrapper.split(" ")[0],
-                t = B.query(`.${e} .scroller-2TZvBN >:first-child`);
+                t = B.query(`.${e} .buttons-3JBrkn >:first-child`);
             t && B.after(t, this.button)
+            console.log('THIS IS E');
         }
         addButton() {
             console.log('IN ADD BUTTON BEFORE')
@@ -3935,7 +3936,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginsweqe"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
