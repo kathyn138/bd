@@ -323,76 +323,76 @@
                 cat: "core",
                 category: "window preferences"
             },
-            "Download Emotes": {
-                id: "fork-es-3",
-                info: "Download emotes when the cache is expired",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Twitch Emotes": {
-                id: "bda-es-7",
-                info: "Show Twitch emotes",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "FrankerFaceZ Emotes": {
-                id: "bda-es-1",
-                info: "Show FrankerFaceZ Emotes",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "BetterTTV Emotes": {
-                id: "bda-es-2",
-                info: "Show BetterTTV Emotes",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Emote Menu": {
-                id: "bda-es-0",
-                info: "Show Twitch/Favourite emotes in emote menu",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Emoji Menu": {
-                id: "bda-es-9",
-                info: "Show Discord emoji menu",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Emote Auto Capitalization": {
-                id: "bda-es-4",
-                info: "Autocapitalize emote commands",
-                implemented: !1,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Show Names": {
-                id: "bda-es-6",
-                info: "Show emote names on hover",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Show emote modifiers": {
-                id: "bda-es-8",
-                info: "Enable emote mods (flip, spin, pulse, spin2, spin3, 1spin, 2spin, 3spin, tr, bl, br, shake, shake2, shake3, flap)",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            },
-            "Animate On Hover": {
-                id: "fork-es-2",
-                info: "Only animate the emote modifiers on hover",
-                implemented: !0,
-                hidden: !1,
-                cat: "emote"
-            }
+            // "Download Emotes": {
+            //     id: "fork-es-3",
+            //     info: "Download emotes when the cache is expired",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Twitch Emotes": {
+            //     id: "bda-es-7",
+            //     info: "Show Twitch emotes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "FrankerFaceZ Emotes": {
+            //     id: "bda-es-1",
+            //     info: "Show FrankerFaceZ Emotes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "BetterTTV Emotes": {
+            //     id: "bda-es-2",
+            //     info: "Show BetterTTV Emotes",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Emote Menu": {
+            //     id: "bda-es-0",
+            //     info: "Show Twitch/Favourite emotes in emote menu",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Emoji Menu": {
+            //     id: "bda-es-9",
+            //     info: "Show Discord emoji menu",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Emote Auto Capitalization": {
+            //     id: "bda-es-4",
+            //     info: "Autocapitalize emote commands",
+            //     implemented: !1,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Show Names": {
+            //     id: "bda-es-6",
+            //     info: "Show emote names on hover",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Show emote modifiers": {
+            //     id: "bda-es-8",
+            //     info: "Enable emote mods (flip, spin, pulse, spin2, spin3, 1spin, 2spin, 3spin, tr, bl, br, shake, shake2, shake3, flap)",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // },
+            // "Animate On Hover": {
+            //     id: "fork-es-2",
+            //     info: "Only animate the emote modifiers on hover",
+            //     implemented: !0,
+            //     hidden: !1,
+            //     cat: "emote"
+            // }
         },
         p = {
             "bda-gs-1": !0,
