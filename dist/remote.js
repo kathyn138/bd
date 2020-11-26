@@ -2309,11 +2309,14 @@
             }))
         }
         get root() {
+            console.log('THIS IS AT ROOT')
             const e = document.getElementById("pubslayerroot");
             return e || (this.injectRoot() ? this.root : null)
         }
         injectRoot() {
+            console.log('INJECTING AT GE')
             const e = B.query(".buttons-3JBrkn");
+            console.log('THIS IS E')
             return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
         }
         render() {
@@ -3926,7 +3929,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginssadsa"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
