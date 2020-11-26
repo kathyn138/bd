@@ -131,11 +131,14 @@
         return x
     })), n.d(r, "subEmotesTwitch", (function () {
         return w
-    })), n.d(r, "bdEmotes", (function () {
-        return k
-    })), n.d(r, "bdEmoteSettingIDs", (function () {
-        return E
-    })), n.d(r, "bdthemes", (function () {
+    })), 
+    // n.d(r, "bdEmotes", (function () {
+    //     return k
+    // })), 
+    // n.d(r, "bdEmoteSettingIDs", (function () {
+    //     return E
+    // })), 
+    n.d(r, "bdthemes", (function () {
         return C
     })), n.d(r, "bdplugins", (function () {
         return M
@@ -438,20 +441,20 @@
         v = {},
         x = {},
         w = {},
-        k = {
-            TwitchGlobal: {},
-            TwitchSubscriber: {},
-            BTTV: {},
-            FrankerFaceZ: {},
-            BTTV2: {}
-        },
-        E = {
-            TwitchGlobal: "bda-es-7",
-            TwitchSubscriber: "bda-es-7",
-            BTTV: "bda-es-2",
-            FrankerFaceZ: "bda-es-1",
-            BTTV2: "bda-es-2"
-        },
+        // k = {
+        //     TwitchGlobal: {},
+        //     TwitchSubscriber: {},
+        //     BTTV: {},
+        //     FrankerFaceZ: {},
+        //     BTTV2: {}
+        // },
+        // E = {
+        //     TwitchGlobal: "bda-es-7",
+        //     TwitchSubscriber: "bda-es-7",
+        //     BTTV: "bda-es-2",
+        //     FrankerFaceZ: "bda-es-1",
+        //     BTTV2: "bda-es-2"
+        // },
         C = {},
         M = {},
         S = {},
@@ -2191,7 +2194,7 @@
             const e = P.react.createElement(ke, {
                 color: "black",
                 side: "top",
-                text: "Changelog"
+                text: "Hi :D"
             }, P.react.createElement("div", {
                 className: "bd-changelog-button",
                 onClick: () => {
@@ -4718,9 +4721,9 @@
         get settings() {
             return d
         },
-        get emotes() {
-            return k
-        },
+        // get emotes() {
+        //     return k
+        // },
         get screenWidth() {
             return Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
         },
