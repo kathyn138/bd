@@ -2320,6 +2320,7 @@
             return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
         }
         render() {
+            console.log('IN RENDER')
             const e = this.root;
             e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
         }
@@ -2332,18 +2333,23 @@
             }), e.append(t), e
         }
         _appendButton() {
+            console.log('IN APPEND BEFORE')
             if (B.query("#bd-pub-li")) return;
+            console.log('IN APPEND AFTER')
             const e = P.guildClasses.wrapper.split(" ")[0],
                 t = B.query(`.${e} .scroller-2TZvBN >:first-child`);
             t && B.after(t, this.button)
         }
         addButton() {
+            console.log('IN ADD BUTTON BEFORE')
             if (this.guildPatch) return;
+            console.log('IN ADD AFTER RETURN')
             const e = I(e => e.default && "NavigableGuilds" == e.default.displayName),
                 t = A("Guilds");
             e || t || z.warn("PublicServer", "Can't find GuildList component"), this.guildPatch = z.monkeyPatch(e || t.prototype, e ? "default" : "render", {
                 after: this._appendButton
             }), this._appendButton()
+            console.log('IN ADD AT VERY END')
         }
         removeButton() {
             this.guildPatch(), delete this.guildPatch;
@@ -3929,7 +3935,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Pluginssadsa"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
