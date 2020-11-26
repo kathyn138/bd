@@ -2825,6 +2825,7 @@
           }
       }
       get css() {
+          console.log('FETCHING THE CSS')
           const e = ne.getBDData("bdcustomcss");
           let t = "";
           return e && "" !== e && (t = atob(e)), t
@@ -2969,6 +2970,7 @@
         this.updateCss = this.updateCss.bind(this), 
         this.saveEmojiList = this.saveEmojiList.bind(this), 
         this.detach = this.detach.bind(this)
+        this.list = this.list.bind(this);
     }
     setInitialState() {
         this.state = {
@@ -2984,6 +2986,7 @@
         this.editor.on("change", () => {
             h["bda-css-0"] && (this.saveEmojiList(), this.updateCss())
         })
+        this.list()
     }
     componentWillUnmount() {
         this.editor.destroy()
