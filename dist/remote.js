@@ -119,32 +119,31 @@
         return m
     })), n.d(r, "bdConfig", (function () {
         return g
-    }))
-    // , n.d(r, "bemotes", (function () {
-    //     return b
-    // })), n.d(r, "emotesFfz", (function () {
-    //     return f
-    // })), n.d(r, "emotesBTTV", (function () {
-    //     return y
-    // })), n.d(r, "emotesBTTV2", (function () {
-    //     return v
-    // })), n.d(r, "emotesTwitch", (function () {
-    //     return x
-    // })), n.d(r, "subEmotesTwitch", (function () {
-    //     return w
-    // })), n.d(r, "bdEmotes", (function () {
-    //     return k
-    // })), n.d(r, "bdEmoteSettingIDs", (function () {
-    //     return E
-    // })), n.d(r, "bdthemes", (function () {
-    //     return C
-    // })), n.d(r, "bdplugins", (function () {
-    //     return M
-    // })), n.d(r, "pluginCookie", (function () {
-    //     return S
-    // })), n.d(r, "themeCookie", (function () {
-    //     return N
-    // }));
+    })), n.d(r, "bemotes", (function () {
+        return b
+    })), n.d(r, "emotesFfz", (function () {
+        return f
+    })), n.d(r, "emotesBTTV", (function () {
+        return y
+    })), n.d(r, "emotesBTTV2", (function () {
+        return v
+    })), n.d(r, "emotesTwitch", (function () {
+        return x
+    })), n.d(r, "subEmotesTwitch", (function () {
+        return w
+    })), n.d(r, "bdEmotes", (function () {
+        return k
+    })), n.d(r, "bdEmoteSettingIDs", (function () {
+        return E
+    })), n.d(r, "bdthemes", (function () {
+        return C
+    })), n.d(r, "bdplugins", (function () {
+        return M
+    })), n.d(r, "pluginCookie", (function () {
+        return S
+    })), n.d(r, "themeCookie", (function () {
+        return N
+    }));
     var o = n(4);
     const s = "0.0.306",
         i = window.DiscordNative && window.DiscordNative.remoteApp && window.DiscordNative.remoteApp.getVersion && window.DiscordNative.remoteApp.getVersion() || "0.0.306",
@@ -537,18 +536,18 @@
                 }, this.getInternalInstance = e => e[Object.keys(e).find(e => e.startsWith("__reactInternalInstance"))]
             }
             initialize() {}
-            // joinBD1() {
-            //     this.InviteActions.acceptInviteAndTransitionToInviteChannel("0Tmfo5ZbORCRqbAd")
-            // }
-            // leaveBD1() {
-            //     this.GuildActions.leaveGuild("86004744966914048")
-            // }
-            // joinBD2() {
-            //     this.InviteActions.acceptInviteAndTransitionToInviteChannel("2HScm8j")
-            // }
-            // leaveBD2() {
-            //     this.GuildActions.leaveGuild("280806472928198656")
-            // }
+            joinBD1() {
+                this.InviteActions.acceptInviteAndTransitionToInviteChannel("0Tmfo5ZbORCRqbAd")
+            }
+            leaveBD1() {
+                this.GuildActions.leaveGuild("86004744966914048")
+            }
+            joinBD2() {
+                this.InviteActions.acceptInviteAndTransitionToInviteChannel("2HScm8j")
+            }
+            leaveBD2() {
+                this.GuildActions.leaveGuild("280806472928198656")
+            }
             get react() {
                 return this.internal.react
             }
@@ -579,12 +578,12 @@
             get messageClasses() {
                 return this.WebpackModules.findByUniqueProperties(["message", "containerCozy"])
             }
-            // get guildClasses() {
-            //     const e = this.WebpackModules.findByUniqueProperties(["wrapper", "unreadMentionsBar"]),
-            //         t = this.WebpackModules.findByUniqueProperties(["guildsError", "selected"]),
-            //         n = this.WebpackModules.findByUniqueProperties(["blobContainer"]);
-            //     return Object.assign({}, e, t, n)
-            // }
+            get guildClasses() {
+                const e = this.WebpackModules.findByUniqueProperties(["wrapper", "unreadMentionsBar"]),
+                    t = this.WebpackModules.findByUniqueProperties(["guildsError", "selected"]),
+                    n = this.WebpackModules.findByUniqueProperties(["blobContainer"]);
+                return Object.assign({}, e, t, n)
+            }
             get MessageContentComponent() {
                 return this.WebpackModules.find(e => e.defaultProps && e.defaultProps.hasOwnProperty("disableButtons"))
             }
@@ -4728,95 +4727,95 @@
     //         }
     //     }))
     // };
-    // Dt.prototype.patchGuildListItems = function () {
-    //     if (this.guildListItemsPatch) return;
-    //     const e = function () {
-    //             const e = j("wrapper", "unreadMentionsBar"),
-    //                 t = j("guildsError", "selected"),
-    //                 n = j("blobContainer");
-    //             return Object.assign({}, e, t, n)
-    //         }(),
-    //         t = e.listItem.split(" ")[0],
-    //         n = e.blobContainer.split(" ")[0],
-    //         r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
-    //     r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
-    //         after: e => {
-    //             if (e.returnValue && e.thisObject) {
-    //                 const t = e.returnValue,
-    //                     n = e.thisObject.props;
-    //                 return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
-    //             }
-    //         }
-    //     }))
-    // }, Dt.prototype.patchGuildPills = function () {
-    //     if (this.guildPillPatch) return;
-    //     const e = I(e => e.default && !e.default.displayName && e.default.toString && e.default.toString().includes("translate3d"));
-    //     e && (this.guildPillPatch = z.monkeyPatch(e, "default", {
-    //         after: e => {
-    //             const t = e.methodArguments[0];
-    //             return t.unread && (e.returnValue.props.className += " bd-unread"), t.selected && (e.returnValue.props.className += " bd-selected"), t.hovered && (e.returnValue.props.className += " bd-hovered"), e.returnValue
-    //         }
-    //     }))
-    // }, Dt.prototype.patchGuildSeparator = function () {
-    //     if (this.guildSeparatorPatch) return;
-    //     const e = A("Guilds"),
-    //         t = j("renderListItem");
-    //     if (!t || !e) return;
-    //     const n = function () {
-    //         const e = t.Separator(...arguments);
-    //         return e.props.className += " bd-guild-separator", e
-    //     };
-    //     this.guildSeparatorPatch = z.monkeyPatch(e.prototype, "render", {
-    //         after: e => {
-    //             e.returnValue.props.children[1].props.children[3].type = n
-    //         }
-    //     })
-    // }, Dt.prototype.patchMessageHeader = function () {
-    //     if (this.messageHeaderPatch) return;
-    //     const e = j("MessageTimestamp"),
-    //         t = I(e => "Anchor" == e.displayName);
-    //     t && e && e.default && (this.messageHeaderPatch = z.monkeyPatch(e, "default", {
-    //         after: e => {
-    //             const n = z.getNestedProp(e.methodArguments[0], "message.author"),
-    //                 r = z.getNestedProp(e.returnValue, "props.children.1.props.children.1.props.children");
-    //             r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
-    //                 color: "black",
-    //                 side: "top",
-    //                 text: "BandagedBD Developer"
-    //             }, P.React.createElement(t, {
-    //                 className: "bd-chat-badge",
-    //                 href: "https://github.com/rauenzi/BetterDiscordApp",
-    //                 title: "BandagedBD",
-    //                 target: "_blank"
-    //             }, P.React.createElement(Nt, {
-    //                 size: "16px",
-    //                 className: "bd-logo"
-    //             }))))
-    //         }
-    //     }))
-    // }, Dt.prototype.patchMemberList = function () {
-    //     if (this.memberListPatch) return;
-    //     const e = A("MemberListItem"),
-    //         t = I(e => "Anchor" == e.displayName);
-    //     t && e && e.prototype && e.prototype.renderDecorators && (this.memberListPatch = z.monkeyPatch(e.prototype, "renderDecorators", {
-    //         after: e => {
-    //             const n = z.getNestedProp(e.thisObject, "props.user"),
-    //                 r = z.getNestedProp(e.returnValue, "props.children");
-    //             r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
-    //                 color: "black",
-    //                 side: "top",
-    //                 text: "BandagedBD Developer"
-    //             }, P.React.createElement(t, {
-    //                 className: "bd-member-badge",
-    //                 href: "https://github.com/rauenzi/BetterDiscordApp",
-    //                 title: "BandagedBD",
-    //                 target: "_blank"
-    //             }, P.React.createElement(Nt, {
-    //                 size: "16px",
-    //                 className: "bd-logo"
-    //             }))))
-    //         }
-    //     }))
+    Dt.prototype.patchGuildListItems = function () {
+        if (this.guildListItemsPatch) return;
+        const e = function () {
+                const e = j("wrapper", "unreadMentionsBar"),
+                    t = j("guildsError", "selected"),
+                    n = j("blobContainer");
+                return Object.assign({}, e, t, n)
+            }(),
+            t = e.listItem.split(" ")[0],
+            n = e.blobContainer.split(" ")[0],
+            r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
+        r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
+            after: e => {
+                if (e.returnValue && e.thisObject) {
+                    const t = e.returnValue,
+                        n = e.thisObject.props;
+                    return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
+                }
+            }
+        }))
+    }, Dt.prototype.patchGuildPills = function () {
+        if (this.guildPillPatch) return;
+        const e = I(e => e.default && !e.default.displayName && e.default.toString && e.default.toString().includes("translate3d"));
+        e && (this.guildPillPatch = z.monkeyPatch(e, "default", {
+            after: e => {
+                const t = e.methodArguments[0];
+                return t.unread && (e.returnValue.props.className += " bd-unread"), t.selected && (e.returnValue.props.className += " bd-selected"), t.hovered && (e.returnValue.props.className += " bd-hovered"), e.returnValue
+            }
+        }))
+    }, Dt.prototype.patchGuildSeparator = function () {
+        if (this.guildSeparatorPatch) return;
+        const e = A("Guilds"),
+            t = j("renderListItem");
+        if (!t || !e) return;
+        const n = function () {
+            const e = t.Separator(...arguments);
+            return e.props.className += " bd-guild-separator", e
+        };
+        this.guildSeparatorPatch = z.monkeyPatch(e.prototype, "render", {
+            after: e => {
+                e.returnValue.props.children[1].props.children[3].type = n
+            }
+        })
+    }, Dt.prototype.patchMessageHeader = function () {
+        if (this.messageHeaderPatch) return;
+        const e = j("MessageTimestamp"),
+            t = I(e => "Anchor" == e.displayName);
+        t && e && e.default && (this.messageHeaderPatch = z.monkeyPatch(e, "default", {
+            after: e => {
+                const n = z.getNestedProp(e.methodArguments[0], "message.author"),
+                    r = z.getNestedProp(e.returnValue, "props.children.1.props.children.1.props.children");
+                r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
+                    color: "black",
+                    side: "top",
+                    text: "BandagedBD Developer"
+                }, P.React.createElement(t, {
+                    className: "bd-chat-badge",
+                    href: "https://github.com/rauenzi/BetterDiscordApp",
+                    title: "BandagedBD",
+                    target: "_blank"
+                }, P.React.createElement(Nt, {
+                    size: "16px",
+                    className: "bd-logo"
+                }))))
+            }
+        }))
+    }, Dt.prototype.patchMemberList = function () {
+        if (this.memberListPatch) return;
+        const e = A("MemberListItem"),
+            t = I(e => "Anchor" == e.displayName);
+        t && e && e.prototype && e.prototype.renderDecorators && (this.memberListPatch = z.monkeyPatch(e.prototype, "renderDecorators", {
+            after: e => {
+                const n = z.getNestedProp(e.thisObject, "props.user"),
+                    r = z.getNestedProp(e.returnValue, "props.children");
+                r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
+                    color: "black",
+                    side: "top",
+                    text: "BandagedBD Developer"
+                }, P.React.createElement(t, {
+                    className: "bd-member-badge",
+                    href: "https://github.com/rauenzi/BetterDiscordApp",
+                    title: "BandagedBD",
+                    target: "_blank"
+                }, P.React.createElement(Nt, {
+                    size: "16px",
+                    className: "bd-logo"
+                }))))
+            }
+        }))
     // }, Dt.prototype.checkInjectorUpdate = function () {
     //     const e = g.updater ? g.updater.LatestVersion : g.latestVersion;
     //     e > g.version && z.showConfirmationModal("Update Available", [`There is an update available for BandagedBD's Injector (${e}).`, "You can either update and restart now, or later."], {
@@ -4864,20 +4863,20 @@
     //     const m = await new Promise(e => s.open(p, {
     //         lazyEntries: !0
     //     }, (t, n) => e(n)));
-    //     m.on("entry", (function (e) {
-    //         if (e.fileName.endsWith("/")) return m.readEntry();
-    //         z.log("InjectorUpdate", "Extracting " + e.fileName);
-    //         const n = r.resolve(c, e.fileName);
-    //         i.sync(r.dirname(n)), m.openReadStream(e, (function (e, r) {
-    //             if (e) return u = !1;
-    //             r.on("end", (function () {
-    //                 m.readEntry()
-    //             })), r.pipe(t.createWriteStream(n))
-    //         }))
-    //     })), m.readEntry(), await new Promise(e => m.once("end", e));
-    //     const g = r.resolve(c, `${l}.bak${Math.round(performance.now())}`);
-    //     return await new Promise(n => t.rename(e, g, n)), z.log("InjectorUpdate", `Renaming ${r.basename(h)} to ${l}`), u = await new Promise(n => t.rename(h, e, e => n(!e))), u ? u ? (await new Promise(e => o(g, e)), await new Promise(e => t.unlink(p, e)), z.log("InjectorUpdate", "Injector Updated!"), u) : (z.err("InjectorUpdate", "Something went wrong... restoring backups."), await new Promise(e => o(h, e)), await new Promise(n => t.rename(g, e, n)), u) : (z.err("InjectorUpdate", "Failed to rename the final directory"), u)
-    // };
+        m.on("entry", (function (e) {
+            if (e.fileName.endsWith("/")) return m.readEntry();
+            z.log("InjectorUpdate", "Extracting " + e.fileName);
+            const n = r.resolve(c, e.fileName);
+            i.sync(r.dirname(n)), m.openReadStream(e, (function (e, r) {
+                if (e) return u = !1;
+                r.on("end", (function () {
+                    m.readEntry()
+                })), r.pipe(t.createWriteStream(n))
+            }))
+        })), m.readEntry(), await new Promise(e => m.once("end", e));
+        const g = r.resolve(c, `${l}.bak${Math.round(performance.now())}`);
+        return await new Promise(n => t.rename(e, g, n)), z.log("InjectorUpdate", `Renaming ${r.basename(h)} to ${l}`), u = await new Promise(n => t.rename(h, e, e => n(!e))), u ? u ? (await new Promise(e => o(g, e)), await new Promise(e => t.unlink(p, e)), z.log("InjectorUpdate", "Injector Updated!"), u) : (z.err("InjectorUpdate", "Something went wrong... restoring backups."), await new Promise(e => o(h, e)), await new Promise(n => t.rename(g, e, n)), u) : (z.err("InjectorUpdate", "Failed to rename the final directory"), u)
+    };
     var It = new Dt;
     const Lt = {
         get React() {
