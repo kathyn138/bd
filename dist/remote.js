@@ -3909,7 +3909,7 @@
         return e || (this.injectRoot() ? this.root : null)
     }
     injectRoot() {
-        const e = B.query(".buttons-3JBrkn");
+        const e = B.query(".buttons-3JBrkn .da-buttons");
         if (!e) return !1;
         const t = B.createElement('<div id="emoji-pane-container" class="contentRegion-3nDuYy content-region">');
         return e.append(t), z.onRemoved(t, () => {
@@ -4103,7 +4103,7 @@
       await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
       z.log("Startup", "Updating Settings"), St.initializeSettings(), 
       z.log("Startup", "Loading Emojis"), emojiSection.initializeSettings(),
-      z.log("Startup", "Loading Pluginss"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
+      z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
           h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
       })),  
       z.log("Startup", "Initializing Main Observer"), this.initObserver(), h["fork-ps-1"] && (z.log("Startup", "Collecting Startup Errors"), z.showContentErrors({
@@ -4139,7 +4139,8 @@
   }, Dt.prototype.initSettings = function () {
       if (ne.initialize(), ne.getSettingGroup("settings")) {
           St.loadSettings();
-          for (const e in p) null == h[e] && (h[e] = p[e], St.saveSettings())
+          emojiSection.loadSettings();
+          for (const e in p) null == h[e] && (h[e] = p[e], St.saveSettings(), emojiSection.saveSettings())
       } else Object.assign(h, p), St.saveSettings()
   }, Dt.prototype.initObserver = function () {
       new MutationObserver(e => {
@@ -4147,7 +4148,13 @@
               const n = e[t];
               if (void 0 !== U && U.rawObserver(n), !(n.addedNodes.length && n.addedNodes[0] instanceof Element)) continue;
               const r = n.addedNodes[0];
-              r.classList.contains("layer-3QrUeG") && (r.getElementsByClassName("guild-settings-base-section").length && r.setAttribute("layer-id", "server-settings"), r.getElementsByClassName("socialLinks-3jqNFy").length && (r.setAttribute("layer-id", "user-settings"), r.setAttribute("id", "user-settings"), document.getElementById("bd-settings-sidebar") || St.renderSidebar())), r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container"), r.classList.contains("layer-v9HyYc") && r.getElementsByClassName("emojiPicker-3m1S-j").length && !r.querySelector(".emojiPicker-3m1S-j").parentElement.classList.contains("animatorLeft-1EQxU0")
+              r.classList.contains("layer-3QrUeG") && (r.getElementsByClassName("guild-settings-base-section").length && r.setAttribute("layer-id", "server-settings"), 
+              r.getElementsByClassName("socialLinks-3jqNFy").length && (r.setAttribute("layer-id", "user-settings"), 
+              r.setAttribute("id", "user-settings"), 
+              document.getElementById("bd-settings-sidebar") || St.renderSidebar()), 
+              document.getElementById("emoji-pane-container") || emojiSection.renderSidebar()), 
+              r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container"), 
+            //   r.classList.contains("layer-v9HyYc") && r.getElementsById("emoji-pane-container").length && !r.querySelector("#emoji-pane-container").parentElement.classList.contains("animatorLeft-1EQxU0")
           }
       }).observe(document, {
           childList: !0,
