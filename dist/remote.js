@@ -4459,26 +4459,26 @@
                 key: "tools"
             }))
         }
-        get emoteComponent() {
-            return P.react.createElement(ze, {
-                contentColumn: !0,
-                fade: !0,
-                dark: !0
-            }, P.react.createElement(Ye, {
-                key: "espanel",
-                title: "Emote Settings",
-                onChange: this.onChange,
-                settings: this.emoteSettings,
-                button: {
-                    title: "Clear Emote Cache",
-                    onClick: () => {
-                        le.clearEmoteData(), le.init(), ie.init()
-                    }
-                }
-            }), P.react.createElement(Ae, {
-                key: "tools"
-            }))
-        }
+        // get emoteComponent() {
+        //     return P.react.createElement(ze, {
+        //         contentColumn: !0,
+        //         fade: !0,
+        //         dark: !0
+        //     }, P.react.createElement(Ye, {
+        //         key: "espanel",
+        //         title: "Emote Settings",
+        //         onChange: this.onChange,
+        //         settings: this.emoteSettings,
+        //         button: {
+        //             title: "Clear Emote Cache",
+        //             onClick: () => {
+        //                 le.clearEmoteData(), le.init(), ie.init()
+        //             }
+        //         }
+        //     }), P.react.createElement(Ae, {
+        //         key: "tools"
+        //     }))
+        // }
         get customCssComponent() {
             return P.react.createElement(ze, {
                 contentColumn: !0,
