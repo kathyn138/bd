@@ -1,3 +1,5 @@
+const { Console } = require("console");
+
 ! function (e) {
   var t = {};
 
@@ -3732,6 +3734,7 @@
           this.sideBarOnClick = this.sideBarOnClick.bind(this), this.onChange = this.onChange.bind(this), this.updateSettings = this.updateSettings.bind(this), this.sidebar = new Ee(this.sideBarOnClick), this.showOriginal = this.showOriginal.bind(this)
       }
       get root() {
+          console.log('IN ROOT OF ST')
           const e = B.query("#bd-settingspane-container");
           return e || (this.injectRoot() ? this.root : null)
       }
@@ -3906,6 +3909,7 @@
         this.showOriginal = this.showOriginal.bind(this)
     }
     get root() {
+        Console.LOG('IN ROOT OF EMOJI SECTION')
         const e = B.query("#emoji-pane-container");
         return e || (this.injectRoot() ? this.root : null)
     }
@@ -4105,7 +4109,7 @@
       // }), 
       await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
       z.log("Startup", "Updating Settings"), St.initializeSettings(), 
-      z.log("Startup", "Loading Emojiss"), emojiSection.initializeSettings(),
+      z.log("Startup", "Loading Emojis"), emojiSection.initializeSettings(),
       z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
           h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
       })),  
