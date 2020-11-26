@@ -2663,6 +2663,8 @@
           })
       }
   }
+
+  // NOTE: Xe appears to be detached custom css editor
   class Xe extends P.reactComponent {
       constructor(e) {
           super(e);
@@ -2957,14 +2959,13 @@
       }
   }
 
-  class emojiEditor extends P.reactComponent {
+
+  class EmojiEditor extends P.reactComponent {
     constructor(e) {
         super(e);
         this.props.lines = 0, this.setInitialState(), 
         this.attach = this.attach.bind(this), 
-        this.detachedEditor = P.react.createElement(Xe, {
-            attach: this.attach
-        }), this.onClick = this.onClick.bind(this), 
+        this.onClick = this.onClick.bind(this), 
         this.updateCss = this.updateCss.bind(this), 
         this.saveCss = this.saveCss.bind(this), 
         this.detach = this.detach.bind(this)
@@ -3020,16 +3021,7 @@
             style: {
                 padding: "60px 40px 0px"
             }
-        }, t && P.react.createElement("div", {
-            id: "editor-detached"
-        }, P.react.createElement(Pe, {
-            text: "Custom Emoji List"
-        }), P.react.createElement("h3", null, "Editor Detached"), P.react.createElement("button", {
-            className: "btn btn-primary",
-            onClick: () => {
-                e.attach()
-            }
-        }, "Attach")), !t && P.react.createElement("div", null, P.react.createElement(Pe, {
+        }, t && !t && P.react.createElement("div", null, P.react.createElement(Pe, {
             text: "Custom Emoji List"
         }), P.react.createElement("div", {
             className: "editor-wrapper"
@@ -3053,27 +3045,7 @@
             onClick: () => {
                 e.onClick("save")
             }
-        }, "Save"), P.react.createElement("button", {
-            style: {
-                borderRadius: "0 3px 3px 0",
-                borderLeft: "1px solid #3f4146"
-            },
-            className: "btn btn-primary",
-            onClick: () => {
-                e.onClick("detach")
-            }
-        }, "Detach"), P.react.createElement("span", {
-            style: {
-                fontSize: "10px",
-                marginLeft: "5px"
-            }
-        }, "Unsaved changes are lost on detach"), P.react.createElement("div", {
-            className: "help-text"
-        }, "Press ", P.react.createElement("code", {
-            className: "inline"
-        }, "ctrl"), "+", P.react.createElement("span", {
-            className: "inline"
-        }, ","), " with the editor focused to access the editor's settings.")))))
+        }, "Save")))))
     }
     onClick(e) {
         const t = this;
@@ -3857,7 +3829,7 @@
             contentColumn: !0,
             fade: !0,
             dark: !0
-        }, P.react.createElement(emojiEditor, {
+        }, P.react.createElement(EmojiEditor, {
             key: "emojieditor"
         }), P.react.createElement(Ae, {
             key: "tools"
