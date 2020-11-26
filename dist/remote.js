@@ -385,18 +385,7 @@
               }, this.getInternalInstance = e => e[Object.keys(e).find(e => e.startsWith("__reactInternalInstance"))]
           }
           initialize() {}
-          joinBD1() {
-              this.InviteActions.acceptInviteAndTransitionToInviteChannel("0Tmfo5ZbORCRqbAd")
-          }
-          leaveBD1() {
-              this.GuildActions.leaveGuild("86004744966914048")
-          }
-          joinBD2() {
-              this.InviteActions.acceptInviteAndTransitionToInviteChannel("2HScm8j")
-          }
-          leaveBD2() {
-              this.GuildActions.leaveGuild("280806472928198656")
-          }
+          
           get react() {
               return this.internal.react
           }
@@ -447,12 +436,6 @@
           }
           get NativeModule() {
               return this.WebpackModules.findByUniqueProperties(["setBadge"])
-          }
-          get InviteActions() {
-              return this.WebpackModules.findByUniqueProperties(["acceptInvite"])
-          }
-          get GuildActions() {
-              return this.WebpackModules.findByUniqueProperties(["leaveGuild"])
           }
           get Tooltips() {
               return this.WebpackModules.find(e => e.hide && e.show && !e.search && !e.submit && !e.search && !e.activateRagingDemon && !e.dismiss)
@@ -2112,88 +2095,7 @@
           }, this.props.text)
       }
   }
-  class Be extends P.reactComponent {
-      constructor(e) {
-          super(e), this.props.server.iconUrl || (this.props.server.iconUrl = this.props.fallback), this.state = {
-              imageError: !1,
-              joined: this.props.guildList.includes(this.props.server.identifier)
-          }
-      }
-      render() {
-          const {
-              server: e
-          } = this.props;
-          return P.react.createElement("div", {
-              className: "card-3Qj_Yx cardPrimary-1Hv-to marginBottom8-AtZOdT bd-server-card" + (e.pinned ? " bd-server-card-pinned" : "")
-          }, P.react.createElement("img", {
-              ref: "img",
-              className: "bd-server-image",
-              src: e.iconUrl,
-              onError: this.handleError.bind(this)
-          }), P.react.createElement("div", {
-              className: "flexChild-faoVW3 bd-server-content"
-          }, P.react.createElement("div", {
-              className: "flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY directionRow-3v3tfG noWrap-3jynv6 bd-server-header"
-          }, P.react.createElement("h5", {
-              className: "h5-18_1nd defaultColor-1_ajX0 margin-reset bd-server-name"
-          }, e.name), P.react.createElement("h5", {
-              className: "h5-18_1nd defaultColor-1_ajX0 margin-reset bd-server-member-count"
-          }, e.members, " Members")), P.react.createElement("div", {
-              className: "flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY directionRow-3v3tfG noWrap-3jynv6"
-          }, P.react.createElement("div", {
-              className: "scrollerWrap-2lJEkd scrollerThemed-2oenus themeGhostHairline-DBD-2d scrollerFade-1Ijw5y bd-server-description-container"
-          }, P.react.createElement("div", {
-              className: "scroller-2FKFPG scroller bd-server-description"
-          }, e.description))), P.react.createElement("div", {
-              className: "flex-1xMQg5 flex-1O1GKY horizontal-1ae9ci horizontal-2EEEnY directionRow-3v3tfG noWrap-3jynv6 bd-server-footer"
-          }, P.react.createElement("div", {
-              className: "flexChild-faoVW3 bd-server-tags",
-              style: {
-                  flex: "1 1 auto"
-              }
-          }, e.categories.join(", ")), this.state.joined && P.react.createElement("button", {
-              type: "button",
-              className: "button-38aScr lookFilled-1Gx00P colorBrand-3pXr91 sizeMin-1mJd1x grow-q77ONN colorGreen-29iAKY",
-              style: {
-                  minHeight: "12px",
-                  marginTop: "4px",
-                  backgroundColor: "#3ac15c"
-              }
-          }, P.react.createElement("div", {
-              className: "ui-button-contents"
-          }, "Joined")), e.error && P.react.createElement("button", {
-              type: "button",
-              className: "button-38aScr lookFilled-1Gx00P colorBrand-3pXr91 sizeMin-1mJd1x grow-q77ONN disabled-9aF2ug",
-              style: {
-                  minHeight: "12px",
-                  marginTop: "4px",
-                  backgroundColor: "#c13a3a"
-              }
-          }, P.react.createElement("div", {
-              className: "ui-button-contents"
-          }, "Error")), !e.error && !this.state.joined && P.react.createElement("button", {
-              type: "button",
-              className: "button-38aScr lookFilled-1Gx00P colorBrand-3pXr91 sizeMin-1mJd1x grow-q77ONN",
-              style: {
-                  minHeight: "12px",
-                  marginTop: "4px"
-              },
-              onClick: () => {
-                  this.join()
-              }
-          }, P.react.createElement("div", {
-              className: "ui-button-contents"
-          }, "Join")))))
-      }
-      handleError() {
-          this.props.server.iconUrl = this.props.fallback, this.setState({
-              imageError: !0
-          })
-      }
-      join() {
-          this.props.join(this)
-      }
-  }
+  
   class ze extends P.reactComponent {
       constructor(e) {
           super(e)
