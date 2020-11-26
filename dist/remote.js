@@ -3735,6 +3735,7 @@
           return e || (this.injectRoot() ? this.root : null)
       }
       injectRoot() {
+          console.log('WE R INJECT BD SETTINGS')
           const e = B.query(".layer-3QrUeG .standardSidebarView-3F1I7i, .layer-3QrUeG .ui-standard-sidebar-view");
           if (!e) return !1;
           const t = B.createElement('<div id="bd-settingspane-container" class="contentRegion-3nDuYy content-region">');
@@ -3909,7 +3910,9 @@
         return e || (this.injectRoot() ? this.root : null)
     }
     injectRoot() {
+        console.log('WE R INJECTING EMOJI CONTAINER')
         const e = B.query(".buttons-3JBrkn .da-buttons");
+        console.log('THIS IS E', e)
         if (!e) return !1;
         const t = B.createElement('<div id="emoji-pane-container" class="contentRegion-3nDuYy content-region">');
         return e.append(t), z.onRemoved(t, () => {
