@@ -4630,9 +4630,11 @@
         if (g.version < a) return void z.alert("Not Supported", "BetterDiscord v" + g.version + " (your version) is not supported by the latest js (" + c + ").<br><br> Please download the latest version from <a href='https://github.com/rauenzi/BetterDiscordApp/releases/latest' target='_blank'>GitHub</a>");
         if (window.ED) return void z.alert("Not Supported", "BandagedBD does not work with EnhancedDiscord. Please uninstall one of them.");
         if (window.WebSocket && window.WebSocket.name && window.WebSocket.name.includes("Patched")) return void z.alert("Not Supported", "BandagedBD does not work with Powercord. Please uninstall one of them.");
-        z.log("Startup", "Initializing Settings"), this.initSettings(), z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
-            le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
-        }), await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), z.log("Startup", "Loading Themes"), q.loadThemes(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
+        z.log("Startup", "Initializing Settings"), this.initSettings(), 
+        // z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
+        //     le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
+        // }), 
+        await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), z.log("Startup", "Loading Themes"), q.loadThemes(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })), z.log("Startup", "Removing Loading Icon"), document.getElementsByClassName("bd-loaderv2").length && document.getElementsByClassName("bd-loaderv2")[0].remove(), z.log("Startup", "Initializing Main Observer"), this.initObserver(), h["fork-ps-1"] && (z.log("Startup", "Collecting Startup Errors"), z.showContentErrors({
             plugins: u,
