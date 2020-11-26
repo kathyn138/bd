@@ -1943,7 +1943,7 @@
           })));
           return P.react.createElement("span", null, P.react.createElement(ue, {
               onClick: this.onClick,
-              headerText: "hmmm",
+              headerText: "Bandaged BD",
               headerButton: e,
               items: this.items
           }))
@@ -2663,8 +2663,6 @@
           })
       }
   }
-
-  // NOTE: Xe appears to be detached custom css editor
   class Xe extends P.reactComponent {
       constructor(e) {
           super(e);
@@ -2789,18 +2787,13 @@
           ne.setBDData("bdcustomcss", btoa(this.editor.session.getValue()))
       }
   }
-  // NOTE: this appears to be the attached custom css editor 
+  // NOTE: this appears to be the custom css editor 
   class et extends P.reactComponent {
       constructor(e) {
           super(e);
-          this.props.lines = 0, this.setInitialState(), 
-          this.attach = this.attach.bind(this), 
-          this.detachedEditor = P.react.createElement(Xe, {
+          this.props.lines = 0, this.setInitialState(), this.attach = this.attach.bind(this), this.detachedEditor = P.react.createElement(Xe, {
               attach: this.attach
-          }), this.onClick = this.onClick.bind(this), 
-          this.updateCss = this.updateCss.bind(this), 
-          this.saveCss = this.saveCss.bind(this), 
-          this.detach = this.detach.bind(this)
+          }), this.onClick = this.onClick.bind(this), this.updateCss = this.updateCss.bind(this), this.saveCss = this.saveCss.bind(this), this.detach = this.detach.bind(this)
       }
       setInitialState() {
           this.state = {
@@ -2808,12 +2801,7 @@
           }
       }
       componentDidMount() {
-          this.editor = ace.edit("bd-customcss-editor"), 
-          this.editor.setTheme("ace/theme/monokai"), 
-          this.editor.session.setMode("ace/mode/css"), 
-          this.editor.setShowPrintMargin(!1), 
-          this.editor.setFontSize(14), 
-          this.editor.on("change", () => {
+          this.editor = ace.edit("bd-customcss-editor"), this.editor.setTheme("ace/theme/monokai"), this.editor.session.setMode("ace/mode/css"), this.editor.setShowPrintMargin(!1), this.editor.setFontSize(14), this.editor.on("change", () => {
               h["bda-css-0"] && (this.saveCss(), this.updateCss())
           })
       }
@@ -2835,7 +2823,6 @@
           }
       }
       get css() {
-          console.log('FETCHING THE CSS')
           const e = ne.getBDData("bdcustomcss");
           let t = "";
           return e && "" !== e && (t = atob(e)), t
@@ -2970,8 +2957,7 @@
       }
   }
 
-
-  class EmojiEditor extends P.reactComponent {
+  class emojiEditor extends P.reactComponent {
     constructor(e) {
         super(e);
         this.props.lines = 0, this.setInitialState(), 
@@ -2989,7 +2975,7 @@
         }
     }
     componentDidMount() {
-        this.editor = ace.edit("bd-customcss-editor"), 
+        this.editor = ace.edit("emoji-editor"), 
         this.editor.setTheme("ace/theme/monokai"), 
         this.editor.session.setMode("ace/mode/text"), 
         this.editor.setShowPrintMargin(!1), 
@@ -3009,18 +2995,17 @@
     get options() {
         return {
             lineNumbers: !0,
-            mode: "css",
+            mode: "text",
             indentUnit: 4,
             theme: "material",
             scrollbarStyle: "simple"
         }
     }
-    get css() {
-        console.log('FETCHING THE CSS')
-        const e = ne.getBDData("bdcustomcss");
-        let t = "";
-        return e && "" !== e && (t = atob(e)), t
-    }
+    // get css() {
+    //     const e = ne.getBDData("bdcustomcss");
+    //     let t = "";
+    //     return e && "" !== e && (t = atob(e)), t
+    // }
     updateLineCount() {
         const e = this.refs.editor.value.split("\n").length;
         e != this.props.lines && (this.refs.lines.textContent = Array.from(new Array(e), (e, t) => t + 1).join(".\n") + ".", this.props.lines = e)
@@ -3038,14 +3023,14 @@
         }, t && P.react.createElement("div", {
             id: "editor-detached"
         }, P.react.createElement(Pe, {
-            text: "Custom CSS Editor"
+            text: "Custom Emoji List"
         }), P.react.createElement("h3", null, "Editor Detached"), P.react.createElement("button", {
             className: "btn btn-primary",
             onClick: () => {
                 e.attach()
             }
         }, "Attach")), !t && P.react.createElement("div", null, P.react.createElement(Pe, {
-            text: "Custom CSS Editor"
+            text: "Custom Emoji List"
         }), P.react.createElement("div", {
             className: "editor-wrapper"
         }, P.react.createElement("div", {
@@ -3886,7 +3871,7 @@
             contentColumn: !0,
             fade: !0,
             dark: !0
-        }, P.react.createElement(EmojiEditor, {
+        }, P.react.createElement(emojiEditor, {
             key: "emojieditor"
         }), P.react.createElement(Ae, {
             key: "tools"
@@ -3976,7 +3961,7 @@
       // z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
       //     le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
       // }), 
-      await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), B.addStyle("customemoji", atob(ne.getBDData("customemojilist"))), window.addEventListener("beforeunload", (function () {
+      await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
           h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
       })),  
       z.log("Startup", "Initializing Main Observer"), this.initObserver(), h["fork-ps-1"] && (z.log("Startup", "Collecting Startup Errors"), z.showContentErrors({
