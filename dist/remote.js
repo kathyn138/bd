@@ -1413,98 +1413,7 @@
         }
     };
     var U = new R;
-    class G {
-        get folder() {
-            return Y.themesFolder
-        }
-    }
-    G.prototype.loadThemes = function () {
-        this.loadThemeData(), m.splice(0, 0, ...Y.loadThemes());
-        const e = Object.keys(C);
-        for (let t = 0; t < e.length; t++) {
-            const n = C[e[t]];
-            N[n.name] || (N[n.name] = !1), N[n.name] && B.addStyle(B.escapeID(n.id), unescape(n.css))
-        }
-        for (const e in N) C[e] || delete N[e];
-        this.saveThemeData()
-    }, G.prototype.enableTheme = function (e, t = !1) {
-        N[e] = !0, this.saveThemeData();
-        const n = C[e];
-        B.addStyle(B.escapeID(n.id), unescape(n.css)), h["fork-ps-2"] && !t && z.showToast(`${n.name} v${n.version} has been applied.`)
-    }, G.prototype.enable = function (e, t = !1) {
-        return this.enableTheme(e, t)
-    }, G.prototype.disableTheme = function (e, t = !1) {
-        N[e] = !1, this.saveThemeData();
-        const n = C[e];
-        B.removeStyle(B.escapeID(n.id)), h["fork-ps-2"] && !t && z.showToast(`${n.name} v${n.version} has been disabled.`)
-    }, G.prototype.disable = function (e, t = !1) {
-        return this.disableTheme(e, t)
-    }, G.prototype.toggleTheme = function (e) {
-        N[e] ? this.disableTheme(e) : this.enableTheme(e)
-    }, G.prototype.toggle = function (e, t = !1) {
-        return this.toggleTheme(e, t)
-    }, G.prototype.loadTheme = function (e) {
-        const t = Y.loadContent(e, "theme");
-        if (t) return h["fork-ps-1"] && z.showContentErrors({
-            themes: [t]
-        }), h["fork-ps-2"] && z.showToast(e + " could not be loaded. It may not have been loaded.", {
-            type: "error"
-        }), z.err("ContentManager", e + " could not be loaded.", t);
-        const n = Object.values(C).find(t => t.filename == e);
-        z.log("ContentManager", `${n.name} v${n.version} was loaded.`), h["fork-ps-2"] && z.showToast(`${n.name} v${n.version} was loaded.`, {
-            type: "success"
-        }), F.dispatch("theme-loaded", n.name)
-    }, G.prototype.unloadTheme = function (e) {
-        const t = Object.values(C).find(t => t.filename == e) || C[e];
-        if (!t) return;
-        const n = t.name;
-        N[n] && this.disableTheme(n, !0);
-        const r = Y.unloadContent(C[n].filename, "theme");
-        if (delete C[n], r) return h["fork-ps-1"] && z.showContentErrors({
-            themes: [r]
-        }), h["fork-ps-2"] && z.showToast(n + " could not be unloaded. It may have not been loaded yet.", {
-            type: "error"
-        }), z.err("ContentManager", n + " could not be unloaded. It may have not been loaded yet.", r);
-        z.log("ContentManager", n + " was unloaded."), h["fork-ps-2"] && z.showToast(n + " was unloaded.", {
-            type: "success"
-        }), F.dispatch("theme-unloaded", n)
-    }, G.prototype.delete = function (e) {
-        const t = Object.values(C).find(t => t.filename == e) || C[e];
-        if (!t) return;
-        this.unloadTheme(t.filename);
-        const r = n(1).resolve(Y.pluginsFolder, t.filename);
-        n(2).unlinkSync(r)
-    }, G.prototype.reloadTheme = function (e) {
-        const t = Object.values(C).find(t => t.filename == e) || C[e];
-        if (!t) return this.loadTheme(e);
-        const n = t.name,
-            r = Y.reloadContent(C[n].filename, "theme");
-        if (N[n] && (this.disableTheme(n, !0), this.enableTheme(n, !0)), r) return h["fork-ps-1"] && z.showContentErrors({
-            themes: [r]
-        }), h["fork-ps-2"] && z.showToast(n + " could not be reloaded.", {
-            type: "error"
-        }), z.err("ContentManager", n + " could not be reloaded.", r);
-        z.log("ContentManager", `${n} v${C[n].version} was reloaded.`), h["fork-ps-2"] && z.showToast(`${n} v${C[n].version} was reloaded.`, {
-            type: "success"
-        }), F.dispatch("theme-reloaded", n)
-    }, G.prototype.reload = function (e) {
-        return this.reloadTheme(e)
-    }, G.prototype.edit = function (e) {
-        const t = Object.values(C).find(t => t.filename == e) || C[e];
-        if (!t) return;
-        const r = n(1).resolve(Y.themesFolder, t.filename);
-        n(0).shell.openItem("" + r)
-    }, G.prototype.updateThemeList = function () {
-        const e = Y.loadNewContent("theme");
-        for (const t of e.added) this.loadTheme(t);
-        for (const t of e.removed) this.unloadTheme(t)
-    }, G.prototype.loadThemeData = function () {
-        const e = ne.getSettingGroup("themes");
-        e && Object.assign(N, e)
-    }, G.prototype.saveThemeData = function () {
-        ne.setSettingGroup("themes", N)
-    };
-    var q = new G;
+
     const H = n(1),
         W = n(2),
         _ = n(7).Module;
@@ -1542,11 +1451,11 @@
                     W.statSync(H.resolve(n, o))
                 } catch (e) {
                     if ("ENOENT" !== e.code) return;
-                    return delete this.timeCache[o], t ? U.unloadPlugin(o) : q.unloadTheme(o)
+                    return delete this.timeCache[o], t ? U.unloadPlugin(o) : ''
                 }
                 if (!W.statSync(H.resolve(n, o)).isFile()) return;
                 const s = W.statSync(H.resolve(n, o));
-                s && s.mtime && s.mtime.getTime() && "number" == typeof s.mtime.getTime() && this.timeCache[o] != s.mtime.getTime() && (this.timeCache[o] = s.mtime.getTime(), "rename" == e && (t ? U.loadPlugin(o) : q.loadTheme(o)), "change" == e && (t ? U.reloadPlugin(o) : q.reloadTheme(o)))
+                s && s.mtime && s.mtime.getTime() && "number" == typeof s.mtime.getTime() && this.timeCache[o] != s.mtime.getTime() && (this.timeCache[o] = s.mtime.getTime(), "rename" == e && (t ? U.loadPlugin(o) : '', "change" == e && (t ? U.reloadPlugin(o) : ''))
             })
         }
         _updateTimeCache(e, t) {
@@ -2182,9 +2091,6 @@
             }, {
                 text: "Plugins",
                 id: "plugins"
-            }, {
-                text: "Themes",
-                id: "themes"
             }, {
                 text: "Custom CSS",
                 id: "customcss"
@@ -3995,7 +3901,7 @@
                 sort: "name",
                 ascending: !0,
                 query: ""
-            }, this.isPlugins = "plugins" == this.props.type, this.cookie = this.isPlugins ? S : N, this.manager = this.isPlugins ? U : q, this.sort = this.sort.bind(this), this.reverse = this.reverse.bind(this), this.search = this.search.bind(this)
+            }, this.isPlugins = "plugins" == this.props.type, this.cookie = this.isPlugins ? S : N, this.manager = this.isPlugins ? U : '', this.sort = this.sort.bind(this), this.reverse = this.reverse.bind(this), this.search = this.search.bind(this)
         }
         openFolder() {
             const e = n(0).shell;
@@ -4125,7 +4031,7 @@
                     className: "bd-icon bd-reload bd-reload-header",
                     size: "18px",
                     onClick: async () => {
-                        this.isPlugins ? U.updatePluginList() : q.updateThemeList(), this.forceUpdate()
+                        this.isPlugins ? U.updatePluginList() : '', this.forceUpdate()
                     }
                 }))),
                 t = this.getAddons();
@@ -4457,7 +4363,7 @@
         // z.log("Startup", "Initializing EmoteModule"), window.emotePromise = le.init().then(() => {
         //     le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
         // }), 
-        await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), z.log("Startup", "Loading Themes"), q.loadThemes(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
+        await this.injectExternals(), await this.checkForGuilds(), P.initialize(), z.log("Startup", "Updating Settings"), St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })), z.log("Startup", "Removing Loading Icon"), document.getElementsByClassName("bd-loaderv2").length && document.getElementsByClassName("bd-loaderv2")[0].remove(), z.log("Startup", "Initializing Main Observer"), this.initObserver(), h["fork-ps-1"] && (z.log("Startup", "Collecting Startup Errors"), z.showContentErrors({
             plugins: u,
@@ -4845,7 +4751,7 @@
             return Object.keys(t).map(e => this.get(e)).filter(e => e)
         }
     };
-    Lt.Plugins = jt(S, M, U), Lt.Themes = jt(N, C, q);
+    Lt.Plugins = jt(S, M, U);
     var At = Lt;
     ! function () {
         const e = Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, "contentWindow").get;
@@ -4891,5 +4797,5 @@
         },
         Bt = Object.keys(r);
     for (const e of Bt) Pt(e, r[e]);
-    Pt("BDV2", P), Pt("pluginModule", U), Pt("themeModule", q), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At, Pt("mainCore", It)
+    Pt("BDV2", P), Pt("pluginModule", U), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At, Pt("mainCore", It)
 }]);
