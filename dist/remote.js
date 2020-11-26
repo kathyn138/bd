@@ -4682,51 +4682,50 @@
         return z.showChangelogModal(e)
     }, Dt.prototype.alert = function (e, t) {
         return z.alert(e, t)
-    }
-    // }, Dt.prototype.patchSocial = function () {
-    //     if (this.socialPatch) return;
-    //     const e = I(e => "TabBar" == e.displayName),
-    //         t = I(e => "Anchor" == e.displayName);
-    //     e && (this.socialPatch = z.monkeyPatch(e.prototype, "render", {
-    //         after: e => {
-    //             const n = e.returnValue.props.children;
-    //             if (!n || !n.length || n.length < 3) return;
-    //             if ("Separator" !== n[n.length - 3].type.displayName) return;
-    //             if (!n[n.length - 2].type.toString().includes("socialLinks")) return;
-    //             if (t) {
-    //                 const e = n[n.length - 2].type,
-    //                     r = function () {
-    //                         const n = e(...arguments);
-    //                         return n.props.children.push(P.React.createElement(ke, {
-    //                             color: "black",
-    //                             side: "top",
-    //                             text: "BandagedBD"
-    //                         }, P.React.createElement(t, {
-    //                             className: "bd-social-link",
-    //                             href: "https://github.com/rauenzi/BetterDiscordApp",
-    //                             title: "BandagedBD",
-    //                             target: "_blank"
-    //                         }, P.React.createElement(Nt, {
-    //                             size: "16px",
-    //                             className: "bd-social-logo"
-    //                         })))), n
-    //                     };
-    //                 n[n.length - 2].type = r
-    //             }
-    //             const r = P.react.createElement("div", {
-    //                     className: "colorMuted-HdFt4q size12-3cLvbJ"
-    //                 }, "Injector " + g.version),
-    //                 o = P.react.createElement("div", {
-    //                     className: "colorMuted-HdFt4q size12-3cLvbJ"
-    //                 }, `BBD ${c} `),
-    //                 s = n[n.length - 1].type;
-    //             n[n.length - 1].type = function () {
-    //                 const e = s(...arguments);
-    //                 return e.props.children.splice(e.props.children.length - 1, 0, r), e.props.children.splice(1, 0, o), e
-    //             }
-    //         }
-    //     }))
-    // };
+    }, Dt.prototype.patchSocial = function () {
+        if (this.socialPatch) return;
+        const e = I(e => "TabBar" == e.displayName),
+            t = I(e => "Anchor" == e.displayName);
+        e && (this.socialPatch = z.monkeyPatch(e.prototype, "render", {
+            after: e => {
+                const n = e.returnValue.props.children;
+                if (!n || !n.length || n.length < 3) return;
+                if ("Separator" !== n[n.length - 3].type.displayName) return;
+                if (!n[n.length - 2].type.toString().includes("socialLinks")) return;
+                if (t) {
+                    const e = n[n.length - 2].type,
+                        r = function () {
+                            const n = e(...arguments);
+                            return n.props.children.push(P.React.createElement(ke, {
+                                color: "black",
+                                side: "top",
+                                text: "BandagedBD"
+                            }, P.React.createElement(t, {
+                                className: "bd-social-link",
+                                href: "https://github.com/rauenzi/BetterDiscordApp",
+                                title: "BandagedBD",
+                                target: "_blank"
+                            }, P.React.createElement(Nt, {
+                                size: "16px",
+                                className: "bd-social-logo"
+                            })))), n
+                        };
+                    n[n.length - 2].type = r
+                }
+                const r = P.react.createElement("div", {
+                        className: "colorMuted-HdFt4q size12-3cLvbJ"
+                    }, "Injector " + g.version),
+                    o = P.react.createElement("div", {
+                        className: "colorMuted-HdFt4q size12-3cLvbJ"
+                    }, `BBD ${c} `),
+                    s = n[n.length - 1].type;
+                n[n.length - 1].type = function () {
+                    const e = s(...arguments);
+                    return e.props.children.splice(e.props.children.length - 1, 0, r), e.props.children.splice(1, 0, o), e
+                }
+            }
+        }))
+    };
     Dt.prototype.patchGuildListItems = function () {
         if (this.guildListItemsPatch) return;
         const e = function () {
