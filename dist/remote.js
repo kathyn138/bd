@@ -1932,9 +1932,6 @@
         }
         get items() {
             return [{
-                text: "Settings",
-                id: "core"
-            }, {
                 text: "Plugins",
                 id: "plugins"
             }, {
@@ -3829,64 +3826,7 @@
             })), this.root)
         }
     };
-    class Nt extends P.reactComponent {
-        render() {
-            return P.react.createElement("svg", {
-                height: "100%",
-                width: this.props.size || "16px",
-                className: "bd-logo " + this.props.className,
-                style: {
-                    fillRule: "evenodd",
-                    clipRule: "evenodd",
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round"
-                },
-                viewBox: "0 0 2000 2000"
-            }, P.react.createElement("metadata", null), P.react.createElement("defs", null, P.react.createElement("filter", {
-                id: "shadow1"
-            }, P.react.createElement("feDropShadow", {
-                dx: "20",
-                dy: "0",
-                stdDeviation: "20",
-                "flood-color": "rgba(0,0,0,0.35)"
-            })), P.react.createElement("filter", {
-                id: "shadow2"
-            }, P.react.createElement("feDropShadow", {
-                dx: "15",
-                dy: "0",
-                stdDeviation: "20",
-                "flood-color": "rgba(255,255,255,0.15)"
-            })), P.react.createElement("filter", {
-                id: "shadow3"
-            }, P.react.createElement("feDropShadow", {
-                dx: "10",
-                dy: "0",
-                stdDeviation: "20",
-                "flood-color": "rgba(0,0,0,0.35)"
-            }))), P.react.createElement("g", null, P.react.createElement("path", {
-                style: {
-                    filter: "url(#shadow3)"
-                },
-                d: "M1195.44+135.442L1195.44+135.442L997.6+136.442C1024.2+149.742+1170.34+163.542+1193.64+179.742C1264.34+228.842+1319.74+291.242+1358.24+365.042C1398.14+441.642+1419.74+530.642+1422.54+629.642L1422.54+630.842L1422.54+632.042C1422.54+773.142+1422.54+1228.14+1422.54+1369.14L1422.54+1370.34L1422.54+1371.54C1419.84+1470.54+1398.24+1559.54+1358.24+1636.14C1319.74+1709.94+1264.44+1772.34+1193.64+1821.44C1171.04+1837.14+1025.7+1850.54+1000+1863.54L1193.54+1864.54C1539.74+1866.44+1864.54+1693.34+1864.54+1296.64L1864.54+716.942C1866.44+312.442+1541.64+135.442+1195.44+135.442Z",
-                fill: "#171717",
-                opacity: "1"
-            }), P.react.createElement("path", {
-                style: {
-                    filter: "url(#shadow2)"
-                },
-                d: "M1695.54+631.442C1685.84+278.042+1409.34+135.442+1052.94+135.442L361.74+136.442L803.74+490.442L1060.74+490.442C1335.24+490.442+1335.24+835.342+1060.74+835.342L1060.74+1164.84C1150.22+1164.84+1210.53+1201.48+1241.68+1250.87C1306.07+1353+1245.76+1509.64+1060.74+1509.64L361.74+1863.54L1052.94+1864.54C1409.24+1864.54+1685.74+1721.94+1695.54+1368.54C1695.54+1205.94+1651.04+1084.44+1572.64+999.942C1651.04+915.542+1695.54+794.042+1695.54+631.442Z",
-                fill: "#3E82E5",
-                opacity: "1"
-            }), P.react.createElement("path", {
-                style: {
-                    filter: "url(#shadow1)"
-                },
-                d: "M1469.25+631.442C1459.55+278.042+1183.05+135.442+826.65+135.442L135.45+135.442L135.45+1004C135.45+1004+135.427+1255.21+355.626+1255.21C575.825+1255.21+575.848+1004+575.848+1004L577.45+490.442L834.45+490.442C1108.95+490.442+1108.95+835.342+834.45+835.342L664.65+835.342L664.65+1164.84L834.45+1164.84C923.932+1164.84+984.244+1201.48+1015.39+1250.87C1079.78+1353+1019.47+1509.64+834.45+1509.64L135.45+1509.64L135.45+1864.54L826.65+1864.54C1182.95+1864.54+1459.45+1721.94+1469.25+1368.54C1469.25+1205.94+1424.75+1084.44+1346.35+999.942C1424.75+915.542+1469.25+794.042+1469.25+631.442Z",
-                fill: "#FFFFFF",
-                opacity: "1"
-            })))
-        }
-    }
+
     const {
         ipcRenderer: Tt
     } = n(0);
@@ -3924,7 +3864,7 @@
             themes: m
         }));
         const e = ne.getBDData("version");
-        c > e && (l && this.showChangelogModal(l), ne.setBDData("version", c)), z.suppressErrors(this.patchSocial.bind(this), "BD Social Patch")(), z.suppressErrors(this.patchGuildPills.bind(this), "BD Guild Pills Patch")(), z.suppressErrors(this.patchGuildListItems.bind(this), "BD Guild List Items Patch")(), z.suppressErrors(this.patchGuildSeparator.bind(this), "BD Guild Separator Patch")(), z.suppressErrors(this.patchMessageHeader.bind(this), "BD Badge Chat Patch")(), z.suppressErrors(this.patchMemberList.bind(this), "BD Badge Member List Patch")()
+        c > e && (l && this.showChangelogModal(l), ne.setBDData("version", c)), z.suppressErrors(this.patchSocial.bind(this), "BD Social Patch")()
     }, Dt.prototype.checkForGuilds = function () {
         let e = 0;
         return new Promise(t => {
@@ -3988,15 +3928,7 @@
                                 color: "black",
                                 side: "top",
                                 text: "BandagedBD"
-                            }, P.React.createElement(t, {
-                                className: "bd-social-link",
-                                href: "https://github.com/rauenzi/BetterDiscordApp",
-                                title: "BandagedBD",
-                                target: "_blank"
-                            }, P.React.createElement(Nt, {
-                                size: "16px",
-                                className: "bd-social-logo"
-                            })))), n
+                            })), n
                         };
                     n[n.length - 2].type = r
                 }
@@ -4014,96 +3946,7 @@
             }
         }))
     };
-    Dt.prototype.patchGuildListItems = function () {
-        if (this.guildListItemsPatch) return;
-        const e = function () {
-                const e = j("wrapper", "unreadMentionsBar"),
-                    t = j("guildsError", "selected"),
-                    n = j("blobContainer");
-                return Object.assign({}, e, t, n)
-            }(),
-            t = e.listItem.split(" ")[0],
-            n = e.blobContainer.split(" ")[0],
-            r = P.getInternalInstance(document.querySelector(`.${t} .${n}`).parentElement).return.type;
-        r && (this.guildListItemsPatch = z.monkeyPatch(r.prototype, "render", {
-            after: e => {
-                if (e.returnValue && e.thisObject) {
-                    const t = e.returnValue,
-                        n = e.thisObject.props;
-                    return t.props.className += " bd-guild", n.unread && (t.props.className += " bd-unread"), n.selected && (t.props.className += " bd-selected"), n.audio && (t.props.className += " bd-audio"), n.video && (t.props.className += " bd-video"), n.badge && (t.props.className += " bd-badge"), n.animatable && (t.props.className += " bd-animatable"), t
-                }
-            }
-        }))
-    }, Dt.prototype.patchGuildPills = function () {
-        if (this.guildPillPatch) return;
-        const e = I(e => e.default && !e.default.displayName && e.default.toString && e.default.toString().includes("translate3d"));
-        e && (this.guildPillPatch = z.monkeyPatch(e, "default", {
-            after: e => {
-                const t = e.methodArguments[0];
-                return t.unread && (e.returnValue.props.className += " bd-unread"), t.selected && (e.returnValue.props.className += " bd-selected"), t.hovered && (e.returnValue.props.className += " bd-hovered"), e.returnValue
-            }
-        }))
-    }, Dt.prototype.patchGuildSeparator = function () {
-        if (this.guildSeparatorPatch) return;
-        const e = A("Guilds"),
-            t = j("renderListItem");
-        if (!t || !e) return;
-        const n = function () {
-            const e = t.Separator(...arguments);
-            return e.props.className += " bd-guild-separator", e
-        };
-        this.guildSeparatorPatch = z.monkeyPatch(e.prototype, "render", {
-            after: e => {
-                e.returnValue.props.children[1].props.children[3].type = n
-            }
-        })
-    }, Dt.prototype.patchMessageHeader = function () {
-        if (this.messageHeaderPatch) return;
-        const e = j("MessageTimestamp"),
-            t = I(e => "Anchor" == e.displayName);
-        t && e && e.default && (this.messageHeaderPatch = z.monkeyPatch(e, "default", {
-            after: e => {
-                const n = z.getNestedProp(e.methodArguments[0], "message.author"),
-                    r = z.getNestedProp(e.returnValue, "props.children.1.props.children.1.props.children");
-                r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
-                    color: "black",
-                    side: "top",
-                    text: "BandagedBD Developer"
-                }, P.React.createElement(t, {
-                    className: "bd-chat-badge",
-                    href: "https://github.com/rauenzi/BetterDiscordApp",
-                    title: "BandagedBD",
-                    target: "_blank"
-                }, P.React.createElement(Nt, {
-                    size: "16px",
-                    className: "bd-logo"
-                }))))
-            }
-        }))
-    }, Dt.prototype.patchMemberList = function () {
-        if (this.memberListPatch) return;
-        const e = A("MemberListItem"),
-            t = I(e => "Anchor" == e.displayName);
-        t && e && e.prototype && e.prototype.renderDecorators && (this.memberListPatch = z.monkeyPatch(e.prototype, "renderDecorators", {
-            after: e => {
-                const n = z.getNestedProp(e.thisObject, "props.user"),
-                    r = z.getNestedProp(e.returnValue, "props.children");
-                r && n && n.id && "249746236008169473" === n.id && Array.isArray(r) && r.push(P.React.createElement(ke, {
-                    color: "black",
-                    side: "top",
-                    text: "BandagedBD Developer"
-                }, P.React.createElement(t, {
-                    className: "bd-member-badge",
-                    href: "https://github.com/rauenzi/BetterDiscordApp",
-                    title: "BandagedBD",
-                    target: "_blank"
-                }, P.React.createElement(Nt, {
-                    size: "16px",
-                    className: "bd-logo"
-                }))))
-            }
-        }))
-    }, Dt.prototype.checkInjectorUpdate = function () {
+    Dt.prototype.checkInjectorUpdate = function () {
         const e = g.updater ? g.updater.LatestVersion : g.latestVersion;
         e > g.version && z.showConfirmationModal("Update Available", [`There is an update available for BandagedBD's Injector (${e}).`, "You can either update and restart now, or later."], {
             confirmText: "Update Now",
