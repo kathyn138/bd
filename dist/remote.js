@@ -2039,7 +2039,7 @@
               const t = Ne.readdirSync(e);
               e = Te.resolve(e, t[t.length - 1])
           }
-          this.extensionPath = e, this.isExtensionInstalled = Ne.existsSync(e), this.listener = this.listener.bind(this), d["React DevTools"].hidden = !this.isExtensionInstalled
+          this.extensionPath = e, this.isExtensionInstalled = Ne.existsSync(e), this.listener = this.listener.bind(this)
       }
       listener() {
           if (!this.isExtensionInstalled) return;
