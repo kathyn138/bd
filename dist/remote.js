@@ -2330,9 +2330,6 @@
             <path d="M0 0h24v24H0z" fill="none"/>
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
         </svg></div>`);
-        let emojiBtn = t.getElementByClassName("icon-3D60ES");
-        emojiBtn.style.color = "white";
-        emojiBtn.style.marginLeft = "25px";
 
         return t.addEventListener("click", () => {
             this.render()
