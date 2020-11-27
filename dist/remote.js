@@ -2321,14 +2321,16 @@
         }
         render() {
             console.log('IN RENDER')
-            const e = this.root;
-            e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
+            // const e = this.root;
+            // e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
+            const emojiBox = B.createElement(`<div>hi!</div>`);
+            P.reactDom.render(emojiBox);
         }
         get button() {
             const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" 
-            viewBox="0 0 24 24" aria-hidden="false" fill="currentColor" width="24px" height="24px"
-            style="color: white; margin-left: 25px;">
+            viewBox="0 0 24 24" aria-hidden="false" fill="white" width="24px" height="24px"
+            style="margin-left: 25px;">
             <path d="M0 0h24v24H0z" fill="none"/>
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
         </svg></div>`);
@@ -3941,7 +3943,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginsasdad"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
