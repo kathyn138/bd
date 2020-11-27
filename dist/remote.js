@@ -2643,6 +2643,8 @@
         </svg></div>`);
 
         return t.addEventListener("click", () => {
+            const e = ne.getBDData("customemojilist");
+            console.log('THIS IS E', e)
             const message = {
                 image: "https://cdn.discordapp.com/attachments/729097963095457844/729099002301382696/690409118753751110.png",
                 changes: [{
@@ -4258,7 +4260,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins woo"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins yay"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
