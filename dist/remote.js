@@ -2637,11 +2637,11 @@
 
         return t.addEventListener("click", () => {
             const message = {
-                description: `<img src="https://cdn.discordapp.com/attachments/729097963095457844/729099002301382696/690409118753751110.png">`,
+                image: "https://cdn.discordapp.com/attachments/729097963095457844/729099002301382696/690409118753751110.png",
                 changes: [{
                     title: "title",
                     type: "fixed",
-                    items: ["one, two"]
+                    items: ["one", "two"]
                 }]
             }
             EmojiModal.showChangelogModal(message);
