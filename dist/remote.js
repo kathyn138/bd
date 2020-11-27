@@ -2559,7 +2559,7 @@
                 // }
 
                 // clickedEmoji.style.backgroundColor = "#545454";
-                const n = B.createElement(`<div class="bd-modal-wrapper theme-dark">\n                        <div class="bd-backdrop backdrop-1wrmKB"></div>\n                        <div class="bd-modal modal-1UGdnR">\n                            <div class="bd-modal-inner inner-1JeGVc">\n                                <div class="header header-1R_AjF">\n                                    <div class="title">${e}</div>\n                                </div>\n                                <div class="bd-modal-body">\n                                    <div class="scroller-wrap fade">\n                                        <div class="scroller">\n                                            ${t}\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class="footer footer-2yfCgX footer-3rDWdC footer-2gL1pp">\n                                    <button type="button">Okay</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>`);
+                const n = B.query(".bd-modal-wrapper")
                 n.remove()
                 // setTimeout(() => {
                 // }, 300)
@@ -2689,6 +2689,7 @@
             let unformattedE = atob(e).split(','); 
             let formattedE = [];
             for (let i = 0; i < unformattedE.length; i++) {
+                console.log('unformattedE[i][0]', unformattedE[i][0])
                 if (unformattedE[i][0] === '') {
                     console.log('here')
                     formattedE.push(unformattedE[i].slice(1));
