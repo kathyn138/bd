@@ -2315,7 +2315,7 @@
             console.log('INJECTING AT GE')
             const e = B.query(".layers, .layers-3iHuyZ");
             console.log('THIS IS E')
-            return !!e && (e.append(B.createElement("<div id='emoji-box'>")), !0)
+            return !!e && (e.append(B.createElement("<div id='emoji-box'>hi!</div>")), !0)
         }
         render() {
             console.log('IN RENDER')
@@ -2337,6 +2337,7 @@
 
         return t.addEventListener("click", () => {
             this.render()
+            z.showChangelogModal(l);
         }), t
         }
         _appendButton() {
