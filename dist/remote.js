@@ -2522,7 +2522,7 @@
                 footer: m
             } = e, g = P.React.createElement, b = [g("img", {
                 src: l, 
-                onClick: this.onClick()
+                onClick: onClick()
             })];
             d && b.push(g("p", null, a.parse(d)));
             for (let e = 0; e < p.length; e++) {
