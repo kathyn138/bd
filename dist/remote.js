@@ -2533,27 +2533,32 @@
             //     const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
             //     b.push(s)
             // }
-
+            // NOTE: imgUrl has extra space at beginning of string
+            // unsure why 
             function emojiClick(imgUrl) {
                 console.log('IN ON CLICK')
                 navigator.clipboard.writeText(imgUrl);
                 console.log('SHOULVE COPIED')
                 let emojis = document.getElementsByClassName('emoji-icon')
+                let clickedEmoji; 
 
                 for (let i = 0; i < emojis.length; i++) {
                     let currEmoji = emojis[i];
-                    console.log('imgurl', imgUrl)
-                    console.log('src', currEmoji.src)
-                    console.log('url check', imgUrl[0])
-                    console.log('src check', currEmoji.src[0])
-                    console.log('url length', imgUrl.length)
-                    console.log('src length', currEmoji.src.length)
-                    console.log('pls send help')
+                    // console.log('imgurl', imgUrl)
+                    // console.log('src', currEmoji.src)
+                    // console.log('url check', imgUrl[0])
+                    // console.log('src check', currEmoji.src[0])
+                    // console.log('url length', imgUrl.length)
+                    // console.log('src length', currEmoji.src.length)
+                    // console.log('pls send help')
                     if (currEmoji.src === imgUrl.slice(1)) {
+                        clickedEmoji = currEmoji;
                         console.log('INSIDE IF')
                         currEmoji.style.backgroundColor = "white";
                     }
                 }
+
+                clickedEmoji.style.backgroundColor = "#545454";
             }
 
             // displaying emojis
