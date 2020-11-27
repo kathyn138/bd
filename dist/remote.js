@@ -2512,7 +2512,7 @@
                 description: d = "",
                 changes: p = [],
                 title: h = "Emojis",
-                subtitle: u = "v" + c,
+                // subtitle: u = "v" + c,
                 footer: m
             } = e, g = P.React.createElement, b = [g("img", {
                 src: l
@@ -2547,18 +2547,12 @@
                             anchorUnderlineOnHover: "anchorUnderlineOnHover-2ESHQB"
                         },
                         s = e => {
-                            e.preventDefault(), e.stopPropagation(), t.pop(), P.joinBD2()
+                            e.preventDefault(), e.stopPropagation(), t.pop()
                         },
-                        i = e ? g(e, {
-                            onClick: s
-                        }, "brrrr") : g("a", {
-                            className: `${n.anchor} ${n.anchorUnderlineOnHover}`,
-                            onClick: s
-                        }, "brrrr"),
                         a = g(r, {
                             size: r.Sizes.SMALL,
                             color: r.Colors.STANDARD
-                        }, "Need support? ", i);
+                        }, "Emojis go brrr", i);
                     return g(o.Child, {
                         grow: 1,
                         shrink: 1
@@ -2643,7 +2637,7 @@
 
         return t.addEventListener("click", () => {
             const message = {
-                description: "Emojis!",
+                description: `<img src="https://cdn.discordapp.com/attachments/729097963095457844/729099002301382696/690409118753751110.png">`,
                 changes: [{
                     title: "title",
                     type: "fixed",
@@ -4257,7 +4251,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins woo"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
