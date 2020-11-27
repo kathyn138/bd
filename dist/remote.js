@@ -2537,22 +2537,27 @@
             function emojiClick(imgUrl) {
                 console.log('IN ON CLICK')
                 navigator.clipboard.writeText(imgUrl);
-                const e = P.react.createElement(ke, {
+                b.push(g(ke, {
                     color: "black",
                     side: "top",
                     text: "Hi :D"
-                }, P.react.createElement("div", {
-                    className: "bd-changelog-button"
-                }, P.react.createElement(ge, {
-                    className: "bd-icon",
-                    size: "16px"
-                })));
-                return P.react.createElement("span", null, P.react.createElement(ue, {
-                    onClick: this.onClick,
-                    headerText: "hmmm",
-                    headerButton: e,
-                    items: this.items
-                }))
+                }));
+                // const e = P.react.createElement(ke, {
+                //     color: "black",
+                //     side: "top",
+                //     text: "Hi :D"
+                // }, P.react.createElement("div", {
+                //     className: "bd-changelog-button"
+                // }, P.react.createElement(ge, {
+                //     className: "bd-icon",
+                //     size: "16px"
+                // })));
+                // return P.react.createElement("span", null, P.react.createElement(ue, {
+                //     onClick: this.onClick,
+                //     headerText: "hmmm",
+                //     headerButton: e,
+                //     items: this.items
+                // }))
                 console.log('SHOULVE COPIED')
             }
 
@@ -4291,7 +4296,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins woog"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins wook"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
