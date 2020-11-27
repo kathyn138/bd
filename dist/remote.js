@@ -2527,16 +2527,17 @@
             })];
             d && b.push(g("p", null, a.parse(d)));
 
-            for (let e = 0; e < p.length; e++) {
-                const t = p[e],
-                    r = n[t.type] ? n[t.type] : n.added,
-                    o = 0 == e ? n.marginTop : "";
-                b.push(g("h1", {
-                    className: `${r} ${o}`
-                }, t.title));
-                const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
-                b.push(s)
-            }
+            // for (let e = 0; e < p.length; e++) {
+            //     const t = p[e],
+            //         r = n[t.type] ? n[t.type] : n.added,
+            //         o = 0 == e ? n.marginTop : "";
+            //     b.push(g("h1", {
+            //         className: `${r} ${o}`
+            //     }, t.title));
+            //     const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
+            //     b.push(s)
+            // }
+
             // testing displaying emojis
             for (let i = 0; i < p.length; i++) {
                 const t = p[i],
@@ -2545,7 +2546,7 @@
                 b.push(g("h1", {
                     className: `${r} ${o}`
                 }, t.title));
-                const s = g("ul", null, t.emojis.map(e => g("li", null, a.parse(e))));
+                const s = g("div", null, t.emojis.map(e => g("img", {src: e, height: '100px', width: 'auto'})));
                 b.push(s)
             }
 
@@ -2667,7 +2668,6 @@
                     emojis: atob(e).split(',')
                 }]
             }
-            console.log('sanity check', message.changes.emojis)
             EmojiModal.showChangelogModal(message);
         }), t
         }
@@ -4275,7 +4275,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins woot"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins tie"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
