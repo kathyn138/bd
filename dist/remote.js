@@ -2538,7 +2538,7 @@
                 console.log('IN ON CLICK')
                 navigator.clipboard.writeText(imgUrl);
                 console.log('SHOULVE COPIED')
-                let emojis = b.getElementsByClassName('emoji-icon')
+                let emojis = b.querySelectorAll('emoji-icon')
                 console.log('TESTING EMOJIS', emojis)
             }
 
