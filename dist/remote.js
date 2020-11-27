@@ -2545,7 +2545,7 @@
                     console.log('imgurl', imgUrl)
                     console.log('src', currEmoji.src)
                     console.log('type of url', typeof imgUrl)
-                    console.log('typeof src', currEmoji.src)
+                    console.log('typeof src', typeof currEmoji.src)
                     console.log('comparison', currEmoji.src === imgUrl)
                     if (currEmoji.src === imgUrl) {
                         console.log('INSIDE IF')
