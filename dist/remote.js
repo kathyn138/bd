@@ -2543,7 +2543,8 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("img", {src: e, height: '50px', onClick: emojiClick(e)})));
+                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("img", {src: e, height: '50px', 
+                className: 'emoji-icon', onClick: () => emojiClick(e)})));
                 b.push(s)
             }
 
@@ -2907,33 +2908,33 @@
             }, t))
         }
     }
-    class $e extends P.reactComponent {
-        constructor(e) {
-            super(e)
-        }
-        render() {
-            const {
-                title: e,
-                settings: t,
-                button: n
-            } = this.props, r = n ? P.react.createElement("button", {
-                key: "title-button",
-                className: "bd-pfbtn",
-                onClick: n.onClick
-            }, n.title) : null;
-            return [P.react.createElement(Pe, {
-                text: e
-            }), r, t.map(e => P.react.createElement(Ze, {
-                id: e.id,
-                key: e.id,
-                data: e,
-                checked: h[e.id],
-                onChange: (e, t) => {
-                    this.props.onChange(e, t)
-                }
-            }))]
-        }
-    }
+    // class $e extends P.reactComponent {
+    //     constructor(e) {
+    //         super(e)
+    //     }
+    //     render() {
+    //         const {
+    //             title: e,
+    //             settings: t,
+    //             button: n
+    //         } = this.props, r = n ? P.react.createElement("button", {
+    //             key: "title-button",
+    //             className: "bd-pfbtn",
+    //             onClick: n.onClick
+    //         }, n.title) : null;
+    //         return [P.react.createElement(Pe, {
+    //             text: e
+    //         }), r, t.map(e => P.react.createElement(Ze, {
+    //             id: e.id,
+    //             key: e.id,
+    //             data: e,
+    //             checked: h[e.id],
+    //             onChange: (e, t) => {
+    //                 this.props.onChange(e, t)
+    //             }
+    //         }))]
+    //     }
+    // }
     // class Ke extends P.reactComponent {
     //     constructor(e) {
     //         super(e)
