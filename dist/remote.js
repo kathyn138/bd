@@ -2539,11 +2539,10 @@
                 navigator.clipboard.writeText(imgUrl);
                 console.log('SHOULVE COPIED')
                 let emojis = document.getElementsByClassName('emoji-icon')
-                console.log('emojis', emojis)
 
                 for (let i = 0; i < emojis.length; i++) {
-                    console.log('IN FOR LOOP')
                     let currEmoji = emojis[i];
+                    console.log('CURREMOJI', currEmoji)
                     if (currEmoji.src === imgUrl) {
                         currEmoji.style.backgroundColor = "white";
                     }
