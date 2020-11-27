@@ -2301,29 +2301,28 @@
             this._appendButton = this._appendButton.bind(this)
         }
         get component() {
-            return P.react.createElement(Ue, {
-                rootId: "pubslayerroot",
-                id: "pubslayer"
-            }, P.react.createElement(Re, {
-                rootId: "pubslayerroot"
-            }))
+            return P.react.createElement("div", {
+                id: "emoji-box",
+                text: "OK"
+            })
         }
         get root() {
             console.log('THIS IS AT ROOT')
-            const e = document.getElementById("pubslayerroot");
+            const e = document.getElementById("emoji-box");
             return e || (this.injectRoot() ? this.root : null)
         }
         injectRoot() {
             console.log('INJECTING AT GE')
             const e = B.query(".layers, .layers-3iHuyZ");
             console.log('THIS IS E')
-            return !!e && (e.append(B.createElement("<div id='pubslayerroot'>")), !0)
+            return !!e && (e.append(B.createElement("<div id='emoji-box'>")), !0)
         }
         render() {
             console.log('IN RENDER')
-            // const e = this.root;
-            // e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
-            P.react.createElement("div", { className:"emoji-box", text: "OK"});
+            const e = this.root;
+            e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
+            // P.react.createElement("div", { className:"emoji-box", text: "OK"});
+            
             // const emojiBox = B.createElement(`<div>hi!</div>`);
             // P.reactDom.render(emojiBox);
         }
@@ -3944,7 +3943,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Pluginslmfao"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
