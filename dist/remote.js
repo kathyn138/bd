@@ -2538,7 +2538,14 @@
                 console.log('IN ON CLICK')
                 navigator.clipboard.writeText(imgUrl);
                 console.log('SHOULVE COPIED')
-                let emojis = B.querySelectorAll('emoji-icon')
+                let emojis = document.querySelectorAll('emoji-icon')
+
+                for (let i = 0; i < emojis.length; i++) {
+                    let currEmoji = emojis[i];
+                    if (currEmoji.src === "imgUrl") {
+                        currEmoji.style.backgroundColor = "white";
+                    }
+                }
                 console.log('TESTING EMOJIS', emojis)
             }
 
