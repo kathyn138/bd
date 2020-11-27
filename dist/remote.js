@@ -2545,10 +2545,11 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className:"emoji-icon-container"}, g("img", {
+                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("img", {
                     className: 'emoji-icon', src: e, height: '50px', 
-                onClick: () => emojiClick(e)}))));
-                b.push(s)
+                onClick: () => emojiClick(e)})));
+                const emojiIconContainer = g("div", {className:"emoji-icon-container"}, s)
+                b.push(emojiIconContainer)
             }
 
             const f = function () {
@@ -4276,7 +4277,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins ZZ"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins KK"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
