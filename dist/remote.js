@@ -2520,7 +2520,7 @@
                 title: h = "Emojis",
                 // subtitle: u = "v" + c,
                 footer: m, 
-                emojis: emojiArr = []
+                // emojis: emojiArr = []
             } = e, g = P.React.createElement, b = [g("img", {
                 src: l, 
                 onClick: onClick()
@@ -2538,14 +2538,14 @@
                 b.push(s)
             }
             // testing displaying emojis
-            for (let i = 0; i < emojiArr.length; i++) {
-                const t = emojiArr[i],
+            for (let i = 0; i < p.length; i++) {
+                const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
                 b.push(g("h1", {
                     className: `${r} ${o}`
                 }, t.title));
-                const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
+                const s = g("ul", null, t.emojis.map(e => g("li", null, a.parse(e))));
                 b.push(s)
             }
 
@@ -2667,6 +2667,7 @@
                     emojis: atob(e).split(',')
                 }]
             }
+            console.log('sanity check', message.changes.emojis)
             EmojiModal.showChangelogModal(message);
         }), t
         }
