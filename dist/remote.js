@@ -2507,6 +2507,12 @@
                 i = I(e => e.defaultProps && 0 == e.defaultProps.selectable),
                 a = j("defaultRules", "parse");
             if (!(i && t && n && r && o && s && a)) return;
+
+            function onClick() {
+                console.log('IN ON CLICK')
+                navigator.clipboard.writeText(e.image)
+                console.log('SHOULVE COPIED')
+            }
             const {
                 image: l = "",
                 description: d = "",
@@ -2515,7 +2521,8 @@
                 // subtitle: u = "v" + c,
                 footer: m
             } = e, g = P.React.createElement, b = [g("img", {
-                src: l
+                src: l, 
+                onClick: this.onClick()
             })];
             d && b.push(g("p", null, a.parse(d)));
             for (let e = 0; e < p.length; e++) {
