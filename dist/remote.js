@@ -2559,11 +2559,11 @@
                 // }
 
                 // clickedEmoji.style.backgroundColor = "#545454";
-                const n = B.query(".bd-modal-wrapper")
-                n.remove()
+                // const n = B.query(".bd-modal-wrapper")
+                // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('end of modal')
+                // console.log('end of modal')
             }
 
             // displaying emojis
@@ -2689,8 +2689,8 @@
             let unformattedE = atob(e).split(','); 
             let formattedE = [];
             for (let i = 0; i < unformattedE.length; i++) {
-                console.log('unformattedE[i][0]', unformattedE[i][0])
-                if (unformattedE[i][0] === '') {
+
+                if (unformattedE[i][0] === '\n') {
                     console.log('here')
                     formattedE.push(unformattedE[i].slice(1));
                 } else {
@@ -4314,7 +4314,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins wee"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins weeeee"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
