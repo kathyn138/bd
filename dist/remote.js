@@ -2544,8 +2544,8 @@
                     let currEmoji = emojis[i];
                     console.log('imgurl', imgUrl)
                     console.log('src', currEmoji.src)
-                    console.log('type of url', typeof imgUrl)
-                    console.log('typeof src', typeof currEmoji.src)
+                    console.log('url check', imgUrl[0])
+                    console.log('src check', currEmoji.src[0])
                     console.log('url length', imgUrl.length)
                     console.log('src length', currEmoji.src.length)
                     if (currEmoji.src == imgUrl) {
