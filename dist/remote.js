@@ -2508,11 +2508,6 @@
                 a = j("defaultRules", "parse");
             if (!(i && t && n && r && o && s && a)) return;
 
-            function onClick() {
-                console.log('IN ON CLICK')
-                navigator.clipboard.writeText(e.image)
-                console.log('SHOULVE COPIED')
-            }
             const {
                 image: l = "",
                 description: d = "",
@@ -2522,8 +2517,7 @@
                 footer: m, 
                 // emojis: emojiArr = []
             } = e, g = P.React.createElement, b = [g("img", {
-                src: l, 
-                onClick: onClick()
+                src: l
             })];
             d && b.push(g("p", null, a.parse(d)));
 
@@ -2538,15 +2532,18 @@
             //     b.push(s)
             // }
 
-            // testing displaying emojis
+            function emojiClick(imgUrl) {
+                console.log('IN ON CLICK')
+                navigator.clipboard.writeText(imgUrl)
+                console.log('SHOULVE COPIED')
+            }
+
+            // displaying emojis
             for (let i = 0; i < p.length; i++) {
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                b.push(g("h1", {
-                    className: `${r} ${o}`
-                }, t.title));
-                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("img", {src: e, height: '50px'})));
+                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("img", {src: e, height: '50px', onClick: emojiClick(e)})));
                 b.push(s)
             }
 
