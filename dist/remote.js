@@ -2323,8 +2323,9 @@
             console.log('IN RENDER')
             // const e = this.root;
             // e ? P.reactDom.render(this.component, e) : console.log("FAILED TO LOCATE ROOT: .layers")
-            const emojiBox = B.createElement(`<div>hi!</div>`);
-            P.reactDom.render(emojiBox);
+            P.react.createElement("div", { className:"emoji-box", text: "OK"});
+            // const emojiBox = B.createElement(`<div>hi!</div>`);
+            // P.reactDom.render(emojiBox);
         }
         get button() {
             const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
@@ -2605,53 +2606,53 @@
             }))]
         }
     }
-    class Ke extends P.reactComponent {
-        constructor(e) {
-            super(e)
-        }
-        render() {
-            return P.react.createElement("div", {
-                className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default"
-            }, P.react.createElement("div", {
-                className: "ui-flex ui-section-panel-title"
-            }, P.react.createElement(Pe, {
-                text: this.props.title
-            }), this.props.button && P.react.createElement("button", {
-                key: "title-button",
-                className: "bd-pfbtn",
-                onClick: this.props.button.onClick
-            }, this.props.button.title)), this.props.sections.map(e => P.react.createElement($e, Object.assign({}, e, {
-                onChange: this.props.onChange
-            }))))
-        }
-    }
-    class Ye extends P.reactComponent {
-        constructor(e) {
-            super(e)
-        }
-        render() {
-            const {
-                settings: e
-            } = this.props;
-            return P.react.createElement("div", {
-                className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default"
-            }, P.react.createElement(Pe, {
-                text: this.props.title
-            }), this.props.button && P.react.createElement("button", {
-                key: "title-button",
-                className: "bd-pfbtn",
-                onClick: this.props.button.onClick
-            }, this.props.button.title), e.map(e => P.react.createElement(Ze, {
-                id: e.id,
-                key: e.id,
-                data: e,
-                checked: h[e.id],
-                onChange: (e, t) => {
-                    this.props.onChange(e, t)
-                }
-            })))
-        }
-    }
+    // class Ke extends P.reactComponent {
+    //     constructor(e) {
+    //         super(e)
+    //     }
+    //     render() {
+    //         return P.react.createElement("div", {
+    //             className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default"
+    //         }, P.react.createElement("div", {
+    //             className: "ui-flex ui-section-panel-title"
+    //         }, P.react.createElement(Pe, {
+    //             text: this.props.title
+    //         }), this.props.button && P.react.createElement("button", {
+    //             key: "title-button",
+    //             className: "bd-pfbtn",
+    //             onClick: this.props.button.onClick
+    //         }, this.props.button.title)), this.props.sections.map(e => P.react.createElement($e, Object.assign({}, e, {
+    //             onChange: this.props.onChange
+    //         }))))
+    //     }
+    // }
+    // class Ye extends P.reactComponent {
+    //     constructor(e) {
+    //         super(e)
+    //     }
+    //     render() {
+    //         const {
+    //             settings: e
+    //         } = this.props;
+    //         return P.react.createElement("div", {
+    //             className: "contentColumn-2hrIYH contentColumnDefault-1VQkGM content-column default"
+    //         }, P.react.createElement(Pe, {
+    //             text: this.props.title
+    //         }), this.props.button && P.react.createElement("button", {
+    //             key: "title-button",
+    //             className: "bd-pfbtn",
+    //             onClick: this.props.button.onClick
+    //         }, this.props.button.title), e.map(e => P.react.createElement(Ze, {
+    //             id: e.id,
+    //             key: e.id,
+    //             data: e,
+    //             checked: h[e.id],
+    //             onChange: (e, t) => {
+    //                 this.props.onChange(e, t)
+    //             }
+    //         })))
+    //     }
+    // }
     class Je extends P.reactComponent {
         constructor(e) {
             super(e), this.onClick = this.onClick.bind(this), this.setInitialState()
@@ -3943,7 +3944,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Pluginsasdad"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
