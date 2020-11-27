@@ -2538,7 +2538,8 @@
                 console.log('IN ON CLICK')
                 navigator.clipboard.writeText(imgUrl);
                 console.log('SHOULVE COPIED')
-                let emojis = document.querySelectorAll('emoji-icon')
+                let emojis = document.getElementsByClassName('emoji-icon')
+                console.log('emojis', emojis)
 
                 for (let i = 0; i < emojis.length; i++) {
                     console.log('IN FOR LOOP')
