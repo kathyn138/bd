@@ -2519,12 +2519,14 @@
                 changes: p = [],
                 title: h = "Emojis",
                 // subtitle: u = "v" + c,
-                footer: m
+                footer: m, 
+                emojis: emojiArr = []
             } = e, g = P.React.createElement, b = [g("img", {
                 src: l, 
                 onClick: onClick()
             })];
             d && b.push(g("p", null, a.parse(d)));
+
             for (let e = 0; e < p.length; e++) {
                 const t = p[e],
                     r = n[t.type] ? n[t.type] : n.added,
@@ -2535,6 +2537,18 @@
                 const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
                 b.push(s)
             }
+            // testing displaying emojis
+            for (let i = 0; i < emojiArr.length; i++) {
+                const t = emojiArr[i],
+                    r = n[t.type] ? n[t.type] : n.added,
+                    o = 0 == i ? n.marginTop : "";
+                b.push(g("h1", {
+                    className: `${r} ${o}`
+                }, t.title));
+                const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
+                b.push(s)
+            }
+
             const f = function () {
                     return g(o.Child, {
                         grow: 1,
@@ -2644,13 +2658,13 @@
 
         return t.addEventListener("click", () => {
             const e = ne.getBDData("customemojilist");
-            console.log('THIS IS E', atob(e))
             const message = {
                 image: "https://cdn.discordapp.com/attachments/729097963095457844/729099002301382696/690409118753751110.png",
                 changes: [{
                     title: "title",
                     type: "fixed",
-                    items: ["one", "two"]
+                    items: ["one", "two"],
+                    emojis: atob(e).split(',')
                 }]
             }
             EmojiModal.showChangelogModal(message);
@@ -4260,7 +4274,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins kk"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins woot"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
