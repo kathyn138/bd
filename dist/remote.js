@@ -2560,9 +2560,9 @@
 
                 // clickedEmoji.style.backgroundColor = "#545454";
                 const n = B.createElement(`<div class="bd-modal-wrapper theme-dark">\n                        <div class="bd-backdrop backdrop-1wrmKB"></div>\n                        <div class="bd-modal modal-1UGdnR">\n                            <div class="bd-modal-inner inner-1JeGVc">\n                                <div class="header header-1R_AjF">\n                                    <div class="title">${e}</div>\n                                </div>\n                                <div class="bd-modal-body">\n                                    <div class="scroller-wrap fade">\n                                        <div class="scroller">\n                                            ${t}\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class="footer footer-2yfCgX footer-3rDWdC footer-2gL1pp">\n                                    <button type="button">Okay</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>`);
-                B.addClass(n, "closing"), setTimeout(() => {
-                    n.remove()
-                }, 300)
+                n.remove()
+                // setTimeout(() => {
+                // }, 300)
                 console.log('end of modal')
             }
 
@@ -2686,14 +2686,24 @@
 
         return t.addEventListener("click", () => {
             const e = ne.getBDData("customemojilist");
-            console.log('THIS IS EMOJIS', atob(e).split(','))
+            let unformattedE = atob(e).split(','); 
+            let formattedE = [];
+            for (let i = 0; i < unformattedE.length; i++) {
+                if (unformattedE[i][0] = '') {
+                    console.log('here')
+                    formattedE.push(unformattedE[i].slice(1));
+                } else {
+                    formattedE.push(unformattedE[i]);
+                }
+            }
+            console.log('THIS IS REFORMATTED', formattedE)
             const message = {
                 image: "",
                 changes: [{
                     title: "title",
                     type: "fixed",
                     items: ["one", "two"],
-                    emojis: atob(e).split(',')
+                    emojis: formattedE
                 }]
             }
             EmojiModal.showChangelogModal(message);
@@ -4303,7 +4313,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins ok"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins wee"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
