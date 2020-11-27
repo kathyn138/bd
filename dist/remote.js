@@ -2331,26 +2331,18 @@
                 color: "black", 
                 side: "top", 
                 text: "Emojis :)"
-            }, B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" 
-                viewBox="0 0 24 24" aria-hidden="false" fill="white" width="24px" height="24px"
-                style="margin-left: 25px;">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                </svg></div>`)
-            )
-        //     const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
-        //     <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" 
-        //     viewBox="0 0 24 24" aria-hidden="false" fill="white" width="24px" height="24px"
-        //     style="margin-left: 25px;">
-        //     <path d="M0 0h24v24H0z" fill="none"/>
-        //     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-        // </svg></div>`);
+            });
+            const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" 
+            viewBox="0 0 24 24" aria-hidden="false" fill="white" width="24px" height="24px"
+            style="margin-left: 25px;">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg></div>`);
 
-        return e.addEventListener("click", () => {
-            
+        return t.addEventListener("click", () => {
             z.showChangelogModal(l);
-        }), e
+        }), t
         }
         _appendButton() {
             console.log('IN APPEND BEFORE')
