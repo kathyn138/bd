@@ -2545,7 +2545,7 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className="emoji-icon-container"}, "img", {
+                const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className:"emoji-icon-container"}, "img", {
                     className: 'emoji-icon', src: e, height: '50px', 
                 onClick: () => emojiClick(e)})));
                 b.push(s)
