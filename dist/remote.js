@@ -2548,7 +2548,8 @@
                     console.log('src check', currEmoji.src[0])
                     console.log('url length', imgUrl.length)
                     console.log('src length', currEmoji.src.length)
-                    if (currEmoji.src == imgUrl) {
+                    console.log('pls send help')
+                    if (currEmoji.src === imgUrl.slice(1)) {
                         console.log('INSIDE IF')
                         currEmoji.style.backgroundColor = "white";
                     }
