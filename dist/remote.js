@@ -2296,6 +2296,312 @@
             }, this.props.children)
         }
     }
+
+    class EmojiModal {
+        static get screenWidth() {
+            return Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+        }
+        static get screenHeight() {
+            return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+        }
+        static get WindowConfigFile() {
+            return this._windowConfigFile = null
+        }
+        static getAllWindowPreferences() {
+            return {
+                transparent: h["fork-wp-1"] || h.transparency,
+                frame: h.frame
+            }
+        }
+        static getWindowPreference(e) {
+            return "transparent" === e ? h["fork-wp-1"] || h.transparency : "frame" === e ? h.frame : null
+        }
+        static setWindowPreference(e, t) {
+            return "transparent" === e ? h["fork-wp-1"] = h.transparency = t : "frame" === e ? h.frame = t : null
+        }
+        static stripBOM(e) {
+            return 65279 === e.charCodeAt(0) && (e = e.slice(1)), e
+        }
+        static getTextArea() {
+            return B.query(".channelTextArea-rNsIhG textarea")
+        }
+        static insertText(e, t) {
+            e.focus(), e.selectionStart = 0, e.selectionEnd = e.value.length, document.execCommand("insertText", !1, t)
+        }
+        static escapeID(e) {
+            return e.replace(/^[^a-z]+|[^\w-]+/gi, "-")
+        }
+        static log(e, t) {
+            console.log(`%c[BandagedBD]%c [${e}]%c ${t}`, "color: #3a71c1; font-weight: 700;", "color: #3a71c1;", "")
+        }
+        static warn(e, t) {
+            console.warn(`%c[BandagedBD]%c [${e}]%c ${t}`, "color: #E8A400; font-weight: 700;", "color: #E8A400;", "")
+        }
+        static err(e, t, n) {
+            console.log(`%c[BandagedBD]%c [${e}]%c ${t}`, "color: red; font-weight: 700;", "color: red;", ""), n && (console.groupCollapsed("%cError: " + n.message, "color: red;"), console.error(n.stack), console.groupEnd())
+        }
+        static formatString(e, t) {
+            for (const n in t) {
+                let r = t[n];
+                Array.isArray(r) && (r = JSON.stringify(r)), "object" == typeof r && null !== r && (r = r.toString()), e = e.replace(new RegExp(`{{${n}}}`, "g"), r)
+            }
+            return e
+        }
+        static escape(e) {
+            return e.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")
+        }
+        static testJSON(e) {
+            try {
+                return JSON.parse(e)
+            } catch (e) {
+                return !1
+            }
+        }
+        static isEmpty(e) {
+            if (null == e || null == e || "" == e) return !0;
+            if ("object" != typeof e) return !1;
+            if (Array.isArray(e)) return 0 == e.length;
+            for (const t in e)
+                if (e.hasOwnProperty(t)) return !1;
+            return !0
+        }
+        static suppressErrors(e, t) {
+            return (...n) => {
+                try {
+                    return e(...n)
+                } catch (e) {
+                    this.err("SuppressedError", "Error occurred in " + t, e)
+                }
+            }
+        }
+        static monkeyPatch(e, t, n) {
+            const {
+                before: r,
+                after: o,
+                instead: s,
+                once: i = !1,
+                silent: a = !1,
+                force: c = !1
+            } = n, l = n.displayName || e.displayName || e[t].displayName || e.name || e.constructor.displayName || e.constructor.name;
+            if (a || console.log("patch", t, "of", l), !e[t]) {
+                if (!c) return console.error(t, "does not exist for", l);
+                e[t] = function () {}
+            }
+            const d = e[t],
+                p = () => {
+                    a || console.log("unpatch", t, "of", l), e[t] = d
+                };
+            return e[t] = function () {
+                const n = {
+                    thisObject: this,
+                    methodArguments: arguments,
+                    cancelPatch: p,
+                    originalMethod: d,
+                    callOriginalMethod: () => n.returnValue = n.originalMethod.apply(n.thisObject, n.methodArguments)
+                };
+                if (s) {
+                    const r = z.suppressErrors(s, "`instead` callback of " + e[t].displayName)(n);
+                    void 0 !== r && (n.returnValue = r)
+                } else r && z.suppressErrors(r, "`before` callback of " + e[t].displayName)(n), n.callOriginalMethod(), o && z.suppressErrors(o, "`after` callback of " + e[t].displayName)(n);
+                return i && p(), n.returnValue
+            }, Object.assign(e[t], d), e[t].__monkeyPatched = !0, e[t].displayName = l, e[t].__originalMethod || (e[t].__originalMethod = d, e[t].toString = function () {
+                return d.toString()
+            }), p
+        }
+        static onRemoved(e, t) {
+            const n = new MutationObserver(r => {
+                for (let o = 0; o < r.length; o++) {
+                    const s = r[o],
+                        i = Array.from(s.removedNodes),
+                        a = i.indexOf(e) > -1,
+                        c = i.some(t => t.contains(e));
+                    (a || c) && (n.disconnect(), t())
+                }
+            });
+            n.observe(document.body, {
+                subtree: !0,
+                childList: !0
+            })
+        }
+        static getNestedProp(e, t) {
+            return t.split(/\s?\.\s?/).reduce((function (e, t) {
+                return e && e[t]
+            }), e)
+        }
+        static showToast(e, t = {}) {
+            if (!document.querySelector(".bd-toasts")) {
+                const e = document.querySelector(".sidebar-2K8pFh + div") || null,
+                    t = e ? e.querySelector(".membersWrap-2h-GB4") : null,
+                    n = e ? e.querySelector("form") : null,
+                    r = e ? e.getBoundingClientRect().left : 310,
+                    o = t ? t.getBoundingClientRect().left : 0,
+                    s = o ? o - e.getBoundingClientRect().left : z.screenWidth - r - 240,
+                    i = n ? n.offsetHeight : 80,
+                    a = document.createElement("div");
+                a.classList.add("bd-toasts"), a.style.setProperty("left", r + "px"), a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), document.querySelector("#app-mount").appendChild(a)
+            }
+            const {
+                type: n = "",
+                icon: r = !0,
+                timeout: o = 3e3
+            } = t, s = document.createElement("div");
+            s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"), s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
+                s.classList.add("closing"), setTimeout(() => {
+                    s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
+                }, 300)
+            }, o)
+        }
+        static alert(e, t) {
+            const n = B.createElement(`<div class="bd-modal-wrapper theme-dark">\n                        <div class="bd-backdrop backdrop-1wrmKB"></div>\n                        <div class="bd-modal modal-1UGdnR">\n                            <div class="bd-modal-inner inner-1JeGVc">\n                                <div class="header header-1R_AjF">\n                                    <div class="title">${e}</div>\n                                </div>\n                                <div class="bd-modal-body">\n                                    <div class="scroller-wrap fade">\n                                        <div class="scroller">\n                                            ${t}\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class="footer footer-2yfCgX footer-3rDWdC footer-2gL1pp">\n                                    <button type="button">Okay</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>`);
+            n.querySelector(".footer button").addEventListener("click", () => {
+                B.addClass(n, "closing"), setTimeout(() => {
+                    n.remove()
+                }, 300)
+            }), n.querySelector(".bd-backdrop").addEventListener("click", () => {
+                B.addClass(n, "closing"), setTimeout(() => {
+                    n.remove()
+                }, 300)
+            }), B.query("#app-mount").append(n)
+        }
+        static showContentErrors({
+            plugins: e = [],
+            themes: t = []
+        }) {
+            if (!e || !t) return;
+            if (!e.length && !t.length) return;
+            const n = B.createElement('<div class="bd-modal-wrapper theme-dark">\n                        <div class="bd-backdrop backdrop-1wrmKB"></div>\n                        <div class="bd-modal bd-content-modal modal-1UGdnR">\n                            <div class="bd-modal-inner inner-1JeGVc">\n                                <div class="header header-1R_AjF"><div class="title">Content Errors</div></div>\n                                <div class="bd-modal-body">\n                                    <div class="tab-bar-container">\n                                        <div class="tab-bar TOP">\n                                            <div class="tab-bar-item">Plugins</div>\n                                            <div class="tab-bar-item">Themes</div>\n                                        </div>\n                                    </div>\n                                    <div class="table-header">\n                                        <div class="table-column column-name">Name</div>\n                                        <div class="table-column column-message">Message</div>\n                                        <div class="table-column column-error">Error</div>\n                                    </div>\n                                    <div class="scroller-wrap fade">\n                                        <div class="scroller">\n    \n                                        </div>\n                                    </div>\n                                </div>\n                                <div class="footer footer-2yfCgX footer-3rDWdC footer-2gL1pp">\n                                    <button type="button">Okay</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>');
+  
+            function r(e) {
+                const t = B.createElement('<div class="errors">');
+                for (const n of e) {
+                    const e = B.createElement(`<div class="error">\n                                    <div class="table-column column-name">${n.name?n.name:n.file}</div>\n                                    <div class="table-column column-message">${n.message}</div>\n                                    <div class="table-column column-error"><a class="error-link" href="">${n.error?n.error.message:""}</a></div>\n                                </div>`);
+                    t.append(e), n.error && e.querySelectorAll("a").forEach(e => e.addEventListener("click", e => {
+                        e.preventDefault(), z.err("ContentManager", `Error details for ${n.name?n.name:n.file}.`, n.error)
+                    }))
+                }
+                return t
+            }
+            const o = [r(e), r(t)];
+            n.querySelectorAll(".tab-bar-item").forEach(e => e.addEventListener("click", e => {
+                e.preventDefault();
+                const t = n.querySelector(".tab-bar-item.selected");
+                t && B.removeClass(t, "selected"), B.addClass(e.target, "selected");
+                const r = n.querySelector(".scroller");
+                r.innerHTML = "", r.append(o[B.index(e.target)])
+            })), n.querySelector(".footer button").addEventListener("click", () => {
+                B.addClass(n, "closing"), setTimeout(() => {
+                    n.remove()
+                }, 300)
+            }), n.querySelector(".bd-backdrop").addEventListener("click", () => {
+                B.addClass(n, "closing"), setTimeout(() => {
+                    n.remove()
+                }, 300)
+            }), B.query("#app-mount").append(n), e.length ? n.querySelector(".tab-bar-item").click() : n.querySelectorAll(".tab-bar-item")[1].click()
+        }
+        static showChangelogModal(e = {}) {
+            const t = j("push", "update", "pop", "popWithKey"),
+                n = j("fixed", "improved"),
+                r = A("Text"),
+                o = j("Child"),
+                s = j("Tags", "default"),
+                i = I(e => e.defaultProps && 0 == e.defaultProps.selectable),
+                a = j("defaultRules", "parse");
+            if (!(i && t && n && r && o && s && a)) return;
+            const {
+                image: l = "",
+                description: d = "",
+                changes: p = [],
+                title: h = "Emojis",
+                subtitle: u = "v" + c,
+                footer: m
+            } = e, g = P.React.createElement, b = [g("img", {
+                src: l
+            })];
+            d && b.push(g("p", null, a.parse(d)));
+            for (let e = 0; e < p.length; e++) {
+                const t = p[e],
+                    r = n[t.type] ? n[t.type] : n.added,
+                    o = 0 == e ? n.marginTop : "";
+                b.push(g("h1", {
+                    className: `${r} ${o}`
+                }, t.title));
+                const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
+                b.push(s)
+            }
+            const f = function () {
+                    return g(o.Child, {
+                        grow: 1,
+                        shrink: 1
+                    }, g(s.default, {
+                        tag: s.Tags.H4
+                    }, h), g(r, {
+                        size: r.Sizes.SMALL,
+                        color: r.Colors.STANDARD,
+                        className: n.date
+                    }, u))
+                },
+                y = () => {
+                    const e = I(e => "Anchor" == e.displayName),
+                        n = j("anchorUnderlineOnHover") || {
+                            anchor: "anchor-3Z-8Bb",
+                            anchorUnderlineOnHover: "anchorUnderlineOnHover-2ESHQB"
+                        },
+                        s = e => {
+                            e.preventDefault(), e.stopPropagation(), t.pop(), P.joinBD2()
+                        },
+                        i = e ? g(e, {
+                            onClick: s
+                        }, "brrrr") : g("a", {
+                            className: `${n.anchor} ${n.anchorUnderlineOnHover}`,
+                            onClick: s
+                        }, "brrrr"),
+                        a = g(r, {
+                            size: r.Sizes.SMALL,
+                            color: r.Colors.STANDARD
+                        }, "Need support? ", i);
+                    return g(o.Child, {
+                        grow: 1,
+                        shrink: 1
+                    }, m || a)
+                };
+            return t.push((function (e) {
+                return g(i, Object.assign({
+                    className: n.container,
+                    selectable: !0,
+                    onScroll: e => e,
+                    onClose: e => e,
+                    renderHeader: f,
+                    renderFooter: y,
+                    children: b
+                }, e))
+            }))
+        }
+        static showConfirmationModal(e, t, n = {}) {
+            const r = j("openModal", "updateModal"),
+                o = A("Markdown"),
+                s = A("ConfirmModal");
+            if (!r || !s || !o) return z.alert(e, t);
+            const i = () => {},
+                {
+                    onConfirm: a = i,
+                    onCancel: c = i,
+                    confirmText: l = "Okay",
+                    cancelText: d = "Cancel",
+                    danger: p = !1,
+                    key: h
+                } = n;
+            return Array.isArray(t) || (t = [t]), t = t.map(e => "string" == typeof e ? P.React.createElement(o, null, e) : e), r.openModal(n => P.React.createElement(s, Object.assign({
+                header: e,
+                red: p,
+                confirmText: l,
+                cancelText: d,
+                onConfirm: a,
+                onCancel: c
+            }, n), t), {
+                modalKey: h
+            })
+        }
+    }
     var Ge = new class {
         constructor() {
             this._appendButton = this._appendButton.bind(this)
@@ -2327,11 +2633,6 @@
             // P.reactDom.render(emojiBox);
         }
         get button() {
-            const e = P.react.createElement(ke, {
-                color: "black", 
-                side: "top", 
-                text: "Emojis :)"
-            });
             const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" 
             viewBox="0 0 24 24" aria-hidden="false" fill="white" width="24px" height="24px"
@@ -2341,7 +2642,15 @@
         </svg></div>`);
 
         return t.addEventListener("click", () => {
-            z.showChangelogModal(l);
+            const message = {
+                description: "Emojis!",
+                changes: [{
+                    title: "title",
+                    type: "fixed",
+                    items: ["one, two"]
+                }]
+            }
+            EmojiModal.showChangelogModal(message);
         }), t
         }
         _appendButton() {
