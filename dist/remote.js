@@ -2689,7 +2689,7 @@
             let unformattedE = atob(e).split(','); 
             let formattedE = [];
             for (let i = 0; i < unformattedE.length; i++) {
-                if (unformattedE[i][0] = '') {
+                if (unformattedE[i][0] === '') {
                     console.log('here')
                     formattedE.push(unformattedE[i].slice(1));
                 } else {
