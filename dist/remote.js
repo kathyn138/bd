@@ -2542,10 +2542,7 @@
                     side: "top",
                     text: "Hi :D"
                 }, P.react.createElement("div", {
-                    className: "bd-changelog-button",
-                    onClick: () => {
-                        z.showChangelogModal(l)
-                    }
+                    className: "bd-changelog-button"
                 }, P.react.createElement(ge, {
                     className: "bd-icon",
                     size: "16px"
@@ -4294,7 +4291,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins wook"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins woog"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
