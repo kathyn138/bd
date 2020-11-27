@@ -2542,8 +2542,7 @@
 
                 for (let i = 0; i < emojis.length; i++) {
                     let currEmoji = emojis[i];
-                    console.log('CURREMOJI', currEmoji)
-                    console.log('innerhtml', currEmoji.innerHTML)
+                    console.log('imgurl', imgUrl)
                     console.log('src', currEmoji.src)
                     if (currEmoji.src === imgUrl) {
                         console.log('INSIDE IF')
