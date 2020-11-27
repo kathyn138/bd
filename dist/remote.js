@@ -2326,7 +2326,9 @@
         }
         get button() {
             const t = B.createElement(`<div id="emoji-container-btn" class="emoji-container"> 
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" viewBox="0 0 24 24" aria-hidden="false" fill="currentColor" width="24px" height="24px">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-3D60ES da-icon" 
+            viewBox="0 0 24 24" aria-hidden="false" fill="currentColor" width="24px" height="24px"
+            style="color: white; margin-left: 25px;">
             <path d="M0 0h24v24H0z" fill="none"/>
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
         </svg></div>`);
