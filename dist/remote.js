@@ -2546,8 +2546,9 @@
                     console.log('src', currEmoji.src)
                     console.log('type of url', typeof imgUrl)
                     console.log('typeof src', typeof currEmoji.src)
-                    console.log('comparison', currEmoji.src === imgUrl)
-                    if (currEmoji.src === imgUrl) {
+                    console.log('url length', imgUrl.length)
+                    console.log('src length', currEmoji.src.length)
+                    if (currEmoji.src == imgUrl) {
                         console.log('INSIDE IF')
                         currEmoji.style.backgroundColor = "white";
                     }
