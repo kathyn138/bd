@@ -2543,7 +2543,7 @@
                 for (let i = 0; i < emojis.length; i++) {
                     let currEmoji = emojis[i];
                     console.log('CURREMOJIZ', currEmoji)
-                    if (currEmoji.innerHTML.contains(imgUrl)) {
+                    if (currEmoji.innerHTML.indexOf(imgUrl) !== -1) {
                         currEmoji.style.backgroundColor = "white";
                     }
                 }
