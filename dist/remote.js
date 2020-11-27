@@ -2541,12 +2541,12 @@
                 let emojis = document.querySelectorAll('emoji-icon')
 
                 for (let i = 0; i < emojis.length; i++) {
+                    console.log('IN FOR LOOP')
                     let currEmoji = emojis[i];
-                    if (currEmoji.src === "imgUrl") {
+                    if (currEmoji.src === imgUrl) {
                         currEmoji.style.backgroundColor = "white";
                     }
                 }
-                console.log('TESTING EMOJIS', emojis)
             }
 
             // displaying emojis
