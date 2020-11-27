@@ -2542,8 +2542,8 @@
 
                 for (let i = 0; i < emojis.length; i++) {
                     let currEmoji = emojis[i];
-                    console.log('CURREMOJI', currEmoji)
-                    if (currEmoji.src === imgUrl) {
+                    console.log('CURREMOJIZ', currEmoji)
+                    if (currEmoji.innerHTML.contains(imgUrl)) {
                         currEmoji.style.backgroundColor = "white";
                     }
                 }
