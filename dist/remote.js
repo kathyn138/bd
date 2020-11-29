@@ -905,7 +905,8 @@
                 a.classList.add("bd-toasts"), 
                 a.style.setProperty("left", e.getBoundingClientRect().left / 2 + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
-                a.style.setProperty("width", 60 + "px"), 
+                a.style.setProperty("position", "relative")
+                a.style.setProperty("width", "53px"), 
                 a.style.setProperty("border-radius", "1px"), 
                 a.style.setProperty("padding", ".375rem .75rem");
                 a.style.setProperty("background-color", "#7289da")
@@ -2603,7 +2604,8 @@
             const f = function () {
                     return g(o.Child, {
                         grow: 1,
-                        shrink: 1
+                        shrink: 1, 
+                        id: "emoji-modal-header"
                     }, g(s.default, {
                         tag: s.Tags.H4
                     }, h), g(r, {
@@ -2632,7 +2634,7 @@
                 };
             return t.push((function (e) {
                 return g(i, Object.assign({
-                    className: n.container,
+                    className: "sadkk",
                     selectable: !0,
                     onScroll: e => e,
                     onClose: e => e,
@@ -4336,7 +4338,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins tea"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins ugh"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
