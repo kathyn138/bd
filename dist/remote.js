@@ -2621,7 +2621,7 @@
                     }, u))
                 },
                 y = () => {
-                    const emojiToast = g("span", {id: "emoji-toast"});
+                    const emojiToast = g("span", {text: "Emojis go brrr", id: "emoji-toast"});
                     const e = I(e => "Anchor" == e.displayName),
                         n = j("anchorUnderlineOnHover") || {
                             anchor: "anchor-3Z-8Bb",
@@ -2633,7 +2633,7 @@
                         a = g(r, {
                             size: r.Sizes.SMALL,
                             color: r.Colors.STANDARD
-                        }, "Emojis go brrr", emojiToast, i);
+                        }, emojiToast, i);
                     return g(o.Child, {
                         grow: 1,
                         shrink: 1
@@ -4345,7 +4345,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins sighree"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins sigh"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
