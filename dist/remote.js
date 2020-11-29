@@ -902,14 +902,20 @@
                     s = o ? o - e.getBoundingClientRect().left : z.screenWidth - r - 240,
                     i = n ? n.offsetHeight : 80,
                     a = document.createElement("div");
-                a.classList.add("bd-toasts"), a.style.setProperty("left", r + "px"), a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), document.querySelector("#app-mount").appendChild(a)
+                a.classList.add("bd-toasts"), a.style.setProperty("left", r + "px"), 
+                // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
+                a.style.setProperty("width", 200 + "px"), a.style.setProperty("bottom", 300 + "px"), 
+                a.style.setProperty("background-color", "#7289da"),
+                a.style.setProperty("z-index", "100"),
+                document.querySelector("#app-mount").appendChild(a)
             }
             const {
                 type: n = "",
                 icon: r = !0,
                 timeout: o = 3e3
             } = t, s = document.createElement("div");
-            s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"), s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
+            s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"),
+            s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
                 s.classList.add("closing"), setTimeout(() => {
                     s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
                 }, 300)
@@ -2731,7 +2737,7 @@
         }
         addButton() {
             console.log('IN ADD BUTTON BEFORE')
-            console.log('h4h4h4')
+            console.log('OKKKKK')
             h["fork-ps-2"] && z.showToast("Copied!", {
                 type: "info"
             })
