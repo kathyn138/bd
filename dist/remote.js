@@ -149,9 +149,9 @@
     const s = "0.0.306",
         i = window.DiscordNative && window.DiscordNative.remoteApp && window.DiscordNative.remoteApp.getVersion && window.DiscordNative.remoteApp.getVersion() || "0.0.306",
         a = "0.3.0",
-        c = "0.3.5",
+        c = "0.0.1",
         l = {
-            description: "Big things are coming.",
+            description: "Emojis go brrr",
             changes: [{
                 title: "Bug Fixes",
                 type: "fixed",
@@ -1085,181 +1085,181 @@
             this.removeListener(e, t)
         }
     };
-    class R {
-        get folder() {
-            return Y.pluginsFolder
-        }
-    }
-    R.prototype.loadPlugins = function () {
-        this.loadPluginData(), u.splice(0, 0, ...Y.loadPlugins());
-        const e = Object.keys(M);
-        for (let t = 0; t < e.length; t++) {
-            let n, r;
-            const o = M[e[t]];
-            try {
-                n = o.plugin, r = o.name, n.load && "function" == typeof n.load && n.load()
-            } catch (e) {
-                S[r] = !1, z.err("Plugins", r + " could not be loaded.", e), u.push({
-                    name: r,
-                    file: o.filename,
-                    message: "load() could not be fired.",
-                    error: {
-                        message: e.message,
-                        stack: e.stack
-                    }
-                });
-                continue
-            }
-            if (S[r] || (S[r] = !1), S[r]) try {
-                n.start(), h["fork-ps-2"] && z.showToast(`${o.name} v${o.version} has started.`)
-            } catch (e) {
-                S[r] = !1, z.err("Plugins", r + " could not be started.", e), u.push({
-                    name: r,
-                    file: o.filename,
-                    message: "start() could not be fired.",
-                    error: {
-                        message: e.message,
-                        stack: e.stack
-                    }
-                })
-            }
-        }
-        this.savePluginData(), n(0).remote.getCurrentWebContents().on("did-navigate-in-page", this.channelSwitch.bind(this))
-    }, 
-    R.prototype.startPlugin = function (e, t = !1) {
-        try {
-            M[e].plugin.start(), h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} has started.`)
-        } catch (n) {
-            h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} could not be started.`, {
-                type: "error"
-            }), S[e] = !1, this.savePluginData(), z.err("Plugins", e + " could not be started.", n)
-        }
-    }, R.prototype.stopPlugin = function (e, t = !1) {
-        try {
-            M[e].plugin.stop(), h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} has stopped.`)
-        } catch (n) {
-            h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} could not be stopped.`, {
-                type: "error"
-            }), z.err("Plugins", M[e].name + " could not be stopped.", n)
-        }
-    }, R.prototype.enablePlugin = function (e, t = !1) {
-        S[e] || (S[e] = !0, this.savePluginData(), this.startPlugin(e, t))
-    }, R.prototype.enable = function (e, t = !1) {
-        return this.enablePlugin(e, t)
-    }, R.prototype.disablePlugin = function (e, t = !1) {
-        S[e] && (S[e] = !1, this.savePluginData(), this.stopPlugin(e, t))
-    }, R.prototype.disable = function (e, t = !1) {
-        return this.disablePlugin(e, t)
-    }, R.prototype.togglePlugin = function (e) {
-        S[e] ? this.disablePlugin(e) : this.enablePlugin(e)
-    }, R.prototype.toggle = function (e, t = !1) {
-        return this.togglePlugin(e, t)
-    }, R.prototype.loadPlugin = function (e) {
-        const t = Y.loadContent(e, "plugin");
-        if (t) return h["fork-ps-1"] && z.showContentErrors({
-            plugins: [t]
-        }), h["fork-ps-2"] && z.showToast(e + " could not be loaded.", {
-            type: "error"
-        }), z.err("ContentManager", e + " could not be loaded.", t);
-        const n = Object.values(M).find(t => t.filename == e),
-            r = n.plugin;
-        try {
-            r.load && "function" == typeof r.load && r.load()
-        } catch (e) {
-            h["fork-ps-1"] && z.showContentErrors({
-                plugins: [e]
-            })
-        }
-        z.log("ContentManager", `${n.name} v${n.version} was loaded.`), h["fork-ps-2"] && z.showToast(`${n.name} v${n.version} was loaded.`, {
-            type: "success"
-        }), F.dispatch("plugin-loaded", n.name)
-    }, R.prototype.unloadPlugin = function (e) {
-        const t = Object.values(M).find(t => t.filename == e) || M[e];
-        if (!t) return;
-        const n = t.name;
-        S[n] && this.disablePlugin(n, !0);
-        const r = Y.unloadContent(M[n].filename, "plugin");
-        if (delete M[n], r) return h["fork-ps-1"] && z.showContentErrors({
-            plugins: [r]
-        }), h["fork-ps-2"] && z.showToast(n + " could not be unloaded. It may have not been loaded yet.", {
-            type: "error"
-        }), z.err("ContentManager", n + " could not be unloaded. It may have not been loaded yet.", r);
-        z.log("ContentManager", n + " was unloaded."), h["fork-ps-2"] && z.showToast(n + " was unloaded.", {
-            type: "success"
-        }), F.dispatch("plugin-unloaded", n)
-    }, R.prototype.delete = function (e) {
-        const t = Object.values(M).find(t => t.filename == e) || M[e];
-        if (!t) return;
-        this.unloadPlugin(t.filename);
-        const r = n(1).resolve(Y.pluginsFolder, t.filename);
-        n(2).unlinkSync(r)
-    }, R.prototype.reloadPlugin = function (e) {
-        const t = Object.values(M).find(t => t.filename == e) || M[e];
-        if (!t) return this.loadPlugin(e);
-        const n = t.name,
-            r = S[n];
-        r && this.stopPlugin(n, !0);
-        const o = Y.reloadContent(M[n].filename, "plugin");
-        if (o) return h["fork-ps-1"] && z.showContentErrors({
-            plugins: [o]
-        }), h["fork-ps-2"] && z.showToast(n + " could not be reloaded.", {
-            type: "error"
-        }), z.err("ContentManager", n + " could not be reloaded.", o);
-        M[n].plugin.load && "function" == typeof M[n].plugin.load && M[n].plugin.load(), r && this.startPlugin(n, !0), z.log("ContentManager", `${n} v${M[n].version} was reloaded.`), h["fork-ps-2"] && z.showToast(`${n} v${M[n].version} was reloaded.`, {
-            type: "success"
-        }), F.dispatch("plugin-reloaded", n)
-    }, R.prototype.reload = function (e) {
-        return this.reloadPlugin(e)
-    }, R.prototype.edit = function (e) {
-        console.log("Edit " + e);
-        const t = Object.values(M).find(t => t.filename == e) || M[e];
-        if (!t) return;
-        const r = n(1).resolve(Y.pluginsFolder, t.filename);
-        console.log("Edit " + r), n(0).shell.openItem("" + r)
-    }, R.prototype.updatePluginList = function () {
-        const e = Y.loadNewContent("plugin");
-        for (const t of e.added) this.loadPlugin(t);
-        for (const t of e.removed) this.unloadPlugin(t)
-    }, R.prototype.loadPluginData = function () {
-        const e = ne.getSettingGroup("plugins");
-        e && Object.assign(S, e)
-    }, R.prototype.savePluginData = function () {
-        ne.setSettingGroup("plugins", S)
-    }, R.prototype.newMessage = function () {
-        const e = Object.keys(M);
-        for (let t = 0; t < e.length; t++) {
-            const n = M[e[t]],
-                r = n.plugin;
-            if (S[n.name] && "function" == typeof r.onMessage) try {
-                r.onMessage()
-            } catch (e) {
-                z.err("Plugins", "Unable to fire onMessage for " + n.name + ".", e)
-            }
-        }
-    }, R.prototype.channelSwitch = function () {
-        const e = Object.keys(M);
-        for (let t = 0; t < e.length; t++) {
-            const n = M[e[t]],
-                r = n.plugin;
-            if (S[n.name] && "function" == typeof r.onSwitch) try {
-                r.onSwitch()
-            } catch (e) {
-                z.err("Plugins", "Unable to fire onSwitch for " + n.name + ".", e)
-            }
-        }
-    }, R.prototype.rawObserver = function (e) {
-        const t = Object.keys(M);
-        for (let n = 0; n < t.length; n++) {
-            const r = M[t[n]],
-                o = r.plugin;
-            if (S[r.name] && "function" == typeof o.observer) try {
-                o.observer(e)
-            } catch (e) {
-                z.err("Plugins", "Unable to fire observer for " + r.name + ".", e)
-            }
-        }
-    };
-    var U = new R;
+    // class R {
+    //     get folder() {
+    //         return Y.pluginsFolder
+    //     }
+    // }
+    // R.prototype.loadPlugins = function () {
+    //     this.loadPluginData(), u.splice(0, 0, ...Y.loadPlugins());
+    //     const e = Object.keys(M);
+    //     for (let t = 0; t < e.length; t++) {
+    //         let n, r;
+    //         const o = M[e[t]];
+    //         try {
+    //             n = o.plugin, r = o.name, n.load && "function" == typeof n.load && n.load()
+    //         } catch (e) {
+    //             S[r] = !1, z.err("Plugins", r + " could not be loaded.", e), u.push({
+    //                 name: r,
+    //                 file: o.filename,
+    //                 message: "load() could not be fired.",
+    //                 error: {
+    //                     message: e.message,
+    //                     stack: e.stack
+    //                 }
+    //             });
+    //             continue
+    //         }
+    //         if (S[r] || (S[r] = !1), S[r]) try {
+    //             n.start(), h["fork-ps-2"] && z.showToast(`${o.name} v${o.version} has started.`)
+    //         } catch (e) {
+    //             S[r] = !1, z.err("Plugins", r + " could not be started.", e), u.push({
+    //                 name: r,
+    //                 file: o.filename,
+    //                 message: "start() could not be fired.",
+    //                 error: {
+    //                     message: e.message,
+    //                     stack: e.stack
+    //                 }
+    //             })
+    //         }
+    //     }
+    //     this.savePluginData(), n(0).remote.getCurrentWebContents().on("did-navigate-in-page", this.channelSwitch.bind(this))
+    // }, 
+    // R.prototype.startPlugin = function (e, t = !1) {
+    //     try {
+    //         M[e].plugin.start(), h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} has started.`)
+    //     } catch (n) {
+    //         h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} could not be started.`, {
+    //             type: "error"
+    //         }), S[e] = !1, this.savePluginData(), z.err("Plugins", e + " could not be started.", n)
+    //     }
+    // }, R.prototype.stopPlugin = function (e, t = !1) {
+    //     try {
+    //         M[e].plugin.stop(), h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} has stopped.`)
+    //     } catch (n) {
+    //         h["fork-ps-2"] && !t && z.showToast(`${M[e].name} v${M[e].version} could not be stopped.`, {
+    //             type: "error"
+    //         }), z.err("Plugins", M[e].name + " could not be stopped.", n)
+    //     }
+    // }, R.prototype.enablePlugin = function (e, t = !1) {
+    //     S[e] || (S[e] = !0, this.savePluginData(), this.startPlugin(e, t))
+    // }, R.prototype.enable = function (e, t = !1) {
+    //     return this.enablePlugin(e, t)
+    // }, R.prototype.disablePlugin = function (e, t = !1) {
+    //     S[e] && (S[e] = !1, this.savePluginData(), this.stopPlugin(e, t))
+    // }, R.prototype.disable = function (e, t = !1) {
+    //     return this.disablePlugin(e, t)
+    // }, R.prototype.togglePlugin = function (e) {
+    //     S[e] ? this.disablePlugin(e) : this.enablePlugin(e)
+    // }, R.prototype.toggle = function (e, t = !1) {
+    //     return this.togglePlugin(e, t)
+    // }, R.prototype.loadPlugin = function (e) {
+    //     const t = Y.loadContent(e, "plugin");
+    //     if (t) return h["fork-ps-1"] && z.showContentErrors({
+    //         plugins: [t]
+    //     }), h["fork-ps-2"] && z.showToast(e + " could not be loaded.", {
+    //         type: "error"
+    //     }), z.err("ContentManager", e + " could not be loaded.", t);
+    //     const n = Object.values(M).find(t => t.filename == e),
+    //         r = n.plugin;
+    //     try {
+    //         r.load && "function" == typeof r.load && r.load()
+    //     } catch (e) {
+    //         h["fork-ps-1"] && z.showContentErrors({
+    //             plugins: [e]
+    //         })
+    //     }
+    //     z.log("ContentManager", `${n.name} v${n.version} was loaded.`), h["fork-ps-2"] && z.showToast(`${n.name} v${n.version} was loaded.`, {
+    //         type: "success"
+    //     }), F.dispatch("plugin-loaded", n.name)
+    // }, R.prototype.unloadPlugin = function (e) {
+    //     const t = Object.values(M).find(t => t.filename == e) || M[e];
+    //     if (!t) return;
+    //     const n = t.name;
+    //     S[n] && this.disablePlugin(n, !0);
+    //     const r = Y.unloadContent(M[n].filename, "plugin");
+    //     if (delete M[n], r) return h["fork-ps-1"] && z.showContentErrors({
+    //         plugins: [r]
+    //     }), h["fork-ps-2"] && z.showToast(n + " could not be unloaded. It may have not been loaded yet.", {
+    //         type: "error"
+    //     }), z.err("ContentManager", n + " could not be unloaded. It may have not been loaded yet.", r);
+    //     z.log("ContentManager", n + " was unloaded."), h["fork-ps-2"] && z.showToast(n + " was unloaded.", {
+    //         type: "success"
+    //     }), F.dispatch("plugin-unloaded", n)
+    // }, R.prototype.delete = function (e) {
+    //     const t = Object.values(M).find(t => t.filename == e) || M[e];
+    //     if (!t) return;
+    //     this.unloadPlugin(t.filename);
+    //     const r = n(1).resolve(Y.pluginsFolder, t.filename);
+    //     n(2).unlinkSync(r)
+    // }, R.prototype.reloadPlugin = function (e) {
+    //     const t = Object.values(M).find(t => t.filename == e) || M[e];
+    //     if (!t) return this.loadPlugin(e);
+    //     const n = t.name,
+    //         r = S[n];
+    //     r && this.stopPlugin(n, !0);
+    //     const o = Y.reloadContent(M[n].filename, "plugin");
+    //     if (o) return h["fork-ps-1"] && z.showContentErrors({
+    //         plugins: [o]
+    //     }), h["fork-ps-2"] && z.showToast(n + " could not be reloaded.", {
+    //         type: "error"
+    //     }), z.err("ContentManager", n + " could not be reloaded.", o);
+    //     M[n].plugin.load && "function" == typeof M[n].plugin.load && M[n].plugin.load(), r && this.startPlugin(n, !0), z.log("ContentManager", `${n} v${M[n].version} was reloaded.`), h["fork-ps-2"] && z.showToast(`${n} v${M[n].version} was reloaded.`, {
+    //         type: "success"
+    //     }), F.dispatch("plugin-reloaded", n)
+    // }, R.prototype.reload = function (e) {
+    //     return this.reloadPlugin(e)
+    // }, R.prototype.edit = function (e) {
+    //     console.log("Edit " + e);
+    //     const t = Object.values(M).find(t => t.filename == e) || M[e];
+    //     if (!t) return;
+    //     const r = n(1).resolve(Y.pluginsFolder, t.filename);
+    //     console.log("Edit " + r), n(0).shell.openItem("" + r)
+    // }, R.prototype.updatePluginList = function () {
+    //     const e = Y.loadNewContent("plugin");
+    //     for (const t of e.added) this.loadPlugin(t);
+    //     for (const t of e.removed) this.unloadPlugin(t)
+    // }, R.prototype.loadPluginData = function () {
+    //     const e = ne.getSettingGroup("plugins");
+    //     e && Object.assign(S, e)
+    // }, R.prototype.savePluginData = function () {
+    //     ne.setSettingGroup("plugins", S)
+    // }, R.prototype.newMessage = function () {
+    //     const e = Object.keys(M);
+    //     for (let t = 0; t < e.length; t++) {
+    //         const n = M[e[t]],
+    //             r = n.plugin;
+    //         if (S[n.name] && "function" == typeof r.onMessage) try {
+    //             r.onMessage()
+    //         } catch (e) {
+    //             z.err("Plugins", "Unable to fire onMessage for " + n.name + ".", e)
+    //         }
+    //     }
+    // }, R.prototype.channelSwitch = function () {
+    //     const e = Object.keys(M);
+    //     for (let t = 0; t < e.length; t++) {
+    //         const n = M[e[t]],
+    //             r = n.plugin;
+    //         if (S[n.name] && "function" == typeof r.onSwitch) try {
+    //             r.onSwitch()
+    //         } catch (e) {
+    //             z.err("Plugins", "Unable to fire onSwitch for " + n.name + ".", e)
+    //         }
+    //     }
+    // }, R.prototype.rawObserver = function (e) {
+    //     const t = Object.keys(M);
+    //     for (let n = 0; n < t.length; n++) {
+    //         const r = M[t[n]],
+    //             o = r.plugin;
+    //         if (S[r.name] && "function" == typeof o.observer) try {
+    //             o.observer(e)
+    //         } catch (e) {
+    //             z.err("Plugins", "Unable to fire observer for " + r.name + ".", e)
+    //         }
+    //     }
+    // };
+    // var U = new R;
   
     const H = n(1),
         W = n(2),
@@ -1298,11 +1298,11 @@
                     W.statSync(H.resolve(n, o))
                 } catch (e) {
                     if ("ENOENT" !== e.code) return;
-                    return delete this.timeCache[o], t ? U.unloadPlugin(o) : ''
+                    return delete this.timeCache[o], t ? '' : ''
                 }
                 if (!W.statSync(H.resolve(n, o)).isFile()) return;
                 const s = W.statSync(H.resolve(n, o));
-                s && s.mtime && s.mtime.getTime() && "number" == typeof s.mtime.getTime() && this.timeCache[o] != s.mtime.getTime() && (this.timeCache[o] = s.mtime.getTime(), "rename" == e && (t ? U.loadPlugin(o) : ''), "change" == e && (t ? U.reloadPlugin(o) : ''))
+                s && s.mtime && s.mtime.getTime() && "number" == typeof s.mtime.getTime() && this.timeCache[o] != s.mtime.getTime() && (this.timeCache[o] = s.mtime.getTime(), "rename" == e && (t ? 'U.loadPlugin(o)' : ''), "change" == e && (t ? 'U.reloadPlugin(o)' : ''))
             })
         }
         _updateTimeCache(e, t) {
@@ -1938,9 +1938,6 @@
                 text: "Emojis",
                 id: "emojis"
             }, {
-                text: "Plugins",
-                id: "plugins"
-            }, {
                 text: "Custom CSS",
                 id: "customcss"
             }]
@@ -2474,7 +2471,7 @@
             s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"), s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
                 s.classList.add("closing"), setTimeout(() => {
                     s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
-                }, 300)
+                }, 100)
             }, o)
         }
         static alert(e, t) {
@@ -2538,7 +2535,7 @@
                 image: l = "",
                 description: d = "",
                 changes: p = [],
-                title: h = "Emojis go brrr",
+                title: h = "Emojis",
                 // subtitle: u = "v" + c,
                 footer: m, 
                 // emojis: emojiArr = []
@@ -2559,8 +2556,7 @@
             //     const s = g("ul", null, t.items.map(e => g("li", null, a.parse(e))));
             //     b.push(s)
             // }
-            // NOTE: imgUrl has extra space at beginning of string
-            // unsure why 
+
             function emojiClick(imgUrl) {
                 console.log('IN ON CLICK')
                 navigator.clipboard.writeText(imgUrl);
@@ -3628,215 +3624,215 @@
     }
     const lt = P.React,
         dt = P.anchorClasses;
-    class pt extends P.reactComponent {
-        constructor(e) {
-            super(e), this.onChange = this.onChange.bind(this), this.showSettings = this.showSettings.bind(this), this.setInitialState(), this.hasSettings = this.props.addon.plugin && "function" == typeof this.props.addon.plugin.getSettingsPanel, this.settingsPanel = "", this.edit = this.edit.bind(this), this.delete = this.delete.bind(this), this.reload = this.reload.bind(this)
-        }
-        setInitialState() {
-            this.state = {
-                checked: this.props.enabled,
-                settings: !1,
-                reloads: 0
-            }
-        }
-        showSettings() {
-            this.hasSettings && this.setState({
-                settings: !0
-            })
-        }
-        closeSettings() {
-            this.panelRef.current.innerHTML = "", this.setState({
-                settingsOpen: !1
-            })
-        }
-        componentDidUpdate() {
-            this.state.settings && ("object" == typeof this.settingsPanel && this.refs.settingspanel.appendChild(this.settingsPanel), h["fork-ps-3"] && setImmediate(() => {
-                const e = this.refs.cardNode,
-                    t = e.closest(".scroller");
-                if (!((e, t) => {
-                        const n = e.scrollTop,
-                            r = n + e.clientHeight,
-                            o = t.offsetTop,
-                            s = o + t.clientHeight;
-                        return o < n || s > r
-                    })(t, e)) return;
-                const n = B.offset(e),
-                    r = B.offset(t),
-                    o = t.scrollTop,
-                    s = n.top - r.top + t.scrollTop - 30;
-                B.animate({
-                    duration: 300,
-                    update: function (e) {
-                        t.scrollTop = s > o ? o + e * (s - o) : o - e * (o - s)
-                    }
-                })
-            }))
-        }
-        getString(e) {
-            return e ? "string" == typeof e ? e : e.toString() : "???"
-        }
-        get settingsComponent() {
-            try {
-                this.settingsPanel = this.props.addon.plugin.getSettingsPanel()
-            } catch (e) {
-                z.err("Plugins", "Unable to get settings panel for " + this.name + ".", e)
-            }
-            return P.react.createElement("div", {
-                className: "bd-card bd-addon-card settings-open ui-switch-item",
-                ref: "cardNode"
-            }, P.react.createElement("div", {
-                style: {
-                    float: "right",
-                    cursor: "pointer"
-                },
-                onClick: () => {
-                    this.refs.settingspanel.innerHTML = "", this.setState({
-                        settings: !1
-                    })
-                }
-            }, P.react.createElement(je, null)), "object" == typeof this.settingsPanel && P.react.createElement("div", {
-                id: "plugin-settings-" + this.name,
-                className: "plugin-settings",
-                ref: "settingspanel"
-            }), "object" != typeof this.settingsPanel && P.react.createElement("div", {
-                id: "plugin-settings-" + this.name,
-                className: "plugin-settings",
-                ref: "settingspanel",
-                dangerouslySetInnerHTML: {
-                    __html: this.settingsPanel
-                }
-            }))
-        }
-        buildTitle(e, t, n) {
-            const r = "{{name}} v{{version}} by {{author}}".split(/({{[A-Za-z]+}})/),
-                o = r.findIndex(e => "{{name}}" == e);
-            o && (r[o] = lt.createElement("span", {
-                className: "name bda-name"
-            }, e));
-            const s = r.findIndex(e => "{{version}}" == e);
-            o && (r[s] = lt.createElement("span", {
-                className: "version bda-version"
-            }, t));
-            const i = r.findIndex(e => "{{author}}" == e);
-            if (o) {
-                const e = {
-                    className: "author bda-author"
-                };
-                (n.link || n.id) && (e.className += ` ${dt.anchor} ${dt.anchorUnderlineOnHover}`, e.target = "_blank", n.link && (e.href = n.link), n.id && (e.onClick = () => {
-                    P.LayerStack.popLayer(), P.openDM(n.id)
-                })), r[i] = lt.createElement(n.link || n.id ? "a" : "span", e, n.name)
-            }
-            return r.flat()
-        }
-        makeLink(e, t) {
-            const n = {
-                className: "bda-link bda-link-website",
-                target: "_blank"
-            };
-            return "string" == typeof t && (n.href = t), "function" == typeof t && (n.onClick = e => {
-                e.preventDefault(), e.stopPropagation(), t()
-            }), P.react.createElement("a", n, e)
-        }
-        makeButton(e, t, n) {
-            return lt.createElement(ke, {
-                color: "black",
-                side: "top",
-                text: e
-            }, lt.createElement("div", {
-                className: "bd-addon-button",
-                onClick: n
-            }, t))
-        }
-        get links() {
-            const e = [],
-                t = this.props.addon;
-            return t.website && e.push(this.makeLink("Website", t.website)), t.source && e.push(this.makeLink("Source", t.source)), t.invite && e.push(this.makeLink("Support Server", () => {
-                const e = /\.gg\/(.*)$/;
-                let n = t.invite;
-                e.test(n) && (n = n.match(e)[1]), P.LayerStack.popLayer(), P.InviteActions.acceptInviteAndTransitionToInviteChannel(n)
-            })), t.donate && e.push(this.makeLink("Donate", t.donate)), t.patreon && e.push(this.makeLink("Patreon", t.patreon)), e
-        }
-        get footer() {
-            const e = this.links;
-            return (e.length || this.hasSettings) && P.react.createElement("div", {
-                className: "bd-card-footer bda-footer"
-            }, P.react.createElement("span", {
-                className: "bd-addon-links bda-links"
-            }, ...e.map((t, n) => n < e.length - 1 ? [t, " | "] : t).flat()), this.hasSettings && P.react.createElement("button", {
-                onClick: this.showSettings,
-                className: "bd-button bda-settings-button",
-                disabled: !this.state.checked
-            }, "Settings"))
-        }
-        onChange() {
-            this.props.toggle && this.props.toggle(this.name), this.setState({
-                checked: !this.state.checked
-            })
-        }
-        edit() {
-            this.props.edit(this.name)
-        }
-        delete() {
-            this.props.remove(this.name)
-        }
-        reload() {
-            this.props.reload(this.name)
-        }
-        get name() {
-            return this.getString(this.props.addon.name)
-        }
-        get author() {
-            return this.getString(this.props.addon.author)
-        }
-        get description() {
-            return this.getString(this.props.addon.description)
-        }
-        get version() {
-            return this.getString(this.props.addon.version)
-        }
-        render() {
-            if (this.state.settings) return this.settingsComponent;
-            const {
-                authorId: e,
-                authorLink: t
-            } = this.props.addon;
-            return P.react.createElement("div", {
-                className: "bd-card bd-addon-card settings-closed ui-switch-item"
-            }, P.react.createElement("div", {
-                className: "bd-addon-header bda-header"
-            }, P.react.createElement("div", {
-                className: "bd-card-title bda-header-title"
-            }, this.buildTitle(this.name, this.version, {
-                name: this.author,
-                id: e,
-                link: t
-            })), P.react.createElement("div", {
-                className: "bd-addon-controls bda-controls"
-            }, this.props.edit && this.makeButton("Edit", lt.createElement(it, {
-                className: "bd-icon"
-            }), this.edit), this.props.remove && this.makeButton("Delete", lt.createElement(ct, {
-                className: "bd-icon"
-            }), this.delete), this.props.reload && this.makeButton("Reload", lt.createElement(ot, {
-                className: "bd-icon"
-            }), this.reload), lt.createElement(Ve, {
-                onChange: this.onChange,
-                checked: this.state.checked
-            }))), P.react.createElement("div", {
-                className: "bd-scroller-wrap bda-description-wrap scroller-wrap fade"
-            }, P.react.createElement("div", {
-                className: "bd-scroller bd-addon-description bda-description scroller"
-            }, this.description)), this.footer)
-        }
-    }
-    const ht = pt.prototype.render;
-    Object.defineProperty(pt.prototype, "render", {
-        enumerable: !1,
-        configurable: !1,
-        set: function () {
-            console.warn("Addon policy for plugins #5 https://github.com/rauenzi/BetterDiscordApp/wiki/Addon-Policies#plugins")
-        },
-        get: () => ht
-    });
+    // class pt extends P.reactComponent {
+    //     constructor(e) {
+    //         super(e), this.onChange = this.onChange.bind(this), this.showSettings = this.showSettings.bind(this), this.setInitialState(), this.hasSettings = this.props.addon.plugin && "function" == typeof this.props.addon.plugin.getSettingsPanel, this.settingsPanel = "", this.edit = this.edit.bind(this), this.delete = this.delete.bind(this), this.reload = this.reload.bind(this)
+    //     }
+    //     setInitialState() {
+    //         this.state = {
+    //             checked: this.props.enabled,
+    //             settings: !1,
+    //             reloads: 0
+    //         }
+    //     }
+    //     showSettings() {
+    //         this.hasSettings && this.setState({
+    //             settings: !0
+    //         })
+    //     }
+    //     closeSettings() {
+    //         this.panelRef.current.innerHTML = "", this.setState({
+    //             settingsOpen: !1
+    //         })
+    //     }
+    //     componentDidUpdate() {
+    //         this.state.settings && ("object" == typeof this.settingsPanel && this.refs.settingspanel.appendChild(this.settingsPanel), h["fork-ps-3"] && setImmediate(() => {
+    //             const e = this.refs.cardNode,
+    //                 t = e.closest(".scroller");
+    //             if (!((e, t) => {
+    //                     const n = e.scrollTop,
+    //                         r = n + e.clientHeight,
+    //                         o = t.offsetTop,
+    //                         s = o + t.clientHeight;
+    //                     return o < n || s > r
+    //                 })(t, e)) return;
+    //             const n = B.offset(e),
+    //                 r = B.offset(t),
+    //                 o = t.scrollTop,
+    //                 s = n.top - r.top + t.scrollTop - 30;
+    //             B.animate({
+    //                 duration: 300,
+    //                 update: function (e) {
+    //                     t.scrollTop = s > o ? o + e * (s - o) : o - e * (o - s)
+    //                 }
+    //             })
+    //         }))
+    //     }
+    //     getString(e) {
+    //         return e ? "string" == typeof e ? e : e.toString() : "???"
+    //     }
+    //     get settingsComponent() {
+    //         try {
+    //             this.settingsPanel = this.props.addon.plugin.getSettingsPanel()
+    //         } catch (e) {
+    //             z.err("Plugins", "Unable to get settings panel for " + this.name + ".", e)
+    //         }
+    //         return P.react.createElement("div", {
+    //             className: "bd-card bd-addon-card settings-open ui-switch-item",
+    //             ref: "cardNode"
+    //         }, P.react.createElement("div", {
+    //             style: {
+    //                 float: "right",
+    //                 cursor: "pointer"
+    //             },
+    //             onClick: () => {
+    //                 this.refs.settingspanel.innerHTML = "", this.setState({
+    //                     settings: !1
+    //                 })
+    //             }
+    //         }, P.react.createElement(je, null)), "object" == typeof this.settingsPanel && P.react.createElement("div", {
+    //             id: "plugin-settings-" + this.name,
+    //             className: "plugin-settings",
+    //             ref: "settingspanel"
+    //         }), "object" != typeof this.settingsPanel && P.react.createElement("div", {
+    //             id: "plugin-settings-" + this.name,
+    //             className: "plugin-settings",
+    //             ref: "settingspanel",
+    //             dangerouslySetInnerHTML: {
+    //                 __html: this.settingsPanel
+    //             }
+    //         }))
+    //     }
+    //     buildTitle(e, t, n) {
+    //         const r = "{{name}} v{{version}} by {{author}}".split(/({{[A-Za-z]+}})/),
+    //             o = r.findIndex(e => "{{name}}" == e);
+    //         o && (r[o] = lt.createElement("span", {
+    //             className: "name bda-name"
+    //         }, e));
+    //         const s = r.findIndex(e => "{{version}}" == e);
+    //         o && (r[s] = lt.createElement("span", {
+    //             className: "version bda-version"
+    //         }, t));
+    //         const i = r.findIndex(e => "{{author}}" == e);
+    //         if (o) {
+    //             const e = {
+    //                 className: "author bda-author"
+    //             };
+    //             (n.link || n.id) && (e.className += ` ${dt.anchor} ${dt.anchorUnderlineOnHover}`, e.target = "_blank", n.link && (e.href = n.link), n.id && (e.onClick = () => {
+    //                 P.LayerStack.popLayer(), P.openDM(n.id)
+    //             })), r[i] = lt.createElement(n.link || n.id ? "a" : "span", e, n.name)
+    //         }
+    //         return r.flat()
+    //     }
+    //     makeLink(e, t) {
+    //         const n = {
+    //             className: "bda-link bda-link-website",
+    //             target: "_blank"
+    //         };
+    //         return "string" == typeof t && (n.href = t), "function" == typeof t && (n.onClick = e => {
+    //             e.preventDefault(), e.stopPropagation(), t()
+    //         }), P.react.createElement("a", n, e)
+    //     }
+    //     makeButton(e, t, n) {
+    //         return lt.createElement(ke, {
+    //             color: "black",
+    //             side: "top",
+    //             text: e
+    //         }, lt.createElement("div", {
+    //             className: "bd-addon-button",
+    //             onClick: n
+    //         }, t))
+    //     }
+    //     get links() {
+    //         const e = [],
+    //             t = this.props.addon;
+    //         return t.website && e.push(this.makeLink("Website", t.website)), t.source && e.push(this.makeLink("Source", t.source)), t.invite && e.push(this.makeLink("Support Server", () => {
+    //             const e = /\.gg\/(.*)$/;
+    //             let n = t.invite;
+    //             e.test(n) && (n = n.match(e)[1]), P.LayerStack.popLayer(), P.InviteActions.acceptInviteAndTransitionToInviteChannel(n)
+    //         })), t.donate && e.push(this.makeLink("Donate", t.donate)), t.patreon && e.push(this.makeLink("Patreon", t.patreon)), e
+    //     }
+    //     get footer() {
+    //         const e = this.links;
+    //         return (e.length || this.hasSettings) && P.react.createElement("div", {
+    //             className: "bd-card-footer bda-footer"
+    //         }, P.react.createElement("span", {
+    //             className: "bd-addon-links bda-links"
+    //         }, ...e.map((t, n) => n < e.length - 1 ? [t, " | "] : t).flat()), this.hasSettings && P.react.createElement("button", {
+    //             onClick: this.showSettings,
+    //             className: "bd-button bda-settings-button",
+    //             disabled: !this.state.checked
+    //         }, "Settings"))
+    //     }
+    //     onChange() {
+    //         this.props.toggle && this.props.toggle(this.name), this.setState({
+    //             checked: !this.state.checked
+    //         })
+    //     }
+    //     edit() {
+    //         this.props.edit(this.name)
+    //     }
+    //     delete() {
+    //         this.props.remove(this.name)
+    //     }
+    //     reload() {
+    //         this.props.reload(this.name)
+    //     }
+    //     get name() {
+    //         return this.getString(this.props.addon.name)
+    //     }
+    //     get author() {
+    //         return this.getString(this.props.addon.author)
+    //     }
+    //     get description() {
+    //         return this.getString(this.props.addon.description)
+    //     }
+    //     get version() {
+    //         return this.getString(this.props.addon.version)
+    //     }
+    //     render() {
+    //         if (this.state.settings) return this.settingsComponent;
+    //         const {
+    //             authorId: e,
+    //             authorLink: t
+    //         } = this.props.addon;
+    //         return P.react.createElement("div", {
+    //             className: "bd-card bd-addon-card settings-closed ui-switch-item"
+    //         }, P.react.createElement("div", {
+    //             className: "bd-addon-header bda-header"
+    //         }, P.react.createElement("div", {
+    //             className: "bd-card-title bda-header-title"
+    //         }, this.buildTitle(this.name, this.version, {
+    //             name: this.author,
+    //             id: e,
+    //             link: t
+    //         })), P.react.createElement("div", {
+    //             className: "bd-addon-controls bda-controls"
+    //         }, this.props.edit && this.makeButton("Edit", lt.createElement(it, {
+    //             className: "bd-icon"
+    //         }), this.edit), this.props.remove && this.makeButton("Delete", lt.createElement(ct, {
+    //             className: "bd-icon"
+    //         }), this.delete), this.props.reload && this.makeButton("Reload", lt.createElement(ot, {
+    //             className: "bd-icon"
+    //         }), this.reload), lt.createElement(Ve, {
+    //             onChange: this.onChange,
+    //             checked: this.state.checked
+    //         }))), P.react.createElement("div", {
+    //             className: "bd-scroller-wrap bda-description-wrap scroller-wrap fade"
+    //         }, P.react.createElement("div", {
+    //             className: "bd-scroller bd-addon-description bda-description scroller"
+    //         }, this.description)), this.footer)
+    //     }
+    // }
+    // const ht = pt.prototype.render;
+    // Object.defineProperty(pt.prototype, "render", {
+    //     enumerable: !1,
+    //     configurable: !1,
+    //     set: function () {
+    //         console.warn("Addon policy for plugins #5 https://github.com/rauenzi/BetterDiscordApp/wiki/Addon-Policies#plugins")
+    //     },
+    //     get: () => ht
+    // });
     const ut = P.React;
     class mt extends ut.Component {
         render() {
@@ -3954,195 +3950,195 @@
     }
     const kt = A("Tooltip"),
         Et = P.react;
-    class Ct extends P.reactComponent {
-        constructor(e) {
-            super(e), this.state = {
-                sort: "name",
-                ascending: !0,
-                query: ""
-            }, this.isPlugins = "plugins" == this.props.type, this.cookie = this.isPlugins ? S : N, this.manager = this.isPlugins ? U : '', this.sort = this.sort.bind(this), this.reverse = this.reverse.bind(this), this.search = this.search.bind(this)
-        }
-        openFolder() {
-            const e = n(0).shell;
-            (e.openPath || e.openItem)(this.isPlugins ? Y.pluginsFolder : Y.themesFolder)
-        }
-        edit(e) {
-            console.log(e), this.manager.edit(e)
-        }
-        async delete(e) {
-            await this.confirmDelete(e) && this.manager.delete(e)
-        }
-        confirmDelete(e) {
-            return new Promise(t => {
-                At.showConfirmationModal("Are You Sure?", `Are you sure you want to delete ${e}?`, {
-                    danger: !0,
-                    confirmText: "Delete",
-                    onConfirm: () => {
-                        t(!0)
-                    },
-                    onCancel: () => {
-                        t(!1)
-                    }
-                })
-            })
-        }
-        get sortOptions() {
-            return [{
-                label: "Name",
-                value: "name"
-            }, {
-                label: "Author",
-                value: "author"
-            }, {
-                label: "Version",
-                value: "version"
-            }, {
-                label: "Recently Added",
-                value: "added"
-            }, {
-                label: "Last Modified",
-                value: "modified"
-            }, {
-                label: "File Size",
-                value: "size"
-            }]
-        }
-        get directions() {
-            return [{
-                label: "Ascending",
-                value: !0
-            }, {
-                label: "Descending",
-                value: !1
-            }]
-        }
-        reverse(e) {
-            this.setState({
-                ascending: e
-            })
-        }
-        sort(e) {
-            this.setState({
-                sort: e
-            })
-        }
-        search(e) {
-            this.setState({
-                query: e.target.value.toLocaleLowerCase()
-            })
-        }
-        getProps(e) {
-            return {
-                key: this.getName(e),
-                enabled: this.cookie[this.getName(e)],
-                toggle: this.manager.toggle.bind(this.manager),
-                remove: this.delete.bind(this),
-                addon: e
-            }
-        }
-        getString(e) {
-            return e ? "string" == typeof e ? e : e.toString() : "???"
-        }
-        getAddons() {
-            const e = this.props.list.sort((e, t) => {
-                const n = this.state.sort.charAt(0).toUpperCase() + this.state.sort.slice(1),
-                    r = e.plugin && e.plugin["get" + n] ? this.getString(e.plugin["get" + n]()) : e[this.state.sort],
-                    o = t.plugin && t.plugin["get" + n] ? this.getString(t.plugin["get" + n]()) : t[this.state.sort];
-                return "string" == typeof r ? r.toLocaleLowerCase().localeCompare(o.toLocaleLowerCase()) : r > o ? 1 : o > r ? -1 : 0
-            });
-            this.state.ascending || e.reverse();
-            const t = [];
-            for (let n = 0; n < e.length; n++) {
-                const r = e[n];
-                if (this.state.query) {
-                    let e = null;
-                    const t = this.getName(r),
-                        n = this.getAuthor(r),
-                        o = this.getDescription(r),
-                        s = this.getVersion(r);
-                    if (t && (e = t.toLocaleLowerCase().includes(this.state.query)), n && (e = e || n.toLocaleLowerCase().includes(this.state.query)), o && (e = e || o.toLocaleLowerCase().includes(this.state.query)), s && (e = e || s.toLocaleLowerCase().includes(this.state.query)), !e) continue
-                }
-                const o = this.getProps(r);
-                t.push(Et.createElement(tt, null, Et.createElement(pt, wt({}, o, {
-                    reload: !h["fork-ps-5"] && this.manager.reload.bind(this.manager)
-                }))))
-            }
-            return t
-        }
-        getName(e) {
-            return this.getString(e.name)
-        }
-        getAuthor(e) {
-            return this.getString(e.author)
-        }
-        getDescription(e) {
-            return this.getString(e.description)
-        }
-        getVersion(e) {
-            return this.getString(e.version)
-        }
-        render() {
-            const e = Et.createElement(kt, {
-                    color: "black",
-                    position: "top",
-                    text: "Reload List"
-                }, e => Et.createElement(ot, wt({}, e, {
-                    className: "bd-icon bd-reload bd-reload-header",
-                    size: "18px",
-                    onClick: async () => {
-                        this.isPlugins ? U.updatePluginList() : '', this.forceUpdate()
-                    }
-                }))),
-                t = this.getAddons();
-            return Et.createElement(ze, {
-                contentColumn: !0,
-                fade: !0,
-                dark: !0
-            }, Et.createElement(rt, {
-                title: `${this.props.type.toUpperCase()}—${t.length}`
-            }, Et.createElement("button", {
-                key: "folder-button",
-                className: "bd-button bd-pfbtn",
-                onClick: this.openFolder.bind(this)
-            }, "Open ", this.isPlugins ? "Plugin" : "Theme", " Folder"), !h["fork-ps-5"] && e, Et.createElement("div", {
-                className: "bd-controls bd-addon-controls"
-            }, Et.createElement(xt, {
-                onChange: this.search,
-                placeholder: `Search ${this.props.type}...`
-            }), Et.createElement("div", {
-                className: "bd-addon-dropdowns"
-            }, Et.createElement("div", {
-                className: "bd-select-wrapper"
-            }, Et.createElement("label", {
-                className: "bd-label"
-            }, "Sort by:"), Et.createElement(bt, {
-                options: this.sortOptions,
-                onChange: this.sort,
-                style: "transparent"
-            })), Et.createElement("div", {
-                className: "bd-select-wrapper"
-            }, Et.createElement("label", {
-                className: "bd-label"
-            }, "Order:"), Et.createElement(bt, {
-                options: this.directions,
-                onChange: this.reverse,
-                style: "transparent"
-            })))), Et.createElement("div", {
-                className: "bda-slist bd-addon-list"
-            }, t)), Et.createElement(Ae, {
-                key: "tools"
-            }))
-        }
-    }
-    const Mt = Ct.prototype.render;
-    Object.defineProperty(Ct.prototype, "render", {
-        enumerable: !1,
-        configurable: !1,
-        set: function () {
-            console.warn("Addon policy for plugins #5 https://github.com/rauenzi/BetterDiscordApp/wiki/Addon-Policies#plugins")
-        },
-        get: () => Mt
-    });
+    // class Ct extends P.reactComponent {
+    //     constructor(e) {
+    //         super(e), this.state = {
+    //             sort: "name",
+    //             ascending: !0,
+    //             query: ""
+    //         }, this.isPlugins = "plugins" == this.props.type, this.cookie = this.isPlugins ? S : N, this.manager = this.isPlugins ? U : '', this.sort = this.sort.bind(this), this.reverse = this.reverse.bind(this), this.search = this.search.bind(this)
+    //     }
+    //     openFolder() {
+    //         const e = n(0).shell;
+    //         (e.openPath || e.openItem)(this.isPlugins ? Y.pluginsFolder : Y.themesFolder)
+    //     }
+    //     edit(e) {
+    //         console.log(e), this.manager.edit(e)
+    //     }
+    //     async delete(e) {
+    //         await this.confirmDelete(e) && this.manager.delete(e)
+    //     }
+    //     confirmDelete(e) {
+    //         return new Promise(t => {
+    //             At.showConfirmationModal("Are You Sure?", `Are you sure you want to delete ${e}?`, {
+    //                 danger: !0,
+    //                 confirmText: "Delete",
+    //                 onConfirm: () => {
+    //                     t(!0)
+    //                 },
+    //                 onCancel: () => {
+    //                     t(!1)
+    //                 }
+    //             })
+    //         })
+    //     }
+    //     get sortOptions() {
+    //         return [{
+    //             label: "Name",
+    //             value: "name"
+    //         }, {
+    //             label: "Author",
+    //             value: "author"
+    //         }, {
+    //             label: "Version",
+    //             value: "version"
+    //         }, {
+    //             label: "Recently Added",
+    //             value: "added"
+    //         }, {
+    //             label: "Last Modified",
+    //             value: "modified"
+    //         }, {
+    //             label: "File Size",
+    //             value: "size"
+    //         }]
+    //     }
+    //     get directions() {
+    //         return [{
+    //             label: "Ascending",
+    //             value: !0
+    //         }, {
+    //             label: "Descending",
+    //             value: !1
+    //         }]
+    //     }
+    //     reverse(e) {
+    //         this.setState({
+    //             ascending: e
+    //         })
+    //     }
+    //     sort(e) {
+    //         this.setState({
+    //             sort: e
+    //         })
+    //     }
+    //     search(e) {
+    //         this.setState({
+    //             query: e.target.value.toLocaleLowerCase()
+    //         })
+    //     }
+    //     getProps(e) {
+    //         return {
+    //             key: this.getName(e),
+    //             enabled: this.cookie[this.getName(e)],
+    //             toggle: this.manager.toggle.bind(this.manager),
+    //             remove: this.delete.bind(this),
+    //             addon: e
+    //         }
+    //     }
+    //     getString(e) {
+    //         return e ? "string" == typeof e ? e : e.toString() : "???"
+    //     }
+    //     getAddons() {
+    //         const e = this.props.list.sort((e, t) => {
+    //             const n = this.state.sort.charAt(0).toUpperCase() + this.state.sort.slice(1),
+    //                 r = e.plugin && e.plugin["get" + n] ? this.getString(e.plugin["get" + n]()) : e[this.state.sort],
+    //                 o = t.plugin && t.plugin["get" + n] ? this.getString(t.plugin["get" + n]()) : t[this.state.sort];
+    //             return "string" == typeof r ? r.toLocaleLowerCase().localeCompare(o.toLocaleLowerCase()) : r > o ? 1 : o > r ? -1 : 0
+    //         });
+    //         this.state.ascending || e.reverse();
+    //         const t = [];
+    //         for (let n = 0; n < e.length; n++) {
+    //             const r = e[n];
+    //             if (this.state.query) {
+    //                 let e = null;
+    //                 const t = this.getName(r),
+    //                     n = this.getAuthor(r),
+    //                     o = this.getDescription(r),
+    //                     s = this.getVersion(r);
+    //                 if (t && (e = t.toLocaleLowerCase().includes(this.state.query)), n && (e = e || n.toLocaleLowerCase().includes(this.state.query)), o && (e = e || o.toLocaleLowerCase().includes(this.state.query)), s && (e = e || s.toLocaleLowerCase().includes(this.state.query)), !e) continue
+    //             }
+    //             const o = this.getProps(r);
+    //             // t.push(Et.createElement(tt, null, Et.createElement(pt, wt({}, o, {
+    //             //     reload: !h["fork-ps-5"] && this.manager.reload.bind(this.manager)
+    //             // }))))
+    //         }
+    //         return t
+    //     }
+    //     getName(e) {
+    //         return this.getString(e.name)
+    //     }
+    //     getAuthor(e) {
+    //         return this.getString(e.author)
+    //     }
+    //     getDescription(e) {
+    //         return this.getString(e.description)
+    //     }
+    //     getVersion(e) {
+    //         return this.getString(e.version)
+    //     }
+    //     render() {
+    //         const e = Et.createElement(kt, {
+    //                 color: "black",
+    //                 position: "top",
+    //                 text: "Reload List"
+    //             }, e => Et.createElement(ot, wt({}, e, {
+    //                 className: "bd-icon bd-reload bd-reload-header",
+    //                 size: "18px",
+    //                 onClick: async () => {
+    //                     this.isPlugins ? U.updatePluginList() : '', this.forceUpdate()
+    //                 }
+    //             }))),
+    //             t = this.getAddons();
+    //         return Et.createElement(ze, {
+    //             contentColumn: !0,
+    //             fade: !0,
+    //             dark: !0
+    //         }, Et.createElement(rt, {
+    //             title: `${this.props.type.toUpperCase()}—${t.length}`
+    //         }, Et.createElement("button", {
+    //             key: "folder-button",
+    //             className: "bd-button bd-pfbtn",
+    //             onClick: this.openFolder.bind(this)
+    //         }, "Open ", this.isPlugins ? "Plugin" : "Theme", " Folder"), !h["fork-ps-5"] && e, Et.createElement("div", {
+    //             className: "bd-controls bd-addon-controls"
+    //         }, Et.createElement(xt, {
+    //             onChange: this.search,
+    //             placeholder: `Search ${this.props.type}...`
+    //         }), Et.createElement("div", {
+    //             className: "bd-addon-dropdowns"
+    //         }, Et.createElement("div", {
+    //             className: "bd-select-wrapper"
+    //         }, Et.createElement("label", {
+    //             className: "bd-label"
+    //         }, "Sort by:"), Et.createElement(bt, {
+    //             options: this.sortOptions,
+    //             onChange: this.sort,
+    //             style: "transparent"
+    //         })), Et.createElement("div", {
+    //             className: "bd-select-wrapper"
+    //         }, Et.createElement("label", {
+    //             className: "bd-label"
+    //         }, "Order:"), Et.createElement(bt, {
+    //             options: this.directions,
+    //             onChange: this.reverse,
+    //             style: "transparent"
+    //         })))), Et.createElement("div", {
+    //             className: "bda-slist bd-addon-list"
+    //         }, t)), Et.createElement(Ae, {
+    //             key: "tools"
+    //         }))
+    //     }
+    // }
+    // const Mt = Ct.prototype.render;
+    // Object.defineProperty(Ct.prototype, "render", {
+    //     enumerable: !1,
+    //     configurable: !1,
+    //     set: function () {
+    //         console.warn("Addon policy for plugins #5 https://github.com/rauenzi/BetterDiscordApp/wiki/Addon-Policies#plugins")
+    //     },
+    //     get: () => Mt
+    // });
     var St = new class {
         constructor() {
             this.sideBarOnClick = this.sideBarOnClick.bind(this), this.onChange = this.onChange.bind(this), this.updateSettings = this.updateSettings.bind(this), this.sidebar = new Ee(this.sideBarOnClick), this.showOriginal = this.showOriginal.bind(this)
@@ -4344,8 +4340,8 @@
         //     le.initialized = !0, z.log("Startup", "Initializing QuickEmoteMenu"), ie.init()
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
-        z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins sigh"), U.loadPlugins(), 
+        z.log("Startup", "Updating Settings lmao"), 
+        // St.initializeSettings(), z.log("Startup", "Loading Plugins erased from plugin"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
@@ -4388,7 +4384,7 @@
         new MutationObserver(e => {
             for (let t = 0, n = e.length; t < n; t++) {
                 const n = e[t];
-                if (void 0 !== U && U.rawObserver(n), !(n.addedNodes.length && n.addedNodes[0] instanceof Element)) continue;
+                if (!(n.addedNodes.length && n.addedNodes[0] instanceof Element)) continue;
                 const r = n.addedNodes[0];
                 r.classList.contains("layer-3QrUeG") && (r.getElementsByClassName("guild-settings-base-section").length && r.setAttribute("layer-id", "server-settings"), r.getElementsByClassName("socialLinks-3jqNFy").length && (r.setAttribute("layer-id", "user-settings"), r.setAttribute("id", "user-settings"), document.getElementById("bd-settings-sidebar") || St.renderSidebar())), r.parentElement == document.body && r.querySelector("#ace_settingsmenu") && (r.id = "ace_settingsmenu_container"), r.classList.contains("layer-v9HyYc") && r.getElementsByClassName("emojiPicker-3m1S-j").length && !r.querySelector(".emojiPicker-3m1S-j").parentElement.classList.contains("animatorLeft-1EQxU0")
             }
@@ -4604,7 +4600,7 @@
             return Object.keys(t).map(e => this.get(e)).filter(e => e)
         }
     };
-    Lt.Plugins = jt(S, M, U);
+    // Lt.Plugins = jt(S, M, U);
     var At = Lt;
     ! function () {
         const e = Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, "contentWindow").get;
@@ -4650,5 +4646,8 @@
         },
         Bt = Object.keys(r);
     for (const e of Bt) Pt(e, r[e]);
-    Pt("BDV2", P), Pt("pluginModule", U), Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), window.BdApi = At
+    Pt("BDV2", P), 
+    // Pt("pluginModule", U), 
+    Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), 
+    // window.BdApi = At
   }]);
