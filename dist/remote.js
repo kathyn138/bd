@@ -903,10 +903,10 @@
                     i = n ? n.offsetHeight : 80,
                     a = document.createElement("div");
                 a.classList.add("bd-toasts"), 
-                a.style.setProperty("left", r / 2 + "px"), 
+                a.style.setProperty("left", e.getBoundingClientRect().left / 2 + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
-                a.style.setProperty("width", 70 + "px"), 
-                a.style.setProperty("border-radius", 5 + "px"), 
+                a.style.setProperty("width", 60 + "px"), 
+                a.style.setProperty("border-radius", "1px"), 
                 a.style.setProperty("padding", ".375rem .75rem");
                 a.style.setProperty("background-color", "#7289da")
                 document.querySelector("#emoji-toast").appendChild(a)
@@ -918,9 +918,9 @@
             } = t, s = document.createElement("div");
             s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"),
             s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
-                s.classList.add("closing"), setTimeout(() => {
-                    s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
-                }, 100)
+                // s.classList.add("closing"), setTimeout(() => {
+                //     s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
+                // }, 100)
             }, o)
         }
         static alert(e, t) {
@@ -980,7 +980,7 @@
                 a = j("defaultRules", "parse");
             if (!(i && t && n && r && o && s && a)) return;
             const {
-                image: l = "https://repository-images.githubusercontent.com/105473537/957b5480-7c26-11e9-8401-50fa820cbae5",
+                image: l = "",
                 description: d = "",
                 changes: p = [],
                 title: h = "BandagedBD",
@@ -1038,8 +1038,7 @@
                 };
             return t.push((function (e) {
                 return g(i, Object.assign({
-                    className: n.container,
-                    id: "emoji-modal-header",
+                    className: n.container + " emoji-modal-header",
                     selectable: !0,
                     onScroll: e => e,
                     onClose: e => e,
@@ -4337,7 +4336,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins WOOT"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins tea"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
