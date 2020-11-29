@@ -1039,7 +1039,7 @@
             return t.push((function (e) {
                 return g(i, Object.assign({
                     className: n.container,
-                    id: "emoji-modal-header"
+                    id: "emoji-modal-header",
                     selectable: !0,
                     onScroll: e => e,
                     onClose: e => e,
