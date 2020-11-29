@@ -2572,7 +2572,7 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('hmm testing the css')
+                console.log('hmmmmm')
                 h["fork-ps-2"] && z.showToast("Copied!", {
                     type: "info"
                 })
@@ -2732,6 +2732,10 @@
         }
         addButton() {
             console.log('IN ADD BUTTON BEFORE')
+            h["fork-ps-2"] && z.showToast("Copied!", {
+                type: "info"
+            })
+            console.log('added toast')
             if (this.guildPatch) return;
             console.log('IN ADD AFTER RETURN')
             const e = I(e => e.default && "NavigableGuilds" == e.default.displayName),
