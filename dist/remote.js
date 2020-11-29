@@ -2563,8 +2563,8 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('reee')
-                this.showToast("Copied!", {
+                console.log('tried with z')
+                z.showToast("Copied!", {
                     type: "emote-success"
                 })
                 console.log('end of modal')
