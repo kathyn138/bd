@@ -173,6 +173,14 @@
                 hidden: !0,
                 cat: "core"
             },
+            "Show Toasts": {
+                id: "fork-ps-2",
+                info: "Shows a small notification for important information",
+                implemented: !0,
+                hidden: !1,
+                cat: "core",
+                category: "content manager"
+            },
             // "Download Emotes": {
             //     id: "fork-es-3",
             //     info: "Download emotes when the cache is expired",
@@ -2563,9 +2571,9 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('tried with z')
-                z.showToast("Copied!", {
-                    type: "emote-success"
+                console.log('hmm trying to get it to show')
+                h["fork-ps-2"] && this.constructor.showToast("Copied!", {
+                    type: "info"
                 })
                 console.log('end of modal')
             }
