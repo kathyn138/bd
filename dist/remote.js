@@ -906,7 +906,7 @@
                 a.style.setProperty("left", e.getBoundingClientRect().left / 2 + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
                 a.style.setProperty("position", "relative")
-                a.style.setProperty("width", "53px"), 
+                a.style.setProperty("width", "45px"), 
                 a.style.setProperty("border-radius", "1px"), 
                 a.style.setProperty("padding", ".375rem .75rem");
                 a.style.setProperty("background-color", "#7289da")
@@ -2621,7 +2621,7 @@
                     }, u))
                 },
                 y = () => {
-                    const emojiToast = g("span", {id: "emoji-toast", height: "20px"});
+                    const emojiToast = g("span", {id: "emoji-toast", height: "30px", display: "inline-block"});
                     const e = I(e => "Anchor" == e.displayName),
                         n = j("anchorUnderlineOnHover") || {
                             anchor: "anchor-3Z-8Bb",
@@ -4345,7 +4345,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins sighghhh"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins sigh"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
