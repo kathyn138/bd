@@ -2621,7 +2621,7 @@
                     }, u))
                 },
                 y = () => {
-                    const emojiToast = g("span", {text: "Emojis go brrr", id: "emoji-toast"});
+                    const emojiToast = g("span", {id: "emoji-toast"}, "Emojis go brrr");
                     const e = I(e => "Anchor" == e.displayName),
                         n = j("anchorUnderlineOnHover") || {
                             anchor: "anchor-3Z-8Bb",
@@ -4345,7 +4345,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins sigh"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins sighree"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
