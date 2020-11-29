@@ -903,10 +903,11 @@
                     i = n ? n.offsetHeight : 80,
                     a = document.createElement("div");
                 a.classList.add("bd-toasts"), 
-                // a.style.setProperty("left", r + "px"), 
+                a.style.setProperty("left", r / 2 + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
-                a.style.setProperty("width", 60 + "px"), 
+                a.style.setProperty("width", 70 + "px"), 
                 a.style.setProperty("border-radius", 5 + "px"), 
+                a.style.setProperty("padding", ".375rem .75rem");
                 a.style.setProperty("background-color", "#7289da")
                 document.querySelector("#emoji-toast").appendChild(a)
             }
@@ -1038,6 +1039,7 @@
             return t.push((function (e) {
                 return g(i, Object.assign({
                     className: n.container,
+                    id: "emoji-modal-header"
                     selectable: !0,
                     onScroll: e => e,
                     onClose: e => e,
@@ -2604,8 +2606,7 @@
                         grow: 1,
                         shrink: 1
                     }, g(s.default, {
-                        tag: s.Tags.H4, 
-                        id: "emoji-modal-header"
+                        tag: s.Tags.H4
                     }, h), g(r, {
                         size: r.Sizes.SMALL,
                         color: r.Colors.STANDARD,
