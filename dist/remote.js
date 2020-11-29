@@ -2563,10 +2563,10 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                showToast("Copied!", {
+                this.showToast("Copied!", {
                     type: "emote-success"
                 })
-                // console.log('end of modal')
+                console.log('end of modal')
             }
 
             // displaying emojis
