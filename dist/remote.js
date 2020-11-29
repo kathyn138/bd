@@ -907,7 +907,7 @@
                 a.style.setProperty("width", 200 + "px"), a.style.setProperty("bottom", 300 + "px"), 
                 a.style.setProperty("background-color", "#7289da"),
                 a.style.setProperty("z-index", "100"),
-                document.querySelector("#app-mount").appendChild(a)
+                document.querySelector(".emoji-toast").appendChild(a)
             }
             const {
                 type: n = "",
@@ -2577,7 +2577,7 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('???? bruhh ')
+                console.log('hmmmm')
                 h["fork-ps-2"] && z.showToast("Copied!", {
                     type: "info"
                 })
@@ -2589,10 +2589,12 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
+                const emojiToast = g("div", {className: "emoji-toast"});
+                b.push(emojiToast);
                 const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className:'emoji-icon-container'}, g("img", {
                     className: 'emoji-icon', src: e, height: '50px', 
                 onClick: () => emojiClick(e)}))));
-                b.push(s)
+                b.push(s);
             }
 
             const f = function () {
