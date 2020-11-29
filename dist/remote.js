@@ -905,12 +905,10 @@
                 a.classList.add("bd-toasts"), 
                 // a.style.setProperty("left", r + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
-                a.style.setProperty("width", 200 + "px"), 
+                a.style.setProperty("width", 50 + "px"), 
                 // a.style.setProperty("bottom", 300 + "px"), 
                 a.style.setProperty("background-color", "#7289da")
-                console.log('before append')
                 document.querySelector("#emoji-toast").appendChild(a)
-                console.log('after append')
             }
             const {
                 type: n = "",
@@ -921,7 +919,7 @@
             s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
                 s.classList.add("closing"), setTimeout(() => {
                     s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
-                }, 300)
+                }, 100)
             }, o)
         }
         static alert(e, t) {
@@ -2592,7 +2590,7 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                const emojiToast = g("div", {id: "emoji-toast"});
+                const emojiToast = g("div", {id: "emoji-toast", height: "20px"});
                 b.push(emojiToast);
                 const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className:'emoji-icon-container'}, g("img", {
                     className: 'emoji-icon', src: e, height: '50px', 
@@ -2609,7 +2607,8 @@
                     }, h), g(r, {
                         size: r.Sizes.SMALL,
                         color: r.Colors.STANDARD,
-                        className: n.date
+                        className: n.date, 
+                        paddingBottom: "0px"
                     }, u))
                 },
                 y = () => {
@@ -2742,10 +2741,6 @@
         }
         addButton() {
             console.log('IN ADD BUTTON BEFORE')
-            console.log('OKK')
-            z.showToast("Copied!", {
-                type: "info"
-            })
             if (this.guildPatch) return;
             console.log('IN ADD AFTER RETURN')
             const e = I(e => e.default && "NavigableGuilds" == e.default.displayName),
@@ -4340,7 +4335,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins weeeee"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins KK"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
