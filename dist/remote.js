@@ -2593,8 +2593,8 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                const emojiToast = g("div", {id: "emoji-toast", height: "20px"});
-                b.push(emojiToast);
+                // const emojiToast = g("div", {id: "emoji-toast", height: "20px"});
+                // b.push(emojiToast);
                 const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className:'emoji-icon-container'}, g("img", {
                     className: 'emoji-icon', src: e, height: '50px', 
                 onClick: () => emojiClick(e)}))));
@@ -2605,7 +2605,6 @@
                     return g(o.Child, {
                         grow: 1,
                         shrink: 1, 
-                        id: "emoji-modal-header"
                     }, g(s.default, {
                         tag: s.Tags.H4
                     }, h), g(r, {
@@ -2615,6 +2614,7 @@
                     }, u))
                 },
                 y = () => {
+                    const emojiToast = g("div", {id: "emoji-toast", height: "20px"});
                     const e = I(e => "Anchor" == e.displayName),
                         n = j("anchorUnderlineOnHover") || {
                             anchor: "anchor-3Z-8Bb",
@@ -2626,7 +2626,7 @@
                         a = g(r, {
                             size: r.Sizes.SMALL,
                             color: r.Colors.STANDARD
-                        }, "Emojis go brrr", i);
+                        }, "Emojis go brrr", emojiToast, i);
                     return g(o.Child, {
                         grow: 1,
                         shrink: 1
@@ -2634,7 +2634,7 @@
                 };
             return t.push((function (e) {
                 return g(i, Object.assign({
-                    className: "sadkk",
+                    className: n.container,
                     selectable: !0,
                     onScroll: e => e,
                     onClose: e => e,
