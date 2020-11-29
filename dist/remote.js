@@ -905,9 +905,10 @@
                 a.classList.add("bd-toasts"), a.style.setProperty("left", r + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
                 a.style.setProperty("width", 200 + "px"), a.style.setProperty("bottom", 300 + "px"), 
-                a.style.setProperty("background-color", "#7289da"),
-                a.style.setProperty("z-index", "100"),
-                document.querySelector(".emoji-toast").appendChild(a)
+                a.style.setProperty("background-color", "#7289da")
+                console.log('before append')
+                document.querySelector("#emoji-toast").appendChild(a)
+                console.log('after append')
             }
             const {
                 type: n = "",
@@ -2577,7 +2578,7 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('hmmmm')
+                console.log('pspspsp')
                 h["fork-ps-2"] && z.showToast("Copied!", {
                     type: "info"
                 })
@@ -2589,7 +2590,7 @@
                 const t = p[i],
                     r = n[t.type] ? n[t.type] : n.added,
                     o = 0 == i ? n.marginTop : "";
-                const emojiToast = g("div", {className: "emoji-toast"});
+                const emojiToast = g("div", {id: "emoji-toast"});
                 b.push(emojiToast);
                 const s = g("div", {className: "emoji-list"}, t.emojis.map(e => g("div", {className:'emoji-icon-container'}, g("img", {
                     className: 'emoji-icon', src: e, height: '50px', 
