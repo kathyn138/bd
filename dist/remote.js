@@ -902,9 +902,11 @@
                     s = o ? o - e.getBoundingClientRect().left : z.screenWidth - r - 240,
                     i = n ? n.offsetHeight : 80,
                     a = document.createElement("div");
-                a.classList.add("bd-toasts"), a.style.setProperty("left", r + "px"), 
+                a.classList.add("bd-toasts"), 
+                // a.style.setProperty("left", r + "px"), 
                 // a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), 
-                a.style.setProperty("width", 200 + "px"), a.style.setProperty("bottom", 300 + "px"), 
+                a.style.setProperty("width", 200 + "px"), 
+                // a.style.setProperty("bottom", 300 + "px"), 
                 a.style.setProperty("background-color", "#7289da")
                 console.log('before append')
                 document.querySelector("#emoji-toast").appendChild(a)
@@ -2578,8 +2580,8 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('pspspsp')
-                h["fork-ps-2"] && z.showToast("Copied!", {
+                console.log('sighhh')
+                z.showToast("Copied!", {
                     type: "info"
                 })
                 console.log('end of modal')
@@ -2740,8 +2742,8 @@
         }
         addButton() {
             console.log('IN ADD BUTTON BEFORE')
-            console.log('OKKKKK')
-            h["fork-ps-2"] && z.showToast("Copied!", {
+            console.log('OKK')
+            z.showToast("Copied!", {
                 type: "info"
             })
             if (this.guildPatch) return;
