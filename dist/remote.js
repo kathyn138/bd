@@ -2472,9 +2472,9 @@
                 timeout: o = 3e3
             } = t, s = document.createElement("div");
             s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"), s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
-                // s.classList.add("closing"), setTimeout(() => {
-                //     s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
-                // }, 300)
+                s.classList.add("closing"), setTimeout(() => {
+                    s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
+                }, 300)
             }, o)
         }
         static alert(e, t) {
@@ -2621,7 +2621,7 @@
                     }, u))
                 },
                 y = () => {
-                    const emojiToast = g("span", {id: "emoji-toast"}, "Emojis go brrr");
+                    const emojiToast = g("span", {id: "emoji-toast"});
                     const e = I(e => "Anchor" == e.displayName),
                         n = j("anchorUnderlineOnHover") || {
                             anchor: "anchor-3Z-8Bb",
@@ -2633,7 +2633,7 @@
                         a = g(r, {
                             size: r.Sizes.SMALL,
                             color: r.Colors.STANDARD
-                        }, emojiToast, i);
+                        }, "Emojis go brrr", emojiToast, i);
                     return g(o.Child, {
                         grow: 1,
                         shrink: 1
@@ -4345,7 +4345,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins sighree"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins sighbrrrr"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
