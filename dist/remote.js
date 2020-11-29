@@ -2571,8 +2571,8 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('hmm trying to get it to show')
-                h["fork-ps-2"] && this.constructor.showToast("Copied!", {
+                console.log('hmm trying to get it to showzzzzz')
+                h["fork-ps-2"] && EmojiModal.showToast("Copied!", {
                     type: "info"
                 })
                 console.log('end of modal')
