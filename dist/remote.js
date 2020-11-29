@@ -2457,7 +2457,7 @@
                     i = n ? n.offsetHeight : 80,
                     a = document.createElement("div");
                 a.classList.add("bd-toasts"), 
-                a.style.setProperty("left", r + "px"), 
+                a.style.setProperty("margin-left", "10px"), 
                 a.style.setProperty("position", "relative")
                 a.style.setProperty("width", "53px"), 
                 a.style.setProperty("border-radius", "1px"), 
@@ -2472,9 +2472,9 @@
                 timeout: o = 3e3
             } = t, s = document.createElement("div");
             s.classList.add("bd-toast"), n && s.classList.add("toast-" + n), n && r && s.classList.add("icon"), s.innerText = e, document.querySelector(".bd-toasts").appendChild(s), setTimeout(() => {
-                s.classList.add("closing"), setTimeout(() => {
-                    s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
-                }, 300)
+                // s.classList.add("closing"), setTimeout(() => {
+                //     s.remove(), document.querySelectorAll(".bd-toasts .bd-toast").length || document.querySelector(".bd-toasts").remove()
+                // }, 300)
             }, o)
         }
         static alert(e, t) {
@@ -2589,7 +2589,6 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
-                console.log('sighhh')
                 EmojiModal.showToast("Copied!", {
                     type: "info"
                 })
@@ -4346,7 +4345,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins sigh"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins sighghhh"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
