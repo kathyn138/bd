@@ -4648,6 +4648,6 @@
     for (const e of Bt) Pt(e, r[e]);
     Pt("BDV2", P), 
     // Pt("pluginModule", U), 
-    Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We), 
+    Pt("Utils", z), Pt("BDEvents", F), Pt("settingsPanel", St), Pt("DataStore", ne), Pt("ContentManager", Y), Pt("ClassNormalizer", We) 
     // window.BdApi = At
   }]);
