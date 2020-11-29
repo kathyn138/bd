@@ -2563,6 +2563,7 @@
                 // n.remove()
                 // setTimeout(() => {
                 // }, 300)
+                console.log('reee')
                 this.showToast("Copied!", {
                     type: "emote-success"
                 })
