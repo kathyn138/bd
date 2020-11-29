@@ -2456,7 +2456,15 @@
                     s = o ? o - e.getBoundingClientRect().left : z.screenWidth - r - 240,
                     i = n ? n.offsetHeight : 80,
                     a = document.createElement("div");
-                a.classList.add("bd-toasts"), a.style.setProperty("left", r + "px"), a.style.setProperty("width", s + "px"), a.style.setProperty("bottom", i + "px"), document.querySelector("#app-mount").appendChild(a)
+                a.classList.add("bd-toasts"), 
+                a.style.setProperty("left", r + "px"), 
+                a.style.setProperty("position", "relative")
+                a.style.setProperty("width", "53px"), 
+                a.style.setProperty("border-radius", "1px"), 
+                a.style.setProperty("padding", ".375rem .75rem")
+                a.style.setProperty("background-color", "#7289da")
+                a.style.setProperty("display", "inline-block")
+                document.querySelector("#emoji-toast").appendChild(a)
             }
             const {
                 type: n = "",
@@ -2582,7 +2590,7 @@
                 // setTimeout(() => {
                 // }, 300)
                 console.log('sighhh')
-                z.showToast("Copied!", {
+                EmojiModal.showToast("Copied!", {
                     type: "info"
                 })
                 console.log('end of modal')
@@ -2614,7 +2622,7 @@
                     }, u))
                 },
                 y = () => {
-                    const emojiToast = g("div", {id: "emoji-toast", height: "20px"});
+                    const emojiToast = g("span", {id: "emoji-toast", height: "20px"});
                     const e = I(e => "Anchor" == e.displayName),
                         n = j("anchorUnderlineOnHover") || {
                             anchor: "anchor-3Z-8Bb",
@@ -4338,7 +4346,7 @@
         // }), 
         await this.injectExternals(), await this.checkForGuilds(), P.initialize(), 
         z.log("Startup", "Updating Settings"), 
-        St.initializeSettings(), z.log("Startup", "Loading Plugins ugh"), U.loadPlugins(), 
+        St.initializeSettings(), z.log("Startup", "Loading Plugins sigh"), U.loadPlugins(), 
         B.addStyle("customcss", atob(ne.getBDData("bdcustomcss"))), window.addEventListener("beforeunload", (function () {
             h["bda-dc-0"] && document.querySelector(".btn.btn-disconnect").click()
         })),  
